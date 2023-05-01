@@ -1,0 +1,25 @@
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Login.exe
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Login.deps.json
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Login.runtimeconfig.json
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Login.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Login.pdb
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.csproj.AssemblyReference.cache
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.FrmLogin.resources
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.csproj.GenerateResource.cache
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.AssemblyInfoInputs.cache
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.AssemblyInfo.cs
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.csproj.CoreCompileInputs.cache
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\refint\Login.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.pdb
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.genruntimeconfig.cache
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\ref\Login.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Biblioteca.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Biblioteca.pdb
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.csproj.CopyComplete
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Frm Vendedor.deps.json
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Frm Vendedor.runtimeconfig.json
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Frm Vendedor.exe
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Frm Vendedor.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\Frm Vendedor.pdb
