@@ -18,3 +18,5 @@ C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\ob
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\bin\Debug\net6.0-windows\Biblioteca.dll
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\bin\Debug\net6.0-windows\Biblioteca.pdb
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\obj\Debug\net6.0-windows\Frm Vendedor.csproj.CopyComplete
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\obj\Debug\net6.0-windows\Frm_Vendedor.Properties.Resources.resources
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Frm Vendedor\obj\Debug\net6.0-windows\Frm_Vendedor.FrmStock.resources
