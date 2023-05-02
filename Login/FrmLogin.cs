@@ -9,11 +9,11 @@ namespace Login
         public FrmLogin()
         {
             InitializeComponent();
+            
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
         }
 
         /// <summary>
@@ -26,9 +26,7 @@ namespace Login
             if (txtUsuario.Text == "acottis2@toplist.cz" && txtPassword.Text == "jwAqIw0Alt5")
             {
                 FrmVendedor frmVendedor = new FrmVendedor();
-                Hide();
                 frmVendedor.Show(this);
-                
             }
             else if (txtUsuario.Text == "djacquest0@unesco.org" && txtPassword.Text == "WqXtIk")
             {
