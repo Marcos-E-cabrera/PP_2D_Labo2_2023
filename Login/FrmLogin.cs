@@ -1,4 +1,4 @@
-using Biblioteca;
+using Biblioteca_Carniceria;
 using Frm_Vendedor;
 using System.Diagnostics;
 
@@ -10,10 +10,6 @@ namespace Login
         {
             InitializeComponent();
             
-        }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
         }
 
         /// <summary>
@@ -53,7 +49,7 @@ namespace Login
         /// <param name="e">Los argumentos del evento.</param>
         private void btnComprador_Click(object sender, EventArgs e)
         {
-            Comprador comprador = new Comprador("djacquest0@unesco.org", "WqXtIk", 12060, "Dina", "Jacquest");
+            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk","Dina", "Jacquest",0);
 
             txtUsuario.Text = comprador.Email;
             txtPassword.Text = comprador.Password;
@@ -85,9 +81,5 @@ namespace Login
             }
         }
 
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

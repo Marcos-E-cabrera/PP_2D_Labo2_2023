@@ -8,23 +8,15 @@
     ".NETCoreApp,Version=v6.0": {
       "Login/1.0.0": {
         "dependencies": {
-          "Biblioteca": "1.0.0"
+          "Biblioteca_Carniceria": "1.0.0"
         },
         "runtime": {
           "Login.dll": {}
         }
       },
-      "Biblioteca/1.0.0": {
+      "Biblioteca_Carniceria/1.0.0": {
         "runtime": {
-          "Biblioteca.dll": {}
-        }
-      },
-      "Frm Vendedor/1.0.0": {
-        "dependencies": {
-          "Biblioteca": "1.0.0"
-        },
-        "runtime": {
-          "Frm Vendedor.dll": {}
+          "Biblioteca_Carniceria.dll": {}
         }
       }
     }
@@ -35,12 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Biblioteca/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Frm Vendedor/1.0.0": {
+    "Biblioteca_Carniceria/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

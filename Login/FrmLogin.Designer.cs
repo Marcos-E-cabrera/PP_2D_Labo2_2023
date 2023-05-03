@@ -53,7 +53,6 @@
             this.txtUsuario.PlaceholderText = "Usuario";
             this.txtUsuario.Size = new System.Drawing.Size(250, 27);
             this.txtUsuario.TabIndex = 4;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassword
             // 
@@ -109,7 +108,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogin_FormClosing);
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Biblioteca\Biblioteca.csproj" />
-    <ProjectReference Include="..\Frm Vendedor\Frm Vendedor.csproj" />
+    <ProjectReference Include="..\Biblioteca_Carniceria\Biblioteca_Carniceria.csproj" />
   </ItemGroup>
 
 </Project>

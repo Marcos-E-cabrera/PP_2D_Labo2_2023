@@ -2,50 +2,28 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
-      "Biblioteca/1.0.0": {
+      "Biblioteca_Carniceria/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/Biblioteca.dll": {}
+          "bin/placeholder/Biblioteca_Carniceria.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Biblioteca.dll": {}
+          "bin/placeholder/Biblioteca_Carniceria.dll": {}
         }
-      },
-      "Frm Vendedor/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Biblioteca": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Frm Vendedor.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Frm Vendedor.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WindowsForms"
-        ]
       }
     }
   },
   "libraries": {
-    "Biblioteca/1.0.0": {
+    "Biblioteca_Carniceria/1.0.0": {
       "type": "project",
-      "path": "../Biblioteca/Biblioteca.csproj",
-      "msbuildProject": "../Biblioteca/Biblioteca.csproj"
-    },
-    "Frm Vendedor/1.0.0": {
-      "type": "project",
-      "path": "../Frm Vendedor/Frm Vendedor.csproj",
-      "msbuildProject": "../Frm Vendedor/Frm Vendedor.csproj"
+      "path": "../Biblioteca_Carniceria/Biblioteca_Carniceria.csproj",
+      "msbuildProject": "../Biblioteca_Carniceria/Biblioteca_Carniceria.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "Biblioteca >= 1.0.0",
-      "Frm Vendedor >= 1.0.0"
+      "Biblioteca_Carniceria >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -75,11 +53,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Biblioteca\\Biblioteca.csproj": {
-              "projectPath": "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Biblioteca\\Biblioteca.csproj"
-            },
-            "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Frm Vendedor\\Frm Vendedor.csproj": {
-              "projectPath": "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Frm Vendedor\\Frm Vendedor.csproj"
+            "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Biblioteca_Carniceria\\Biblioteca_Carniceria.csproj": {
+              "projectPath": "C:\\Users\\cabre\\OneDrive\\Escritorio\\repo_1cuatri\\PP_2D_Labo2_2023\\Biblioteca_Carniceria\\Biblioteca_Carniceria.csproj"
             }
           }
         }
