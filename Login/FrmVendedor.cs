@@ -1,4 +1,5 @@
 using Biblioteca_Carniceria;
+using Login;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
@@ -7,84 +8,32 @@ namespace Frm_Vendedor
 {
     public partial class FrmVendedor : Form
     {
-        private List<Producto> listaHeladera = new List<Producto>();
-
+        #region FRM VENDEDOR CONSTRUCTOR
         public FrmVendedor()
         {
             InitializeComponent();
-            Heladera heladera = new Heladera();
-            listaHeladera = heladera.ListaProductos;
         }
+        #endregion
 
-        /// <summary>
-        /// Manejador de evento para el clic en el botón "Salir".
-        /// </summary>
-        /// <param name="sender">El objeto que disparó el evento.</param>
-        /// <param name="e">Los argumentos del evento.</param>
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
-        /// Manejador de evento para el clic en el botón "Closing".
-        /// </summary>
-        /// <param name="sender">El objeto que disparó el evento.</param>
-        /// <param name="e">Los argumentos del evento.</param>
-        private void FrmVendedor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Estas seguro de salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-            {
-                e.Cancel = true;
-            }
-        }
-
+        #region LOAD
         private void FrmVendedor_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
             this.MaximizeBox = false;
-            ControlBox = false;
-            MostrarProductos();
+            FrmHeladeraVendedor frmHeladeraVendedor = new FrmHeladeraVendedor();
+            addForm(frmHeladeraVendedor);
         }
+        #endregion
 
-        /// <summary>
-        /// Muestra los productos de la listaProductos en el DataGridView
-        /// </summary>
-        private void MostrarProductos()
-        { 
-            dGVProductos.DataSource = null; // para refrescar
-            dGVProductos.DataSource = listaHeladera;
-            dGVProductos.Columns[1].HeaderText = "Precio x Kilo";
-        }
-
-        private void btnReponer_Click(object sender, EventArgs e)
+        #region METODOS
+        public void addForm(Form form)
         {
-            int posicion;
-
-            Producto modificar = new Producto();
-            posicion = dGVProductos.CurrentRow.Index;
-
-            modificar.Stock = Convert.ToInt32(dGVProductos[2, posicion].Value);
-
-            FrmStock frmStock = new FrmStock(modificar);
-            if (frmStock.ShowDialog() == DialogResult.OK)
-            {
-                // Se obtiene el objeto 'modificar' actualizado desde el formulario FrmStock
-                modificar = frmStock.ModificarProducto;
-
-                // Se actualizara el valor en el DataGridView
-                dGVProductos[2, posicion].Value = modificar.Stock;
-            }
-
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            this.panel1.Controls.Add(form);
+            form.Show();
         }
-
-        private void btnVender_Click(object sender, EventArgs e)
-        {
-            FrmVenta frmVenta = new FrmVenta();
-            frmVenta.ShowDialog();
-        }
-
-        
+        #endregion  
     }
 
 }

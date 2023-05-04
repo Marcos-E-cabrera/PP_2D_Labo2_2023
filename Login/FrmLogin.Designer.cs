@@ -34,6 +34,7 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnComprador = new System.Windows.Forms.Button();
             this.chkbOcultar = new System.Windows.Forms.CheckBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVendedor
@@ -64,9 +65,9 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(356, 205);
+            this.btnIngresar.Location = new System.Drawing.Point(246, 208);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(140, 43);
+            this.btnIngresar.Size = new System.Drawing.Size(107, 43);
             this.btnIngresar.TabIndex = 8;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -93,11 +94,23 @@
             this.chkbOcultar.UseVisualStyleBackColor = true;
             this.chkbOcultar.CheckedChanged += new System.EventHandler(this.chkbOcultar_CheckedChanged);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnSalir.Location = new System.Drawing.Point(388, 208);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(108, 43);
+            this.btnSalir.TabIndex = 11;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 281);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.chkbOcultar);
             this.Controls.Add(this.btnComprador);
             this.Controls.Add(this.btnIngresar);
@@ -121,5 +134,6 @@
         private Button btnIngresar;
         private Button btnComprador;
         private CheckBox chkbOcultar;
+        private Button btnSalir;
     }
 }

@@ -6,17 +6,19 @@ namespace Login
 {
     public partial class FrmLogin : Form
     {
+        #region FRM LOGIN CONSTRUTOR
         public FrmLogin()
         {
-            InitializeComponent();
-            
+            InitializeComponent();  
         }
+        #endregion
 
+        #region INGRESAR
         /// <summary>
-        /// Manejador de evento para el clic en el botón "Ingresar".
+        /// Evento de Click para ingresar
         /// </summary>
-        /// <param name="sender">El objeto que disparó el evento.</param>
-        /// <param name="e">Los argumentos del evento.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             if (txtUsuario.Text == "acottis2@toplist.cz" && txtPassword.Text == "jwAqIw0Alt5")
@@ -29,24 +31,28 @@ namespace Login
                 
             }
         }
+        #endregion
 
+        #region VENDEDOR
         /// <summary>
-        /// Manejador de evento para el clic en el botón "Vendedor".
+        /// Evento qe hardcodea el vendedor
         /// </summary>
-        /// <param name="sender">El objeto que disparó el evento.</param>
-        /// <param name="e">Los argumentos del evento.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnVendedor_Click(object sender, EventArgs e)
         {
             Vendedor vendedor = new Vendedor("acottis2@toplist.cz","jwAqIw0Alt5","Abagail","Cottis");
             txtUsuario.Text = vendedor.Email;
             txtPassword.Text = vendedor.Password;
         }
+        #endregion
 
+        #region COMPRADOR
         /// <summary>
-        /// Manejador de evento para el clic en el botón "Comprador".
+        /// Evento qe hardcodea el comprador
         /// </summary>
-        /// <param name="sender">El objeto que disparó el evento.</param>
-        /// <param name="e">Los argumentos del evento.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnComprador_Click(object sender, EventArgs e)
         {
             Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk","Dina", "Jacquest",0);
@@ -54,10 +60,11 @@ namespace Login
             txtUsuario.Text = comprador.Email;
             txtPassword.Text = comprador.Password;
         }
+        #endregion
 
-
+        #region OLCUTAR CONTRASEÑA
         /// <summary>
-        /// Manejador de evento para el clic en el botón "Ocultar".
+        /// Evento para olcultar la contraseña 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -72,7 +79,14 @@ namespace Login
                 txtPassword.PasswordChar = '\0';
             }
         }
+        #endregion
 
+        #region CLOSING
+        /// <summary>
+        /// Evento para el closing de la app
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Estas seguro de salir?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
@@ -80,6 +94,13 @@ namespace Login
                 e.Cancel = true;
             }
         }
+        #endregion
 
+        #region SALIR
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
     }
 }
