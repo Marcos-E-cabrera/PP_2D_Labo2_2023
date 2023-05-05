@@ -52,7 +52,12 @@ namespace Login
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             ControlBox = false;
-            MostrarProductos();
+            MostrarProductos(listaHeladera);
+            cbOrdenar.Items.Add("Ordenar por Nombre");
+            cbOrdenar.Items.Add("Ordenar por Precio");
+            cbOrdenar.Items.Add("Ordenar por Stock");
+            cbOrdenar.Items.Add("Ordenar por Detalle");
+            cbOrdenar.SelectedIndex = 0;
         }
         #endregion
 
@@ -117,10 +122,17 @@ namespace Login
                 Producto productoSeleccionado = listaHeladera[index];
                 ObtenerProductoDGV(index, productoSeleccionado);
 
-                if (Saldo > 0)
+                if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
                 {   
-                    listaHeladera[index] = productoSeleccionado;  // Asigno el Producto actualizado a la posición correspondiente en la listaHeladera
+                    
                     Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+
+                    //Producto productoCarrito = new Producto();
+                    //productoCarrito.Nombre = productoSeleccionado.Nombre;
+                    //productoCarrito.Precio = productoSeleccionado.Precio;
+                    //productoCarrito.Stock = 1;
+                    //productoCarrito.Detalle = productoSeleccionado.Detalle;
+                    //listaCarrito.Add(productoCarrito);
 
                     // Bloque: Agregar el producto a la lista carrito
                     // Verificar si el producto ya está en la lista de carrito
@@ -145,11 +157,12 @@ namespace Login
                         productoCarrito.Detalle = productoSeleccionado.Detalle;
                         listaCarrito.Add(productoCarrito);
                     }
-                    CargarListaHeladera(listaCarrito);
+                    productoEnCarrito = false;
+
                 }
                 else
                 {
-                    MensajeDeError("Monto maximo alcanzado", "Error, monto superado");
+                    MensajeDeError("El saldo no es suficiente para comprar el producto", "Error, Saldo no suficiente ");
                 }
             }
             else
@@ -217,11 +230,39 @@ namespace Login
         /// <summary>
         /// Muestra los productos de la listaProductos en el DataGridView
         /// </summary>
-        private void MostrarProductos()
+        private void MostrarProductos(List<Producto> list)
         {
             dgvProductos.Refresh();
-            dgvProductos.DataSource = listaHeladera;
+            dgvProductos.DataSource = list;
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
+        }
+        #endregion
+
+        #region ORDENAR LISTA
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            Producto p = new Producto();
+
+            switch(cbOrdenar.SelectedIndex) 
+            {
+                case 0:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Nombre).ToList();
+                    MostrarProductos(listaHeladera);
+                    break;
+                case 1:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Precio).ToList();
+                    MostrarProductos(listaHeladera);
+                    break;
+
+                case 2:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Stock).ToList();
+                    MostrarProductos(listaHeladera);
+                    break;
+                case 3:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Detalle).ToList();
+                    MostrarProductos(listaHeladera);
+                    break;
+            }
         }
         #endregion
     }

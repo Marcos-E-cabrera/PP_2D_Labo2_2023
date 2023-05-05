@@ -35,6 +35,8 @@
             this.btnVender = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.btnCarrito = new System.Windows.Forms.Button();
+            this.cbOrdenar = new System.Windows.Forms.ComboBox();
+            this.btnOrdenar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             // btnReponer
             // 
             this.btnReponer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReponer.Location = new System.Drawing.Point(269, 584);
+            this.btnReponer.Location = new System.Drawing.Point(5, 584);
             this.btnReponer.Name = "btnReponer";
             this.btnReponer.Size = new System.Drawing.Size(108, 35);
             this.btnReponer.TabIndex = 6;
@@ -91,7 +93,7 @@
             // btnVender
             // 
             this.btnVender.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnVender.Location = new System.Drawing.Point(398, 584);
+            this.btnVender.Location = new System.Drawing.Point(134, 584);
             this.btnVender.Name = "btnVender";
             this.btnVender.Size = new System.Drawing.Size(132, 35);
             this.btnVender.TabIndex = 8;
@@ -102,7 +104,7 @@
             // btnAñadir
             // 
             this.btnAñadir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAñadir.Location = new System.Drawing.Point(546, 584);
+            this.btnAñadir.Location = new System.Drawing.Point(282, 584);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(132, 35);
             this.btnAñadir.TabIndex = 9;
@@ -113,7 +115,7 @@
             // btnCarrito
             // 
             this.btnCarrito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCarrito.Location = new System.Drawing.Point(694, 584);
+            this.btnCarrito.Location = new System.Drawing.Point(430, 584);
             this.btnCarrito.Name = "btnCarrito";
             this.btnCarrito.Size = new System.Drawing.Size(113, 35);
             this.btnCarrito.TabIndex = 10;
@@ -121,11 +123,33 @@
             this.btnCarrito.UseVisualStyleBackColor = true;
             this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
             // 
+            // cbOrdenar
+            // 
+            this.cbOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.cbOrdenar.FormattingEnabled = true;
+            this.cbOrdenar.Location = new System.Drawing.Point(564, 588);
+            this.cbOrdenar.Name = "cbOrdenar";
+            this.cbOrdenar.Size = new System.Drawing.Size(191, 28);
+            this.cbOrdenar.TabIndex = 11;
+            // 
+            // btnOrdenar
+            // 
+            this.btnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnOrdenar.Location = new System.Drawing.Point(761, 584);
+            this.btnOrdenar.Name = "btnOrdenar";
+            this.btnOrdenar.Size = new System.Drawing.Size(124, 35);
+            this.btnOrdenar.TabIndex = 12;
+            this.btnOrdenar.Text = "Ordenar";
+            this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
+            // 
             // FrmHeladeraVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1106, 631);
+            this.Controls.Add(this.btnOrdenar);
+            this.Controls.Add(this.cbOrdenar);
             this.Controls.Add(this.btnCarrito);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.btnVender);
@@ -146,5 +170,7 @@
         private Button btnVender;
         private Button btnAñadir;
         private Button btnCarrito;
+        private ComboBox cbOrdenar;
+        private Button btnOrdenar;
     }
 }
