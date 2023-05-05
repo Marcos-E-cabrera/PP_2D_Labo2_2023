@@ -42,8 +42,5 @@ namespace Biblioteca_Carniceria
             this.Detalle = detalle;
         }
         #endregion
-
-        
-
     }
 }

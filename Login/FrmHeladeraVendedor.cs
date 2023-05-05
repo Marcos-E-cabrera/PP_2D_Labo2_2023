@@ -200,6 +200,7 @@ namespace Login
         public void CargarListaHeladera(List<Producto> l)
         {
             dgvProductos.Refresh();
+            dgvProductos.DataSource = null;
             dgvProductos.DataSource = listaHeladera;
         }
 
@@ -223,6 +224,5 @@ namespace Login
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
         #endregion
-
     }
 }
