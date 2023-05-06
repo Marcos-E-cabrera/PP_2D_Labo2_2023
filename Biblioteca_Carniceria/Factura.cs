@@ -11,12 +11,12 @@ namespace Biblioteca_Carniceria
         private string descripcion;
         private int cantidad;
         private int precioUnitario;
-        private int total;
+        private decimal total;
 
         public string Descripcion { get; set; }
         public int Cantidad { get; set; }
         public int PrecioUnitario { get; set; }
-        public int Total { get; set; }
+        public decimal Total { get; set; }
 
         public Factura ()
         {

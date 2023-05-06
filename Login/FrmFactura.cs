@@ -13,7 +13,7 @@ namespace Login
 {
     public partial class FrmFactura : Form
     {
-
+        #region CAMPOS
         private string cuit;
         private string telefono;
         private DateTime fechaHoraActual = DateTime.Now;
@@ -21,20 +21,20 @@ namespace Login
         private string hora;
         private static int ultimoNumeroFactura = 0;
         private string nroFactura;
-
-        private int totalFinal;
-        private decimal iva;
-
+        private decimal totalFinal;
+        private string formaPago;
         private List<Factura> listaFactura = new List<Factura>();
+        #endregion
 
+        #region PROPIEDADES
         public string Cuit { get { return this.cuit = "20-28294141-5"; } }
         public string Telefono { get { return this.telefono = "(011) 5555-5555"; } }
         public string Fecha { get { return this.fecha = fechaHoraActual.ToString("dd/MM/yyyy"); } }
         public string Hora { get { return this.hora = fechaHoraActual.ToString("HH:mm:ss"); } }
         public string NroFactura { get; set; }
-        public int TotalFinal { get; set; }
-        public decimal Iva { get { return this.iva = TotalFinal * 0.21m; } set { this.iva = value; } }
-
+        public decimal TotalFinal { get; set; }
+        public string FormaPago { get; set; }
+        #endregion
 
         #region CONSTRUTORES
         public FrmFactura()
@@ -42,24 +42,32 @@ namespace Login
             InitializeComponent();
         }
 
-        public FrmFactura(List<Factura> listaCarrito)
+        public FrmFactura(List<Factura> listaCarrito, bool foD)
         {
             InitializeComponent();
             listaFactura = listaCarrito;
+            switch(foD)
+            {
+                case true:
+                    FormaPago = "Efectivo";
+                    break;
+                case false:
+                    FormaPago = "Devito";
+                    break;
+            }
         }
         #endregion
 
+        #region LOAD
         private void FrmFactura_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
             this.MaximizeBox = false;
 
+            TotalFinal = 0;
             Factura factura = new Factura();
             ultimoNumeroFactura++;
-            TotalFinal = 0;
             this.NroFactura = ultimoNumeroFactura.ToString().PadLeft(8, '0');
-
-
 
             dgvFacturaTitle.Columns.Add("", "");
             dgvFacturaTitle.Columns.Add("", "");
@@ -67,19 +75,18 @@ namespace Login
             dgvFacturaTitle.Columns.Add("", "");
 
             dgvFacturaTitle.Rows.Add("Carnicería:", " LA CABRERA", "", "");
-
             dgvFacturaTitle.Rows.Add("CIUT:", Cuit, "", "");
             dgvFacturaTitle.Rows.Add("Domicilio:", "Av. Bartolomé Mitre 750", ", Buenos Aires", ", Avellaneda");
             dgvFacturaTitle.Rows.Add("Teléfono:", Telefono, "", "");
             dgvFacturaTitle.Rows.Add("", "", "", "");
             dgvFacturaTitle.Rows.Add("Fecha:", Fecha, "Hora:", Hora);
             dgvFacturaTitle.Rows.Add("Número de factura:", NroFactura, "", "");
+            dgvFacturaTitle.Rows.Add("Datos cliente:", "Consumidor Final", "", "");
 
             dgvFactura.Columns.Add("descripcion", "Descripción");
             dgvFactura.Columns.Add("cantidad", "Cantidad");
             dgvFactura.Columns.Add("precioUnitario", "Precio Unitario");
             dgvFactura.Columns.Add("importe", "Importe");
-
 
             foreach (Factura producto in listaFactura)
             {
@@ -89,14 +96,13 @@ namespace Login
                 factura.Total = producto.Total;
                 TotalFinal += factura.Total;
 
-                dgvFactura.Rows.Add(factura.Descripcion, factura.Cantidad, $"$ {factura.PrecioUnitario}", $"$ {factura.Total}");
+                dgvFactura.Rows.Add(factura.Descripcion, $"{factura.Cantidad.ToString("0.00")} KG", $"$ {factura.PrecioUnitario.ToString("0.00")}", $"$ {factura.Total.ToString("0.00")}");
             }
 
-            dgvFactura.Rows.Add("", "", "Subtotal:", $"$ {TotalFinal}");   
-            dgvFactura.Rows.Add("", "", "%IVA:  21", $"$ {Iva}");
-            dgvFactura.Rows.Add("", "", "Total:", $"$ {TotalFinal + Iva}");
-            dgvFactura.Rows.Add("Forma de pago:", "Efectivo", "", "");
+            dgvFactura.Rows.Add("", "", "Total:", $"$ {TotalFinal.ToString("0.00")}");
+            dgvFactura.Rows.Add("Forma de pago:", $"{FormaPago}", "", "");
 
         }
+        #endregion
     }
 }

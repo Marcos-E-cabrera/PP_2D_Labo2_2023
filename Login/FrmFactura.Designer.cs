@@ -63,6 +63,7 @@
             this.dgvFactura.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvFactura.Location = new System.Drawing.Point(12, 291);
             this.dgvFactura.Name = "dgvFactura";
+            this.dgvFactura.ReadOnly = true;
             this.dgvFactura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvFactura.RowHeadersVisible = false;
             this.dgvFactura.RowHeadersWidth = 51;
@@ -102,6 +103,7 @@
             this.dgvFacturaTitle.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvFacturaTitle.Location = new System.Drawing.Point(12, 8);
             this.dgvFacturaTitle.Name = "dgvFacturaTitle";
+            this.dgvFacturaTitle.ReadOnly = true;
             this.dgvFacturaTitle.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvFacturaTitle.RowHeadersVisible = false;
             this.dgvFacturaTitle.RowHeadersWidth = 51;

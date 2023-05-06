@@ -65,6 +65,7 @@
             this.dgvProductos.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvProductos.Location = new System.Drawing.Point(0, 0);
             this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidth = 51;
@@ -76,15 +77,15 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.RowTemplate.Height = 29;
-            this.dgvProductos.Size = new System.Drawing.Size(1106, 578);
+            this.dgvProductos.Size = new System.Drawing.Size(1106, 604);
             this.dgvProductos.TabIndex = 5;
             // 
             // btnReponer
             // 
             this.btnReponer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReponer.Location = new System.Drawing.Point(5, 584);
+            this.btnReponer.Location = new System.Drawing.Point(5, 610);
             this.btnReponer.Name = "btnReponer";
-            this.btnReponer.Size = new System.Drawing.Size(108, 35);
+            this.btnReponer.Size = new System.Drawing.Size(108, 47);
             this.btnReponer.TabIndex = 6;
             this.btnReponer.Text = "Reponer";
             this.btnReponer.UseVisualStyleBackColor = true;
@@ -93,20 +94,20 @@
             // btnVender
             // 
             this.btnVender.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnVender.Location = new System.Drawing.Point(134, 584);
+            this.btnVender.Location = new System.Drawing.Point(131, 610);
             this.btnVender.Name = "btnVender";
-            this.btnVender.Size = new System.Drawing.Size(132, 35);
+            this.btnVender.Size = new System.Drawing.Size(145, 47);
             this.btnVender.TabIndex = 8;
-            this.btnVender.Text = "Vender";
+            this.btnVender.Text = "Seleccionar Cliente";
             this.btnVender.UseVisualStyleBackColor = true;
             this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
             // btnAñadir
             // 
             this.btnAñadir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAñadir.Location = new System.Drawing.Point(282, 584);
+            this.btnAñadir.Location = new System.Drawing.Point(293, 610);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(132, 35);
+            this.btnAñadir.Size = new System.Drawing.Size(145, 47);
             this.btnAñadir.TabIndex = 9;
             this.btnAñadir.Text = "Añadir al carrito";
             this.btnAñadir.UseVisualStyleBackColor = true;
@@ -115,9 +116,9 @@
             // btnCarrito
             // 
             this.btnCarrito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCarrito.Location = new System.Drawing.Point(430, 584);
+            this.btnCarrito.Location = new System.Drawing.Point(461, 610);
             this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(113, 35);
+            this.btnCarrito.Size = new System.Drawing.Size(126, 47);
             this.btnCarrito.TabIndex = 10;
             this.btnCarrito.Text = "Ver carrito";
             this.btnCarrito.UseVisualStyleBackColor = true;
@@ -127,19 +128,19 @@
             // 
             this.cbOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cbOrdenar.FormattingEnabled = true;
-            this.cbOrdenar.Location = new System.Drawing.Point(564, 588);
+            this.cbOrdenar.Location = new System.Drawing.Point(631, 620);
             this.cbOrdenar.Name = "cbOrdenar";
-            this.cbOrdenar.Size = new System.Drawing.Size(191, 28);
+            this.cbOrdenar.Size = new System.Drawing.Size(204, 28);
             this.cbOrdenar.TabIndex = 11;
             // 
             // btnOrdenar
             // 
             this.btnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrdenar.Location = new System.Drawing.Point(761, 584);
+            this.btnOrdenar.Location = new System.Drawing.Point(841, 610);
             this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(124, 35);
+            this.btnOrdenar.Size = new System.Drawing.Size(137, 47);
             this.btnOrdenar.TabIndex = 12;
-            this.btnOrdenar.Text = "Ordenar";
+            this.btnOrdenar.Text = "Aplicar";
             this.btnOrdenar.UseVisualStyleBackColor = true;
             this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
@@ -147,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 631);
+            this.ClientSize = new System.Drawing.Size(1106, 657);
             this.Controls.Add(this.btnOrdenar);
             this.Controls.Add(this.cbOrdenar);
             this.Controls.Add(this.btnCarrito);
@@ -156,6 +157,7 @@
             this.Controls.Add(this.btnReponer);
             this.Controls.Add(this.dgvProductos);
             this.Name = "FrmHeladeraVendedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmHeladeraVendedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

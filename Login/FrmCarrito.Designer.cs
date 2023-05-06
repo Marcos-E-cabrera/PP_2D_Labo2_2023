@@ -33,6 +33,7 @@
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
             this.btnComprar = new System.Windows.Forms.Button();
             this.btnFactura = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             this.dgvCarrito.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvCarrito.Location = new System.Drawing.Point(12, 12);
             this.dgvCarrito.Name = "dgvCarrito";
+            this.dgvCarrito.ReadOnly = true;
             this.dgvCarrito.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvCarrito.RowHeadersVisible = false;
             this.dgvCarrito.RowHeadersWidth = 51;
@@ -78,9 +80,9 @@
             // btnComprar
             // 
             this.btnComprar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnComprar.Location = new System.Drawing.Point(62, 535);
+            this.btnComprar.Location = new System.Drawing.Point(12, 535);
             this.btnComprar.Name = "btnComprar";
-            this.btnComprar.Size = new System.Drawing.Size(179, 44);
+            this.btnComprar.Size = new System.Drawing.Size(146, 44);
             this.btnComprar.TabIndex = 7;
             this.btnComprar.Text = "Comprar";
             this.btnComprar.UseVisualStyleBackColor = true;
@@ -89,23 +91,36 @@
             // btnFactura
             // 
             this.btnFactura.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnFactura.Location = new System.Drawing.Point(308, 535);
+            this.btnFactura.Location = new System.Drawing.Point(203, 535);
             this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(179, 44);
+            this.btnFactura.Size = new System.Drawing.Size(145, 44);
             this.btnFactura.TabIndex = 8;
             this.btnFactura.Text = "Ver Factura";
             this.btnFactura.UseVisualStyleBackColor = true;
             this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSalir.Location = new System.Drawing.Point(392, 535);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(145, 44);
+            this.btnSalir.TabIndex = 9;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmCarrito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 591);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnFactura);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.dgvCarrito);
             this.Name = "FrmCarrito";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCarrito";
             this.Load += new System.EventHandler(this.FrmCarrito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
@@ -118,5 +133,6 @@
         private DataGridView dgvCarrito;
         private Button btnComprar;
         private Button btnFactura;
+        private Button btnSalir;
     }
 }

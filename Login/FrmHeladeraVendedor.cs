@@ -22,7 +22,7 @@ namespace Login
         private bool carrito;
         private bool cliente;
         private bool productoEnCarrito;
-            
+        private bool ValidarCarrito = false;
         private List<Producto> listaHeladera = new List<Producto>();
         private List<Producto> listaCarrito = new List<Producto>();
         #endregion
@@ -52,7 +52,7 @@ namespace Login
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             ControlBox = false;
-            MostrarProductos(listaHeladera);
+            MostrarProductos();
             cbOrdenar.Items.Add("Ordenar por Nombre");
             cbOrdenar.Items.Add("Ordenar por Precio");
             cbOrdenar.Items.Add("Ordenar por Stock");
@@ -76,7 +76,6 @@ namespace Login
             {
                 stock = frmStock.ModificarProducto;
                 listaHeladera[index] = stock;
-
                 CargarListaHeladera(listaHeladera);
             }
         }
@@ -85,10 +84,10 @@ namespace Login
         #region SELECCIONAR CLIENTE
         private void btnVender_Click(object sender, EventArgs e)
         {
-            if ( cliente == false ) // Si no se cargo un cliente
+            if ( cliente == false  ) // Si no se cargo un cliente
             {
                 FrmVenta frmVenta = new FrmVenta();
-                if ( frmVenta.ShowDialog() == DialogResult.OK )
+                if ( frmVenta.ShowDialog() == DialogResult.OK  && frmVenta.Saldo > 0)
                 {
                     Nombre = frmVenta.Nombre;
                     Apellido= frmVenta.Apellido;
@@ -96,12 +95,15 @@ namespace Login
                     carrito = true;
                     cliente = true;
                 }
+                else
+                {
+                    MensajeDeError("El Cliente no tiene el saldo suficiente", "Error, saldo");
+                }
             }
             else
             {
-                MensajeDeError($"Cliente ya Seleccionado: {Nombre} {Apellido}", "Error");
+                MensajeDeError($"Cliente ya Seleccionado: {Nombre} {Apellido}", "Error, seleccion");
             }
-
         }
         #endregion
 
@@ -122,47 +124,45 @@ namespace Login
                 Producto productoSeleccionado = listaHeladera[index];
                 ObtenerProductoDGV(index, productoSeleccionado);
 
-                if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
-                {   
-                    
-                    Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
-
-                    //Producto productoCarrito = new Producto();
-                    //productoCarrito.Nombre = productoSeleccionado.Nombre;
-                    //productoCarrito.Precio = productoSeleccionado.Precio;
-                    //productoCarrito.Stock = 1;
-                    //productoCarrito.Detalle = productoSeleccionado.Detalle;
-                    //listaCarrito.Add(productoCarrito);
-
-                    // Bloque: Agregar el producto a la lista carrito
-                    // Verificar si el producto ya está en la lista de carrito
-                    foreach (Producto p in listaCarrito)
+                if ( productoSeleccionado.Stock > 0)
+                {
+                    if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
                     {
-                        if (p.Nombre == productoSeleccionado.Nombre)
+
+                        Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+
+                        foreach (Producto p in listaCarrito)
                         {
-                            // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                            p.Stock++;
-                            productoEnCarrito = true;
-                            break;
+                            if (p.Nombre == productoSeleccionado.Nombre)
+                            {
+                                // Si el producto ya está en la lista de carrito, aumentar su cantidad
+                                p.Stock++;
+                                productoEnCarrito = true;
+                                break;
+                            }
                         }
-                    }
 
-                    if (!productoEnCarrito)
+                        if (!productoEnCarrito)
+                        {
+                            // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
+                            Producto productoCarrito = new Producto();
+                            productoCarrito.Nombre = productoSeleccionado.Nombre;
+                            productoCarrito.Precio = productoSeleccionado.Precio;
+                            productoCarrito.Stock = 1;
+                            productoCarrito.Detalle = productoSeleccionado.Detalle;
+                            listaCarrito.Add(productoCarrito);
+                        }
+                        productoEnCarrito = false;
+                        ValidarCarrito = true;
+                    }
+                    else
                     {
-                        // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
-                        Producto productoCarrito = new Producto();
-                        productoCarrito.Nombre = productoSeleccionado.Nombre;
-                        productoCarrito.Precio = productoSeleccionado.Precio;
-                        productoCarrito.Stock = 1;
-                        productoCarrito.Detalle = productoSeleccionado.Detalle;
-                        listaCarrito.Add(productoCarrito);
+                        MensajeDeError("El saldo no es suficiente para comprar el producto", "Error, Saldo no suficiente ");
                     }
-                    productoEnCarrito = false;
-
                 }
                 else
                 {
-                    MensajeDeError("El saldo no es suficiente para comprar el producto", "Error, Saldo no suficiente ");
+                    MensajeDeError("NO hay Stock!!", "Error, Stock no suficiente ");
                 }
             }
             else
@@ -175,11 +175,53 @@ namespace Login
         #region LISTA DEL CARRITO
         private void btnCarrito_Click(object sender, EventArgs e)
         {
-            FrmCarrito frmCarrito = new FrmCarrito(listaCarrito);
-            frmCarrito.ShowDialog();
+            if (ValidarCarrito == true)
+            {
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo);
+                if (frmCarrito.ShowDialog() == DialogResult.OK)
+                {
+                    foreach ( Producto p in listaHeladera)
+                    {
+                        p.Stock--;
+                        break;
+                    }
+
+                    CargarListaHeladera(listaHeladera);
+                }
+            }
+            else
+            {
+                MensajeDeError("Primero Añadir productos al carrito", "Error, carrito");
+            }
         }
         #endregion
 
+        #region ORDENAR LISTA
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            Producto p = new Producto();
+
+            switch(cbOrdenar.SelectedIndex) 
+            {
+                case 0:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Nombre).ToList();
+                    break;
+                case 1:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Precio).ToList();
+                    break;
+
+                case 2:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Stock).ToList();
+                    break;
+                case 3:
+                    listaHeladera = listaHeladera.OrderBy(p => p.Detalle).ToList();
+                    break;
+            }
+            CargarListaHeladera(listaHeladera);
+
+        }
+        #endregion
+      
         #region METODOS
         /// <summary>
         /// Obtengo la FILA del DataGridView que se encuentra el cursor
@@ -213,8 +255,8 @@ namespace Login
         public void CargarListaHeladera(List<Producto> l)
         {
             dgvProductos.Refresh();
-            dgvProductos.DataSource = null;
-            dgvProductos.DataSource = listaHeladera;
+            dgvProductos.DataSource = l;
+            dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
 
         /// <summary>
@@ -230,40 +272,13 @@ namespace Login
         /// <summary>
         /// Muestra los productos de la listaProductos en el DataGridView
         /// </summary>
-        private void MostrarProductos(List<Producto> list)
+        private void MostrarProductos()
         {
             dgvProductos.Refresh();
-            dgvProductos.DataSource = list;
+            dgvProductos.DataSource = listaHeladera;
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
         #endregion
 
-        #region ORDENAR LISTA
-        private void btnOrdenar_Click(object sender, EventArgs e)
-        {
-            Producto p = new Producto();
-
-            switch(cbOrdenar.SelectedIndex) 
-            {
-                case 0:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Nombre).ToList();
-                    MostrarProductos(listaHeladera);
-                    break;
-                case 1:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Precio).ToList();
-                    MostrarProductos(listaHeladera);
-                    break;
-
-                case 2:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Stock).ToList();
-                    MostrarProductos(listaHeladera);
-                    break;
-                case 3:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Detalle).ToList();
-                    MostrarProductos(listaHeladera);
-                    break;
-            }
-        }
-        #endregion
     }
 }

@@ -15,7 +15,7 @@ namespace Biblioteca_Carniceria
         {
             // hardcodeo de productos
             // Vacuno
-            ListaProductos.Add(new Producto("Asado", eCortes.Asado, 10, "Corte vacuno"));
+            ListaProductos.Add(new Producto("Asado", eCortes.Asado, 0, "Corte vacuno"));
             ListaProductos.Add(new Producto("Vacio", eCortes.Vacio, 10, "Corte vacuno"));
             ListaProductos.Add(new Producto("BifeDeChorizo", eCortes.BifeDeChorizo, 10, "Corte vacuno"));
             ListaProductos.Add(new Producto("Entraña", eCortes.Entraña, 10, "Corte vacuno"));

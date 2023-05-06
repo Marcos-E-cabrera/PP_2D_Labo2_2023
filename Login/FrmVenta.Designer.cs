@@ -61,6 +61,7 @@
             this.dgvClientes.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvClientes.Location = new System.Drawing.Point(11, 50);
             this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
             this.dgvClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvClientes.RowHeadersVisible = false;
             this.dgvClientes.RowHeadersWidth = 51;
