@@ -1,4 +1,5 @@
 using Biblioteca_Carniceria;
+using FontAwesome.Sharp;
 using Frm_Vendedor;
 using System.Diagnostics;
 
@@ -6,10 +7,13 @@ namespace Login
 {
     public partial class FrmLogin : Form
     {
+        private bool hide;
+
         #region FRM LOGIN CONSTRUTOR
         public FrmLogin()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            hide = true;
         }
         #endregion
 
@@ -21,16 +25,39 @@ namespace Login
         /// <param name="e"></param>
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "acottis2@toplist.cz" && txtPassword.Text == "jwAqIw0Alt5")
+            panel8.Visible = false;
+            panel10.Visible = false;
+
+            switch ( txtUsuario.Text) 
             {
-                FrmVendedor frmVendedor = new FrmVendedor();
-                frmVendedor.Show(this);
-            }
-            else if (txtUsuario.Text == "djacquest0@unesco.org" && txtPassword.Text == "WqXtIk")
-            {
-                FrmCliente frmCliente = new FrmCliente();
-                frmCliente.Show(this);       
-            }
+                case "acottis2@toplist.cz":
+                    if (txtPassword.Text == "jwAqIw0Alt5")
+                    {
+                        FrmVendedor frmVendedor = new FrmVendedor();
+                        frmVendedor.Show(this);
+                    }
+                    else
+                    {
+                        panel10.Visible = true;
+                    }
+                    break;
+                case "djacquest0@unesco.org":
+                    if (txtPassword.Text == "WqXtIk")
+                    {
+                        FrmCliente frmCliente = new FrmCliente();
+                        frmCliente.Show(this);
+                    }
+                    else
+                    {
+                        panel10.Visible = true;
+                    }
+                    break;
+                    break;
+                default:
+                    panel8.Visible = true;
+                    panel10.Visible = true;
+                    break;
+            }    
         }
         #endregion
 
@@ -65,19 +92,23 @@ namespace Login
 
         #region OLCUTAR CONTRASEÑA
         /// <summary>
-        /// Evento para olcultar la contraseña 
+        /// Oculta la contraseña
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void chkbOcultar_CheckedChanged(object sender, EventArgs e)
+        private void ibtnHide_MouseClick(object sender, MouseEventArgs e)
         {
-            if (chkbOcultar.Checked)
+            if (hide)
             {
                 txtPassword.PasswordChar = '*';
+                ibtnHide.IconChar = IconChar.EyeSlash;
+                hide = false;
             }
             else
             {
                 txtPassword.PasswordChar = '\0';
+                ibtnHide.IconChar = IconChar.Eye;
+                hide = true;
             }
         }
         #endregion
@@ -98,10 +129,18 @@ namespace Login
         #endregion
 
         #region SALIR
-        private void btnSalir_Click(object sender, EventArgs e)
+       
+        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+
+
+
         #endregion
+
+        
     }
 }

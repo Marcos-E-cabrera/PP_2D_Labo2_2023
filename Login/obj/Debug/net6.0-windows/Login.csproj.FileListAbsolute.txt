@@ -27,3 +27,5 @@ C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.FrmOpcionPago.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.FrmCliente.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.FrmHeladeraCliente.resources
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Properties.Resources.resources
