@@ -280,5 +280,18 @@ namespace Login
         }
         #endregion
 
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+    
+        }
+
+        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.Value.ToString() == "0")
+            {
+                e.Value = "Sin Stock";
+                e.FormattingApplied = true;
+            }
+        }
     }
 }

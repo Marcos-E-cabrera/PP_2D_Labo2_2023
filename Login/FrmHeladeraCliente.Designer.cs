@@ -1,6 +1,6 @@
 ﻿namespace Login
 {
-    partial class FrmHeladeraVendedor
+    partial class FrmHeladeraCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.btnReponer = new System.Windows.Forms.Button();
-            this.btnVender = new System.Windows.Forms.Button();
-            this.btnAñadir = new System.Windows.Forms.Button();
-            this.btnCarrito = new System.Windows.Forms.Button();
-            this.cbOrdenar = new System.Windows.Forms.ComboBox();
             this.btnOrdenar = new System.Windows.Forms.Button();
+            this.cbOrdenar = new System.Windows.Forms.ComboBox();
+            this.btnCarrito = new System.Windows.Forms.Button();
+            this.btnAñadir = new System.Windows.Forms.Button();
+            this.btnSaldo = new System.Windows.Forms.Button();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,104 +77,100 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.RowTemplate.Height = 29;
-            this.dgvProductos.Size = new System.Drawing.Size(1106, 604);
-            this.dgvProductos.TabIndex = 5;
-            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
-            this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
+            this.dgvProductos.Size = new System.Drawing.Size(1040, 567);
+            this.dgvProductos.TabIndex = 6;
             // 
-            // btnReponer
+            // btnOrdenar
             // 
-            this.btnReponer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReponer.Location = new System.Drawing.Point(5, 610);
-            this.btnReponer.Name = "btnReponer";
-            this.btnReponer.Size = new System.Drawing.Size(108, 47);
-            this.btnReponer.TabIndex = 6;
-            this.btnReponer.Text = "Reponer";
-            this.btnReponer.UseVisualStyleBackColor = true;
-            this.btnReponer.Click += new System.EventHandler(this.btnReponer_Click);
-            // 
-            // btnVender
-            // 
-            this.btnVender.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnVender.Location = new System.Drawing.Point(131, 610);
-            this.btnVender.Name = "btnVender";
-            this.btnVender.Size = new System.Drawing.Size(145, 47);
-            this.btnVender.TabIndex = 8;
-            this.btnVender.Text = "Seleccionar Cliente";
-            this.btnVender.UseVisualStyleBackColor = true;
-            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
-            // 
-            // btnAñadir
-            // 
-            this.btnAñadir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAñadir.Location = new System.Drawing.Point(293, 610);
-            this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(145, 47);
-            this.btnAñadir.TabIndex = 9;
-            this.btnAñadir.Text = "Añadir al carrito";
-            this.btnAñadir.UseVisualStyleBackColor = true;
-            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
-            // 
-            // btnCarrito
-            // 
-            this.btnCarrito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCarrito.Location = new System.Drawing.Point(461, 610);
-            this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(126, 47);
-            this.btnCarrito.TabIndex = 10;
-            this.btnCarrito.Text = "Ver carrito";
-            this.btnCarrito.UseVisualStyleBackColor = true;
-            this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
+            this.btnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnOrdenar.Location = new System.Drawing.Point(792, 583);
+            this.btnOrdenar.Name = "btnOrdenar";
+            this.btnOrdenar.Size = new System.Drawing.Size(94, 47);
+            this.btnOrdenar.TabIndex = 17;
+            this.btnOrdenar.Text = "Aplicar";
+            this.btnOrdenar.UseVisualStyleBackColor = true;
+            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
             // 
             // cbOrdenar
             // 
             this.cbOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cbOrdenar.FormattingEnabled = true;
-            this.cbOrdenar.Location = new System.Drawing.Point(631, 620);
+            this.cbOrdenar.Location = new System.Drawing.Point(582, 592);
             this.cbOrdenar.Name = "cbOrdenar";
             this.cbOrdenar.Size = new System.Drawing.Size(204, 28);
-            this.cbOrdenar.TabIndex = 11;
+            this.cbOrdenar.TabIndex = 16;
             // 
-            // btnOrdenar
+            // btnCarrito
             // 
-            this.btnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrdenar.Location = new System.Drawing.Point(841, 610);
-            this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(94, 47);
-            this.btnOrdenar.TabIndex = 12;
-            this.btnOrdenar.Text = "Aplicar";
-            this.btnOrdenar.UseVisualStyleBackColor = true;
-            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
+            this.btnCarrito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCarrito.Location = new System.Drawing.Point(450, 583);
+            this.btnCarrito.Name = "btnCarrito";
+            this.btnCarrito.Size = new System.Drawing.Size(126, 47);
+            this.btnCarrito.TabIndex = 15;
+            this.btnCarrito.Text = "Ver carrito";
+            this.btnCarrito.UseVisualStyleBackColor = true;
+            this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
             // 
-            // FrmHeladeraVendedor
+            // btnAñadir
+            // 
+            this.btnAñadir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAñadir.Location = new System.Drawing.Point(290, 583);
+            this.btnAñadir.Name = "btnAñadir";
+            this.btnAñadir.Size = new System.Drawing.Size(145, 47);
+            this.btnAñadir.TabIndex = 14;
+            this.btnAñadir.Text = "Añadir al carrito";
+            this.btnAñadir.UseVisualStyleBackColor = true;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
+            // 
+            // btnSaldo
+            // 
+            this.btnSaldo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSaldo.Location = new System.Drawing.Point(12, 583);
+            this.btnSaldo.Name = "btnSaldo";
+            this.btnSaldo.Size = new System.Drawing.Size(109, 47);
+            this.btnSaldo.TabIndex = 18;
+            this.btnSaldo.Text = "Añadir Saldo";
+            this.btnSaldo.UseVisualStyleBackColor = true;
+            this.btnSaldo.Click += new System.EventHandler(this.btnSaldo_Click);
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtSaldo.Location = new System.Drawing.Point(127, 593);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.Size = new System.Drawing.Size(147, 27);
+            this.txtSaldo.TabIndex = 19;
+            // 
+            // FrmHeladeraCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 657);
+            this.ClientSize = new System.Drawing.Size(1040, 636);
+            this.Controls.Add(this.txtSaldo);
+            this.Controls.Add(this.btnSaldo);
             this.Controls.Add(this.btnOrdenar);
             this.Controls.Add(this.cbOrdenar);
             this.Controls.Add(this.btnCarrito);
             this.Controls.Add(this.btnAñadir);
-            this.Controls.Add(this.btnVender);
-            this.Controls.Add(this.btnReponer);
             this.Controls.Add(this.dgvProductos);
-            this.Name = "FrmHeladeraVendedor";
+            this.Name = "FrmHeladeraCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmHeladeraVendedor_Load);
+            this.Load += new System.EventHandler(this.FrmHeladeraCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private DataGridView dgvProductos;
-        private Button btnReponer;
-        private Button btnVender;
-        private Button btnAñadir;
-        private Button btnCarrito;
-        private ComboBox cbOrdenar;
         private Button btnOrdenar;
+        private ComboBox cbOrdenar;
+        private Button btnCarrito;
+        private Button btnAñadir;
+        private Button btnSaldo;
+        private TextBox txtSaldo;
     }
 }

@@ -28,7 +28,8 @@ namespace Login
             }
             else if (txtUsuario.Text == "djacquest0@unesco.org" && txtPassword.Text == "WqXtIk")
             {
-                
+                FrmCliente frmCliente = new FrmCliente();
+                frmCliente.Show(this);       
             }
         }
         #endregion
@@ -55,7 +56,7 @@ namespace Login
         /// <param name="e"></param>
         private void btnComprador_Click(object sender, EventArgs e)
         {
-            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk","Dina", "Jacquest",0);
+            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk","Dina", "Jacquest");
 
             txtUsuario.Text = comprador.Email;
             txtPassword.Text = comprador.Password;
