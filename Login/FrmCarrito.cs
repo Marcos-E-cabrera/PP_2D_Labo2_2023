@@ -18,6 +18,7 @@ namespace Login
         private List<Producto> listaCarrito = new List<Producto>();
         private bool carrito = false;
         private bool efectivo;
+        private bool carritoVacio = false;
         private bool validarFactura = false;
         public bool compraEfectuada = false;
         private int saldo;
@@ -58,49 +59,30 @@ namespace Login
         #region COMPRAR
         private void ibtnComprar_Click(object sender, EventArgs e)
         {
-            if (compraEfectuada == false)
+            if (listaCarrito.Count == 0)
             {
-                Factura factura = new Factura();
-                FrmOpcionPago frmOpcionPago = new FrmOpcionPago();
-                if (frmOpcionPago.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("El Carrito esta vacio");
+                carritoVacio = true;
+            }
+            else
+            {
+                if (compraEfectuada == false && carritoVacio == false)
                 {
-                    efectivo = true;
-                    foreach (Producto producto in listaCarrito)
+                    Factura factura = new Factura();
+                    FrmOpcionPago frmOpcionPago = new FrmOpcionPago();
+                    if (frmOpcionPago.ShowDialog() == DialogResult.OK)
                     {
-                        factura.Cantidad = producto.Stock;
-                        factura.PrecioUnitario = producto.Precio;
-                        factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                        Total = factura.Total;   
-                    }
-                    Saldo += Total;
+                        efectivo = true;
+                        foreach (Producto producto in listaCarrito)
+                        {
+                            factura.Cantidad = producto.Stock;
+                            factura.PrecioUnitario = producto.Precio;
+                            factura.Total = factura.Cantidad * factura.PrecioUnitario;
+                            Total = factura.Total;
+                        }
+                        Saldo += Total;
 
-                    if (Total <= Saldo)
-                    {
-                        MensajeDeOK("Compra exitosa!!!", "Compra");
-                        validarFactura = true;
-                        compraEfectuada = true;
-                    }
-                    else
-                    {
-                        MensajeDeError("Saldo no suficiente", "Error, Saldo no suficiente");
-                    }
-                }
-                else
-                {
-                    efectivo = false;
-                    foreach (Producto producto in listaCarrito)
-                    {
-                        factura.Cantidad = producto.Stock;
-                        factura.PrecioUnitario = producto.Precio;
-                        factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                        Total = factura.Total;
-                    }
-                    Saldo += Total;
-                    DialogResult dialogResult = MessageBox.Show("Con devito Tendras un 5% de recargo", "Pago por Devito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        Aux = AgregarCincoPorCiento((decimal)Total);
-                        if (Aux <= Saldo)
+                        if (Total <= Saldo)
                         {
                             MensajeDeOK("Compra exitosa!!!", "Compra");
                             validarFactura = true;
@@ -113,14 +95,42 @@ namespace Login
                     }
                     else
                     {
-                        MensajeDeError("Pago con devito Cancelado", "Error, Deviito cancelado");
+                        efectivo = false;
+                        foreach (Producto producto in listaCarrito)
+                        {
+                            factura.Cantidad = producto.Stock;
+                            factura.PrecioUnitario = producto.Precio;
+                            factura.Total = factura.Cantidad * factura.PrecioUnitario;
+                            Total = factura.Total;
+                        }
+                        Saldo += Total;
+                        DialogResult dialogResult = MessageBox.Show("Con devito Tendras un 5% de recargo", "Pago por Devito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            Aux = AgregarCincoPorCiento((decimal)Total);
+                            if (Aux <= Saldo)
+                            {
+                                MensajeDeOK("Compra exitosa!!!", "Compra");
+                                validarFactura = true;
+                                compraEfectuada = true;
+                            }
+                            else
+                            {
+                                MensajeDeError("Saldo no suficiente", "Error, Saldo no suficiente");
+                            }
+                        }
+                        else
+                        {
+                            MensajeDeError("Pago con devito Cancelado", "Error, Deviito cancelado");
+                        }
                     }
                 }
+                else
+                {
+                    MensajeDeError("Compra ya Efectuada", "Error, de compra");
+                }
             }
-            else
-            {
-                MensajeDeError("Compra ya Efectuada", "Error, de compra");
-            }
+            
         }
         #endregion
 

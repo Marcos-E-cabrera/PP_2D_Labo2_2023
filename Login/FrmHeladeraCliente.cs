@@ -122,14 +122,15 @@ namespace Login
         {
             if (saldoIngresado)
             {
+                bool tope = false;
                 int index;
                 index = ObtenerPosicionFilaDGV();
 
                 // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
                 Producto productoSeleccionado = listaHeladera[index];
-                ObtenerProductoDGV(index, productoSeleccionado);
+                productoSeleccionado = ObtenerProductoDGV(index, productoSeleccionado);
 
-                if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
+                if (Saldo > 0 && productoSeleccionado.Precio <= Saldo )
                 {
                     Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
 
@@ -138,13 +139,22 @@ namespace Login
                         if (p.Nombre == productoSeleccionado.Nombre)
                         {
                             // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                            p.Stock++;
-                            productoEnCarrito = true;
+                            if (p.Stock < productoSeleccionado.Stock)
+                            {
+                                p.Stock++;
+                                productoEnCarrito = true;
+                            }
+                            else
+                            {
+                                MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
+                                Saldo += productoSeleccionado.Precio;
+                                tope = true;
+                            }
                             break;
                         }
                     }
 
-                    if (!productoEnCarrito)
+                    if (!productoEnCarrito && tope == false)
                     {
                         // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
                         Producto productoCarrito = new Producto();
@@ -154,7 +164,8 @@ namespace Login
                         productoCarrito.Detalle = productoSeleccionado.Detalle;
                         listaCarrito.Add(productoCarrito);
                     }
-                    
+
+
                     productoEnCarrito = false;
                     ValidarCarrito = true;
                 }
@@ -190,6 +201,8 @@ namespace Login
                             }
                         }
                     }
+                    txtSaldo.Text = $"{Saldo.ToString()}";
+                    listaCarrito.Clear();
                     CargarListaHeladera(listaHeladera);
                 }
             }

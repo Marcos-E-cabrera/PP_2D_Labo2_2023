@@ -103,7 +103,8 @@ namespace Login
                     Saldo = frmVenta.Saldo;
                     carrito = true;
                     cliente = true;
-                    MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");   
+                    MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");
+                    label1.Text = $"$ {Saldo.ToString()}";
                 }
                 if (frmVenta.Saldo < 0)
                 {
@@ -127,12 +128,13 @@ namespace Login
         {
             if (carrito)
             {
+                bool tope = false;
                 int index;
                 index = ObtenerPosicionFilaDGV();
 
                 // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
                 Producto productoSeleccionado = listaHeladera[index];
-                ObtenerProductoDGV(index, productoSeleccionado);
+                productoSeleccionado = ObtenerProductoDGV(index, productoSeleccionado);
 
                 if (productoSeleccionado.Stock > 0)
                 {
@@ -146,13 +148,22 @@ namespace Login
                             if (p.Nombre == productoSeleccionado.Nombre)
                             {
                                 // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                                p.Stock++;
-                                productoEnCarrito = true;
-                                break;
+                                if ( p.Stock < productoSeleccionado.Stock)
+                                {
+                                    p.Stock++;
+                                   productoEnCarrito = true;
+                                }
+                                else
+                                {
+                                    MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
+                                    Saldo += productoSeleccionado.Precio;
+                                    tope = true;
+                                }
+                                break;  
                             }
                         }
 
-                        if (!productoEnCarrito)
+                        if (!productoEnCarrito && tope == false)
                         {
                             // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
                             Producto productoCarrito = new Producto();
@@ -162,6 +173,8 @@ namespace Login
                             productoCarrito.Detalle = productoSeleccionado.Detalle;
                             listaCarrito.Add(productoCarrito);
                         }
+
+                        
                         productoEnCarrito = false;
                         ValidarCarrito = true;
                     }
@@ -207,6 +220,8 @@ namespace Login
                             }
                         }
                     }
+                    label1.Text = $"$ {Saldo.ToString()}";
+                    listaCarrito.Clear();
                     CargarListaHeladera(listaHeladera);
                 }
             }
@@ -329,10 +344,9 @@ namespace Login
             dgvProductos.DataSource = listaHeladera;
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
+
+
+
         #endregion
-
-        
-
-        
     }
 }
