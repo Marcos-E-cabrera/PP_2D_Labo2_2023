@@ -17,14 +17,21 @@ namespace Login
             InitializeComponent();
         }
 
-        private void btnEfectivo_Click(object sender, EventArgs e)
+        private void btnEfectivo_Click_1(object sender, EventArgs e)
         {
             DialogResult= DialogResult.OK;
         }
 
-        private void btnDevito_Click(object sender, EventArgs e)
+        private void btnDevito_Click_1(object sender, EventArgs e)
         {
             DialogResult= DialogResult.No;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

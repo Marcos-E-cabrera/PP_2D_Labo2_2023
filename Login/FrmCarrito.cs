@@ -55,7 +55,7 @@ namespace Login
         #endregion
 
         #region COMPRAR
-        private void btnComprar_Click(object sender, EventArgs e)
+        private void ibtnComprar_Click(object sender, EventArgs e)
         {
             if (compraEfectuada == false)
             {
@@ -123,7 +123,7 @@ namespace Login
         #endregion
 
         #region FACTURA
-        private void btnFactura_Click(object sender, EventArgs e)
+        private void ibtnFactura_Click(object sender, EventArgs e)
         {
             if (validarFactura == true)
             {
@@ -153,7 +153,7 @@ namespace Login
         #endregion
 
         #region SALIR
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             this.Close();
@@ -202,6 +202,11 @@ namespace Login
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
+
+
+
+
         #endregion
+
     }
 }

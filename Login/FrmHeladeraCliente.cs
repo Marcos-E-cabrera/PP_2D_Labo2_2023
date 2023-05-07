@@ -70,7 +70,7 @@ namespace Login
         #endregion
 
         #region AÑADIR SALDO
-        private void btnSaldo_Click(object sender, EventArgs e)
+        private void ibtnSaldo_Click(object sender, EventArgs e)
         {
             int aux;
             if (int.TryParse(txtSaldo.Text, out aux))
@@ -87,7 +87,7 @@ namespace Login
         #endregion
 
         #region ORDENAR LISTA
-        private void btnOrdenar_Click(object sender, EventArgs e)
+        private void ibtnOrdenar_Click(object sender, EventArgs e)
         {
             Producto p = new Producto();
 
@@ -118,7 +118,7 @@ namespace Login
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAñadir_Click(object sender, EventArgs e)
+        private void ibtnAñadir_Click(object sender, EventArgs e)
         {
             if (saldoIngresado)
             {
@@ -171,7 +171,7 @@ namespace Login
         #endregion
 
         #region LISTA DEL CARRITO
-        private void btnCarrito_Click(object sender, EventArgs e)
+        private void ibtnLista_Click(object sender, EventArgs e)
         {
             if (ValidarCarrito == true)
             {
@@ -261,5 +261,6 @@ namespace Login
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
         #endregion
+
     }
 }

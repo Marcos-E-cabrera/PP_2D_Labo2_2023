@@ -67,9 +67,9 @@ namespace Login
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnVendedor_Click(object sender, EventArgs e)
+        private void ibtnVendedor_Click(object sender, EventArgs e)
         {
-            Vendedor vendedor = new Vendedor("acottis2@toplist.cz","jwAqIw0Alt5","Abagail","Cottis");
+            Vendedor vendedor = new Vendedor("acottis2@toplist.cz", "jwAqIw0Alt5", "Abagail", "Cottis");
             txtUsuario.Text = vendedor.Email;
             txtPassword.Text = vendedor.Password;
         }
@@ -81,9 +81,9 @@ namespace Login
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnComprador_Click(object sender, EventArgs e)
+        private void ibtnCliente_Click(object sender, EventArgs e)
         {
-            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk","Dina", "Jacquest");
+            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk", "Dina", "Jacquest");
 
             txtUsuario.Text = comprador.Email;
             txtPassword.Text = comprador.Password;
@@ -134,6 +134,7 @@ namespace Login
         {
             this.Close();
         }
+
 
 
 

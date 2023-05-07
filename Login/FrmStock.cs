@@ -66,12 +66,35 @@ namespace Frm_Vendedor
                 MensajeDeError("El stock debe ser un número entero", "Error de validación");
             }
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            int nuevoStock;
+            if (int.TryParse(txtStockProducto.Text, out nuevoStock))
+            {
+                if (nuevoStock >= 0)
+                {
+                    // Actualizar el stock del producto
+                    ModificarProducto.Stock = nuevoStock;
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MensajeDeError("El stock no puede ser menor a 0", "Error de validación");
+                }
+            }
+            else
+            {
+                MensajeDeError("El stock debe ser un número entero", "Error de validación");
+            }
+        }
         #endregion
 
         #region CANCELAR
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+
         }
         #endregion
 
@@ -88,5 +111,6 @@ namespace Frm_Vendedor
         }
         #endregion
 
+       
     }
 }

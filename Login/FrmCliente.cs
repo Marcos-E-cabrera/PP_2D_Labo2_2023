@@ -46,8 +46,13 @@ namespace Login
             this.panel1.Controls.Add(form);
             form.Show();
         }
+
         #endregion
 
+        private void ibtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
 
+        }
     }
 }

@@ -33,7 +33,17 @@ namespace Frm_Vendedor
             this.panel1.Controls.Add(form);
             form.Show();
         }
-        #endregion  
+        #endregion
+
+        private void ibtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
     }
 
 }

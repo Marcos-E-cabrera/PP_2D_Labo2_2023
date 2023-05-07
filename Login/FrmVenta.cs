@@ -68,7 +68,12 @@ namespace Frm_Vendedor
         #endregion
 
         #region SELECCIONAR CLIENTE
-        private void btnSeleccionar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Selecciona un cliente para porder venderle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnSeleccion_Click(object sender, EventArgs e)
         {
             int index;
             index = ObtenerPosicionFilaDGV();
@@ -85,7 +90,12 @@ namespace Frm_Vendedor
         #endregion
 
         #region SALIR
-        private void btnSalir_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Salir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -133,9 +143,7 @@ namespace Frm_Vendedor
         {
             dgvClientes.Refresh();
             dgvClientes.DataSource = ListaCliente;
-            dgvClientes.Columns[1].HeaderText = "Precio x Kilo";
         }
         #endregion
-
     }
 }

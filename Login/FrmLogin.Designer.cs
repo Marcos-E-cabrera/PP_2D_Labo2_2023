@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnVendedor = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.btnComprador = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ibtnCliente = new FontAwesome.Sharp.IconButton();
+            this.ibtnVendedor = new FontAwesome.Sharp.IconButton();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,20 +62,6 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnVendedor
-            // 
-            this.btnVendedor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
-            this.btnVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnVendedor.Location = new System.Drawing.Point(289, 333);
-            this.btnVendedor.Name = "btnVendedor";
-            this.btnVendedor.Size = new System.Drawing.Size(108, 43);
-            this.btnVendedor.TabIndex = 0;
-            this.btnVendedor.Text = "Vendedor";
-            this.btnVendedor.UseVisualStyleBackColor = true;
-            this.btnVendedor.Click += new System.EventHandler(this.btnVendedor_Click);
             // 
             // txtUsuario
             // 
@@ -108,27 +94,13 @@
             this.btnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnIngresar.Location = new System.Drawing.Point(154, 251);
+            this.btnIngresar.Location = new System.Drawing.Point(149, 287);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(127, 43);
             this.btnIngresar.TabIndex = 8;
             this.btnIngresar.Text = "Login";
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            // 
-            // btnComprador
-            // 
-            this.btnComprador.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnComprador.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
-            this.btnComprador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComprador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnComprador.Location = new System.Drawing.Point(28, 333);
-            this.btnComprador.Name = "btnComprador";
-            this.btnComprador.Size = new System.Drawing.Size(116, 43);
-            this.btnComprador.TabIndex = 9;
-            this.btnComprador.Text = "Comprador";
-            this.btnComprador.UseVisualStyleBackColor = true;
-            this.btnComprador.Click += new System.EventHandler(this.btnComprador_Click);
             // 
             // panel1
             // 
@@ -152,12 +124,12 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.ibtnCliente);
+            this.panel2.Controls.Add(this.ibtnVendedor);
             this.panel2.Controls.Add(this.panel9);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Controls.Add(this.ibtnSalir);
-            this.panel2.Controls.Add(this.btnVendedor);
             this.panel2.Controls.Add(this.btnIngresar);
-            this.panel2.Controls.Add(this.btnComprador);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(345, 5);
             this.panel2.Name = "panel2";
@@ -165,11 +137,45 @@
             this.panel2.TabIndex = 13;
             this.panel2.Tag = "";
             // 
+            // ibtnCliente
+            // 
+            this.ibtnCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnCliente.FlatAppearance.BorderSize = 0;
+            this.ibtnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnCliente.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            this.ibtnCliente.IconColor = System.Drawing.Color.White;
+            this.ibtnCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnCliente.Location = new System.Drawing.Point(59, 4);
+            this.ibtnCliente.Name = "ibtnCliente";
+            this.ibtnCliente.Size = new System.Drawing.Size(48, 44);
+            this.ibtnCliente.TabIndex = 20;
+            this.ibtnCliente.UseVisualStyleBackColor = true;
+            this.ibtnCliente.Click += new System.EventHandler(this.ibtnCliente_Click);
+            // 
+            // ibtnVendedor
+            // 
+            this.ibtnVendedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnVendedor.FlatAppearance.BorderSize = 0;
+            this.ibtnVendedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnVendedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnVendedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnVendedor.IconChar = FontAwesome.Sharp.IconChar.UserTie;
+            this.ibtnVendedor.IconColor = System.Drawing.Color.White;
+            this.ibtnVendedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnVendedor.Location = new System.Drawing.Point(3, 4);
+            this.ibtnVendedor.Name = "ibtnVendedor";
+            this.ibtnVendedor.Size = new System.Drawing.Size(50, 42);
+            this.ibtnVendedor.TabIndex = 19;
+            this.ibtnVendedor.UseVisualStyleBackColor = true;
+            this.ibtnVendedor.Click += new System.EventHandler(this.ibtnVendedor_Click);
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Controls.Add(this.panel5);
-            this.panel9.Location = new System.Drawing.Point(28, 146);
+            this.panel9.Location = new System.Drawing.Point(29, 182);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(369, 88);
             this.panel9.TabIndex = 18;
@@ -251,7 +257,7 @@
             // 
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.panel3);
-            this.panel7.Location = new System.Drawing.Point(28, 52);
+            this.panel7.Location = new System.Drawing.Point(29, 88);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(369, 88);
             this.panel7.TabIndex = 17;
@@ -363,12 +369,9 @@
         }
 
         #endregion
-
-        private Button btnVendedor;
         private TextBox txtUsuario;
         private TextBox txtPassword;
         private Button btnIngresar;
-        private Button btnComprador;
         private Panel panel1;
         private Panel panel2;
         private Panel panel5;
@@ -386,5 +389,7 @@
         private Panel panel7;
         private Panel panel8;
         private Label label1;
+        private FontAwesome.Sharp.IconButton ibtnCliente;
+        private FontAwesome.Sharp.IconButton ibtnVendedor;
     }
 }

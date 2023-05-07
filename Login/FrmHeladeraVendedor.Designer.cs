@@ -30,29 +30,31 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.btnReponer = new System.Windows.Forms.Button();
-            this.btnVender = new System.Windows.Forms.Button();
-            this.btnAñadir = new System.Windows.Forms.Button();
-            this.btnCarrito = new System.Windows.Forms.Button();
             this.cbOrdenar = new System.Windows.Forms.ComboBox();
-            this.btnOrdenar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ibtnOrdenar = new FontAwesome.Sharp.IconButton();
+            this.ibtnLista = new FontAwesome.Sharp.IconButton();
+            this.ibtnAñadir = new FontAwesome.Sharp.IconButton();
+            this.ibtnSeleccionar = new FontAwesome.Sharp.IconButton();
+            this.ibtnReponer = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProductos
             // 
             this.dgvProductos.AllowUserToResizeColumns = false;
             this.dgvProductos.AllowUserToResizeRows = false;
-            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductos.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -61,6 +63,15 @@
             this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeight = 29;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.SystemColors.WindowText;
             this.dgvProductos.Location = new System.Drawing.Point(0, 0);
@@ -70,99 +81,189 @@
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowTemplate.Height = 29;
-            this.dgvProductos.Size = new System.Drawing.Size(1106, 604);
+            this.dgvProductos.Size = new System.Drawing.Size(993, 558);
             this.dgvProductos.TabIndex = 5;
-            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
-            // 
-            // btnReponer
-            // 
-            this.btnReponer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReponer.Location = new System.Drawing.Point(5, 610);
-            this.btnReponer.Name = "btnReponer";
-            this.btnReponer.Size = new System.Drawing.Size(108, 47);
-            this.btnReponer.TabIndex = 6;
-            this.btnReponer.Text = "Reponer";
-            this.btnReponer.UseVisualStyleBackColor = true;
-            this.btnReponer.Click += new System.EventHandler(this.btnReponer_Click);
-            // 
-            // btnVender
-            // 
-            this.btnVender.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnVender.Location = new System.Drawing.Point(131, 610);
-            this.btnVender.Name = "btnVender";
-            this.btnVender.Size = new System.Drawing.Size(145, 47);
-            this.btnVender.TabIndex = 8;
-            this.btnVender.Text = "Seleccionar Cliente";
-            this.btnVender.UseVisualStyleBackColor = true;
-            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
-            // 
-            // btnAñadir
-            // 
-            this.btnAñadir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAñadir.Location = new System.Drawing.Point(293, 610);
-            this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(145, 47);
-            this.btnAñadir.TabIndex = 9;
-            this.btnAñadir.Text = "Añadir al carrito";
-            this.btnAñadir.UseVisualStyleBackColor = true;
-            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
-            // 
-            // btnCarrito
-            // 
-            this.btnCarrito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCarrito.Location = new System.Drawing.Point(461, 610);
-            this.btnCarrito.Name = "btnCarrito";
-            this.btnCarrito.Size = new System.Drawing.Size(126, 47);
-            this.btnCarrito.TabIndex = 10;
-            this.btnCarrito.Text = "Ver carrito";
-            this.btnCarrito.UseVisualStyleBackColor = true;
-            this.btnCarrito.Click += new System.EventHandler(this.btnCarrito_Click);
             // 
             // cbOrdenar
             // 
-            this.cbOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.cbOrdenar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbOrdenar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.cbOrdenar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbOrdenar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbOrdenar.ForeColor = System.Drawing.Color.White;
             this.cbOrdenar.FormattingEnabled = true;
-            this.cbOrdenar.Location = new System.Drawing.Point(631, 620);
+            this.cbOrdenar.Location = new System.Drawing.Point(727, 15);
             this.cbOrdenar.Name = "cbOrdenar";
-            this.cbOrdenar.Size = new System.Drawing.Size(204, 28);
+            this.cbOrdenar.Size = new System.Drawing.Size(210, 28);
             this.cbOrdenar.TabIndex = 11;
             // 
-            // btnOrdenar
+            // panel1
             // 
-            this.btnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrdenar.Location = new System.Drawing.Point(841, 610);
-            this.btnOrdenar.Name = "btnOrdenar";
-            this.btnOrdenar.Size = new System.Drawing.Size(94, 47);
-            this.btnOrdenar.TabIndex = 12;
-            this.btnOrdenar.Text = "Aplicar";
-            this.btnOrdenar.UseVisualStyleBackColor = true;
-            this.btnOrdenar.Click += new System.EventHandler(this.btnOrdenar_Click);
+            this.panel1.Controls.Add(this.dgvProductos);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(993, 558);
+            this.panel1.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.panel2.Controls.Add(this.ibtnOrdenar);
+            this.panel2.Controls.Add(this.ibtnLista);
+            this.panel2.Controls.Add(this.ibtnAñadir);
+            this.panel2.Controls.Add(this.ibtnSeleccionar);
+            this.panel2.Controls.Add(this.ibtnReponer);
+            this.panel2.Controls.Add(this.cbOrdenar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 499);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(993, 59);
+            this.panel2.TabIndex = 14;
+            // 
+            // ibtnOrdenar
+            // 
+            this.ibtnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ibtnOrdenar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnOrdenar.FlatAppearance.BorderSize = 0;
+            this.ibtnOrdenar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnOrdenar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnOrdenar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnOrdenar.ForeColor = System.Drawing.Color.White;
+            this.ibtnOrdenar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            this.ibtnOrdenar.IconColor = System.Drawing.Color.White;
+            this.ibtnOrdenar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnOrdenar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ibtnOrdenar.Location = new System.Drawing.Point(933, 6);
+            this.ibtnOrdenar.Name = "ibtnOrdenar";
+            this.ibtnOrdenar.Size = new System.Drawing.Size(57, 50);
+            this.ibtnOrdenar.TabIndex = 17;
+            this.ibtnOrdenar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ibtnOrdenar.UseVisualStyleBackColor = true;
+            this.ibtnOrdenar.Click += new System.EventHandler(this.ibtnOrdenar_Click);
+            // 
+            // ibtnLista
+            // 
+            this.ibtnLista.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ibtnLista.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnLista.FlatAppearance.BorderSize = 0;
+            this.ibtnLista.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnLista.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ibtnLista.ForeColor = System.Drawing.Color.White;
+            this.ibtnLista.IconChar = FontAwesome.Sharp.IconChar.CartArrowDown;
+            this.ibtnLista.IconColor = System.Drawing.Color.White;
+            this.ibtnLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ibtnLista.Location = new System.Drawing.Point(549, 6);
+            this.ibtnLista.Name = "ibtnLista";
+            this.ibtnLista.Size = new System.Drawing.Size(136, 50);
+            this.ibtnLista.TabIndex = 16;
+            this.ibtnLista.Text = "Ver Carrito";
+            this.ibtnLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ibtnLista.UseVisualStyleBackColor = true;
+            this.ibtnLista.Click += new System.EventHandler(this.ibtnLista_Click);
+            // 
+            // ibtnAñadir
+            // 
+            this.ibtnAñadir.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ibtnAñadir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnAñadir.FlatAppearance.BorderSize = 0;
+            this.ibtnAñadir.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnAñadir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnAñadir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnAñadir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ibtnAñadir.ForeColor = System.Drawing.Color.White;
+            this.ibtnAñadir.IconChar = FontAwesome.Sharp.IconChar.CartPlus;
+            this.ibtnAñadir.IconColor = System.Drawing.Color.White;
+            this.ibtnAñadir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnAñadir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ibtnAñadir.Location = new System.Drawing.Point(360, 6);
+            this.ibtnAñadir.Name = "ibtnAñadir";
+            this.ibtnAñadir.Size = new System.Drawing.Size(165, 50);
+            this.ibtnAñadir.TabIndex = 15;
+            this.ibtnAñadir.Text = "Añadir Carrito";
+            this.ibtnAñadir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ibtnAñadir.UseVisualStyleBackColor = true;
+            this.ibtnAñadir.Click += new System.EventHandler(this.ibtnAñadir_Click);
+            // 
+            // ibtnSeleccionar
+            // 
+            this.ibtnSeleccionar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ibtnSeleccionar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnSeleccionar.FlatAppearance.BorderSize = 0;
+            this.ibtnSeleccionar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnSeleccionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnSeleccionar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnSeleccionar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ibtnSeleccionar.ForeColor = System.Drawing.Color.White;
+            this.ibtnSeleccionar.IconChar = FontAwesome.Sharp.IconChar.PersonCirclePlus;
+            this.ibtnSeleccionar.IconColor = System.Drawing.Color.White;
+            this.ibtnSeleccionar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ibtnSeleccionar.Location = new System.Drawing.Point(150, 6);
+            this.ibtnSeleccionar.Name = "ibtnSeleccionar";
+            this.ibtnSeleccionar.Size = new System.Drawing.Size(195, 50);
+            this.ibtnSeleccionar.TabIndex = 14;
+            this.ibtnSeleccionar.Text = "Seleccionar Cliente";
+            this.ibtnSeleccionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ibtnSeleccionar.UseVisualStyleBackColor = true;
+            this.ibtnSeleccionar.Click += new System.EventHandler(this.ibtnSeleccionar_Click);
+            // 
+            // ibtnReponer
+            // 
+            this.ibtnReponer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ibtnReponer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnReponer.FlatAppearance.BorderSize = 0;
+            this.ibtnReponer.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.ibtnReponer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnReponer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnReponer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnReponer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ibtnReponer.ForeColor = System.Drawing.Color.White;
+            this.ibtnReponer.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.ibtnReponer.IconColor = System.Drawing.Color.White;
+            this.ibtnReponer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnReponer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ibtnReponer.Location = new System.Drawing.Point(12, 6);
+            this.ibtnReponer.Name = "ibtnReponer";
+            this.ibtnReponer.Size = new System.Drawing.Size(118, 50);
+            this.ibtnReponer.TabIndex = 13;
+            this.ibtnReponer.Text = "Reponer";
+            this.ibtnReponer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ibtnReponer.UseVisualStyleBackColor = true;
+            this.ibtnReponer.Click += new System.EventHandler(this.ibtnReponer_Click);
             // 
             // FrmHeladeraVendedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 657);
-            this.Controls.Add(this.btnOrdenar);
-            this.Controls.Add(this.cbOrdenar);
-            this.Controls.Add(this.btnCarrito);
-            this.Controls.Add(this.btnAñadir);
-            this.Controls.Add(this.btnVender);
-            this.Controls.Add(this.btnReponer);
-            this.Controls.Add(this.dgvProductos);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ClientSize = new System.Drawing.Size(993, 558);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmHeladeraVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmHeladeraVendedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -170,11 +271,13 @@
         #endregion
 
         private DataGridView dgvProductos;
-        private Button btnReponer;
-        private Button btnVender;
-        private Button btnAñadir;
-        private Button btnCarrito;
         private ComboBox cbOrdenar;
-        private Button btnOrdenar;
+        private Panel panel1;
+        private Panel panel2;
+        private FontAwesome.Sharp.IconButton ibtnReponer;
+        private FontAwesome.Sharp.IconButton ibtnSeleccionar;
+        private FontAwesome.Sharp.IconButton ibtnAñadir;
+        private FontAwesome.Sharp.IconButton ibtnLista;
+        private FontAwesome.Sharp.IconButton ibtnOrdenar;
     }
 }

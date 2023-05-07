@@ -47,6 +47,7 @@ namespace Login
         #endregion
 
         #region LOAD
+
         private void FrmHeladeraVendedor_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
@@ -62,10 +63,14 @@ namespace Login
         #endregion
 
         #region REPONER PRODUCTO
-        private void btnReponer_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Repone el stock
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnReponer_Click(object sender, EventArgs e)
         {
             int index;
-
             index = ObtenerPosicionFilaDGV();
 
             Producto stock = new Producto();
@@ -82,20 +87,26 @@ namespace Login
         #endregion
 
         #region SELECCIONAR CLIENTE
-        private void btnVender_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Selecciona un cliente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnSeleccionar_Click(object sender, EventArgs e)
         {
-            if ( cliente == false  ) // Si no se cargo un cliente
+            if (cliente == false) // Si no se cargo un cliente
             {
                 FrmVenta frmVenta = new FrmVenta();
-                if ( frmVenta.ShowDialog() == DialogResult.OK  && frmVenta.Saldo > 0)
+                if (frmVenta.ShowDialog() == DialogResult.OK && frmVenta.Saldo > 0)
                 {
                     Nombre = frmVenta.Nombre;
-                    Apellido= frmVenta.Apellido;
+                    Apellido = frmVenta.Apellido;
                     Saldo = frmVenta.Saldo;
                     carrito = true;
                     cliente = true;
+                    MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");   
                 }
-                else
+                if (frmVenta.Saldo < 0)
                 {
                     MensajeDeError("El Cliente no tiene el saldo suficiente", "Error, saldo");
                 }
@@ -109,11 +120,11 @@ namespace Login
 
         #region AÑADIR AL CARRITO
         /// <summary>
-        /// Se produce el evento que llama a "ANAÑADIR que deja añadir un producto a la lista "ListaCarrito""
+        /// Se produce el evento que llama a "AÑADIR que deja añadir un producto a la lista "ListaCarrito""
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAñadir_Click(object sender, EventArgs e)
+        private void ibtnAñadir_Click(object sender, EventArgs e)
         {
             if (carrito)
             {
@@ -124,7 +135,7 @@ namespace Login
                 Producto productoSeleccionado = listaHeladera[index];
                 ObtenerProductoDGV(index, productoSeleccionado);
 
-                if ( productoSeleccionado.Stock > 0)
+                if (productoSeleccionado.Stock > 0)
                 {
                     if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
                     {
@@ -173,14 +184,19 @@ namespace Login
         #endregion
 
         #region LISTA DEL CARRITO
-        private void btnCarrito_Click(object sender, EventArgs e)
+        /// <summary>
+        /// lista el carrito
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnLista_Click(object sender, EventArgs e)
         {
             if (ValidarCarrito == true)
             {
                 FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
-                    foreach ( Producto p in listaHeladera)
+                    foreach (Producto p in listaHeladera)
                     {
                         p.Stock--;
                         break;
@@ -197,11 +213,16 @@ namespace Login
         #endregion
 
         #region ORDENAR LISTA
-        private void btnOrdenar_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Ordena la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnOrdenar_Click(object sender, EventArgs e)
         {
             Producto p = new Producto();
 
-            switch(cbOrdenar.SelectedIndex) 
+            switch (cbOrdenar.SelectedIndex)
             {
                 case 0:
                     listaHeladera = listaHeladera.OrderBy(p => p.Nombre).ToList();
@@ -218,11 +239,36 @@ namespace Login
                     break;
             }
             CargarListaHeladera(listaHeladera);
-
         }
         #endregion
-      
+
         #region METODOS
+
+        /// <summary>
+        /// Si el producto es 0 lo mostrara asi "Sin stock"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.Value.ToString() == "0")
+            {
+                e.Value = "Sin Stock";
+                e.FormattingApplied = true;
+            }
+        }
+
+        /// <summary>
+        /// Muestra un mensaje de OOK
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="title"></param>
+        public void MensajeDeOK(string msg, string title)
+        {
+            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+
         /// <summary>
         /// Obtengo la FILA del DataGridView que se encuentra el cursor
         /// </summary>
@@ -280,18 +326,8 @@ namespace Login
         }
         #endregion
 
-        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-    
-        }
+        
 
-        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.Value != null && e.Value.ToString() == "0")
-            {
-                e.Value = "Sin Stock";
-                e.FormattingApplied = true;
-            }
-        }
+        
     }
 }
