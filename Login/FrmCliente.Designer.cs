@@ -85,7 +85,7 @@
             this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(931, 7);
+            this.ibtnSalir.Location = new System.Drawing.Point(944, 7);
             this.ibtnSalir.Name = "ibtnSalir";
             this.ibtnSalir.Size = new System.Drawing.Size(47, 33);
             this.ibtnSalir.TabIndex = 17;

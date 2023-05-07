@@ -105,9 +105,6 @@
             this.ibtnSaldo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnSaldo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnSaldo.FlatAppearance.BorderSize = 0;
-            this.ibtnSaldo.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnSaldo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnSaldo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnSaldo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnSaldo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ibtnSaldo.ForeColor = System.Drawing.Color.White;
@@ -144,9 +141,6 @@
             this.ibtnOrdenar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnOrdenar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnOrdenar.FlatAppearance.BorderSize = 0;
-            this.ibtnOrdenar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnOrdenar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnOrdenar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnOrdenar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnOrdenar.ForeColor = System.Drawing.Color.White;
             this.ibtnOrdenar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
@@ -174,9 +168,6 @@
             this.ibtnLista.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnLista.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnLista.FlatAppearance.BorderSize = 0;
-            this.ibtnLista.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnLista.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ibtnLista.ForeColor = System.Drawing.Color.White;
@@ -198,9 +189,6 @@
             this.ibtnAñadir.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnAñadir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnAñadir.FlatAppearance.BorderSize = 0;
-            this.ibtnAñadir.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnAñadir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnAñadir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnAñadir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ibtnAñadir.ForeColor = System.Drawing.Color.White;

@@ -41,38 +41,16 @@ namespace Frm_Vendedor
 
         #region ACEPTAR
         /// <summary>
-        /// Evento de Aceptar que rimero Valida antes el Stock
+        /// Evento de Aceptar que Valida antes el Stock
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            int nuevoStock;
-            if (int.TryParse(txtStockProducto.Text, out nuevoStock))
-            {
-                if (nuevoStock >= 0)
-                {
-                    // Actualizar el stock del producto
-                    ModificarProducto.Stock = nuevoStock;
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MensajeDeError("El stock no puede ser menor a 0", "Error de validación");
-                }
-            }
-            else
-            {
-                MensajeDeError("El stock debe ser un número entero", "Error de validación");
-            }
-        }
-
         private void iconButton1_Click(object sender, EventArgs e)
         {
             int nuevoStock;
             if (int.TryParse(txtStockProducto.Text, out nuevoStock))
             {
-                if (nuevoStock >= 0)
+                if (nuevoStock > 0 && ModificarProducto.Stock <= nuevoStock)
                 {
                     // Actualizar el stock del producto
                     ModificarProducto.Stock = nuevoStock;
@@ -80,7 +58,7 @@ namespace Frm_Vendedor
                 }
                 else
                 {
-                    MensajeDeError("El stock no puede ser menor a 0", "Error de validación");
+                    MensajeDeError("El stock no puede ser menor a 0 y no puede bajar el stock", "Error de validación");
                 }
             }
             else

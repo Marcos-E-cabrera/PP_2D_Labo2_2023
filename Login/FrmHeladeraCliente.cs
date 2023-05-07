@@ -178,12 +178,18 @@ namespace Login
                 FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
-                    foreach (Producto p in listaHeladera)
-                    {
-                        p.Stock--;
-                        break;
-                    }
 
+                    foreach (Producto productoCarrito in listaCarrito)
+                    {
+                        foreach (Producto productoHeladera in listaHeladera)
+                        {
+                            if (productoCarrito.Nombre == productoHeladera.Nombre)
+                            {
+                                productoHeladera.Stock -= productoCarrito.Stock;
+                                break;
+                            }
+                        }
+                    }
                     CargarListaHeladera(listaHeladera);
                 }
             }

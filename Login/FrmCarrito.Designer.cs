@@ -51,7 +51,7 @@
             this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(489, 12);
+            this.ibtnSalir.Location = new System.Drawing.Point(498, 5);
             this.ibtnSalir.Name = "ibtnSalir";
             this.ibtnSalir.Size = new System.Drawing.Size(48, 43);
             this.ibtnSalir.TabIndex = 17;
@@ -64,13 +64,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(549, 529);
+            this.panel1.Size = new System.Drawing.Size(549, 410);
             this.panel1.TabIndex = 18;
             // 
             // dgvCarrito
             // 
             this.dgvCarrito.AllowUserToResizeColumns = false;
-            this.dgvCarrito.AllowUserToResizeRows = false;
             this.dgvCarrito.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCarrito.BackgroundColor = System.Drawing.Color.White;
             this.dgvCarrito.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -110,7 +109,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dgvCarrito.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCarrito.RowTemplate.Height = 29;
-            this.dgvCarrito.Size = new System.Drawing.Size(549, 529);
+            this.dgvCarrito.Size = new System.Drawing.Size(549, 410);
             this.dgvCarrito.TabIndex = 6;
             // 
             // panel2
@@ -120,9 +119,9 @@
             this.panel2.Controls.Add(this.ibtnComprar);
             this.panel2.Controls.Add(this.ibtnSalir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 529);
+            this.panel2.Location = new System.Drawing.Point(0, 410);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(549, 62);
+            this.panel2.Size = new System.Drawing.Size(549, 49);
             this.panel2.TabIndex = 19;
             // 
             // ibtnFactura
@@ -130,9 +129,6 @@
             this.ibtnFactura.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnFactura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnFactura.FlatAppearance.BorderSize = 0;
-            this.ibtnFactura.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnFactura.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnFactura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ibtnFactura.ForeColor = System.Drawing.Color.White;
@@ -140,7 +136,7 @@
             this.ibtnFactura.IconColor = System.Drawing.Color.White;
             this.ibtnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnFactura.Location = new System.Drawing.Point(280, 6);
+            this.ibtnFactura.Location = new System.Drawing.Point(280, 1);
             this.ibtnFactura.Name = "ibtnFactura";
             this.ibtnFactura.Size = new System.Drawing.Size(152, 50);
             this.ibtnFactura.TabIndex = 19;
@@ -154,9 +150,6 @@
             this.ibtnComprar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ibtnComprar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ibtnComprar.FlatAppearance.BorderSize = 0;
-            this.ibtnComprar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnComprar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnComprar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.ibtnComprar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnComprar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ibtnComprar.ForeColor = System.Drawing.Color.White;
@@ -164,7 +157,7 @@
             this.ibtnComprar.IconColor = System.Drawing.Color.White;
             this.ibtnComprar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnComprar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnComprar.Location = new System.Drawing.Point(77, 6);
+            this.ibtnComprar.Location = new System.Drawing.Point(68, 2);
             this.ibtnComprar.Name = "ibtnComprar";
             this.ibtnComprar.Size = new System.Drawing.Size(133, 50);
             this.ibtnComprar.TabIndex = 18;
@@ -178,7 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(156)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(549, 591);
+            this.ClientSize = new System.Drawing.Size(549, 459);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

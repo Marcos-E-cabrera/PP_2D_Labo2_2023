@@ -1,4 +1,5 @@
 ﻿using Biblioteca_Carniceria;
+using Frm_Vendedor;
 using System;
     using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,9 +70,10 @@ namespace Login
                         factura.Cantidad = producto.Stock;
                         factura.PrecioUnitario = producto.Precio;
                         factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                        Total = factura.Total;
+                        Total = factura.Total;   
                     }
                     Saldo += Total;
+
                     if (Total <= Saldo)
                     {
                         MensajeDeOK("Compra exitosa!!!", "Compra");
@@ -127,10 +129,10 @@ namespace Login
         {
             if (validarFactura == true)
             {
-                Factura factura = new Factura();
                 List<Factura> listaFactura = new List<Factura>();
                 foreach (Producto producto in listaCarrito)
                 {
+                    Factura factura = new Factura();
                     factura.Descripcion = producto.Nombre;
                     factura.Cantidad = producto.Stock;
                     factura.PrecioUnitario = producto.Precio;
@@ -155,8 +157,15 @@ namespace Login
         #region SALIR
         private void ibtnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
             this.Close();
+            if (!compraEfectuada)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
         #endregion
 
@@ -208,5 +217,6 @@ namespace Login
 
         #endregion
 
+        
     }
 }
