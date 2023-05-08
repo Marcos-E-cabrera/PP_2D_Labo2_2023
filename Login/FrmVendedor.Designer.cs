@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ibtnSalir = new FontAwesome.Sharp.IconButton();
-            this.ibtnVendedor = new FontAwesome.Sharp.IconButton();
+            this.Heladera = new System.Windows.Forms.Panel();
+            this.title = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
+            this.ibtnVendedor = new FontAwesome.Sharp.IconButton();
+            this.ibtnSalir = new FontAwesome.Sharp.IconButton();
+            this.title.SuspendLayout();
             this.SuspendLayout();
             // 
             // Producto
@@ -44,42 +44,41 @@
             this.Producto.Name = "Producto";
             this.Producto.Width = 125;
             // 
-            // panel1
+            // Heladera
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 45);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(978, 542);
-            this.panel1.TabIndex = 4;
+            this.Heladera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Heladera.BackColor = System.Drawing.Color.White;
+            this.Heladera.Location = new System.Drawing.Point(0, 48);
+            this.Heladera.Name = "Heladera";
+            this.Heladera.Size = new System.Drawing.Size(978, 539);
+            this.Heladera.TabIndex = 4;
             // 
-            // panel2
+            // title
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.ibtnVendedor);
-            this.panel2.Controls.Add(this.ibtnSalir);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(978, 45);
-            this.panel2.TabIndex = 5;
+            this.title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
+            this.title.Controls.Add(this.label1);
+            this.title.Controls.Add(this.ibtnVendedor);
+            this.title.Controls.Add(this.ibtnSalir);
+            this.title.Location = new System.Drawing.Point(0, 0);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(978, 48);
+            this.title.TabIndex = 5;
             // 
-            // ibtnSalir
+            // label1
             // 
-            this.ibtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnSalir.FlatAppearance.BorderSize = 0;
-            this.ibtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ibtnSalir.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
-            this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(931, 7);
-            this.ibtnSalir.Name = "ibtnSalir";
-            this.ibtnSalir.Size = new System.Drawing.Size(47, 33);
-            this.ibtnSalir.TabIndex = 17;
-            this.ibtnSalir.UseVisualStyleBackColor = true;
-            this.ibtnSalir.Click += new System.EventHandler(this.ibtnSalir_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(63, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 37);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "VENDEDOR";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ibtnVendedor
             // 
@@ -91,23 +90,28 @@
             this.ibtnVendedor.IconChar = FontAwesome.Sharp.IconChar.UserTie;
             this.ibtnVendedor.IconColor = System.Drawing.Color.White;
             this.ibtnVendedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ibtnVendedor.Location = new System.Drawing.Point(381, 2);
+            this.ibtnVendedor.Location = new System.Drawing.Point(0, 6);
             this.ibtnVendedor.Name = "ibtnVendedor";
-            this.ibtnVendedor.Size = new System.Drawing.Size(49, 40);
+            this.ibtnVendedor.Size = new System.Drawing.Size(57, 45);
             this.ibtnVendedor.TabIndex = 20;
             this.ibtnVendedor.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // ibtnSalir
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(436, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 28);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "VENDEDOR";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ibtnSalir.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ibtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
+            this.ibtnSalir.FlatAppearance.BorderSize = 0;
+            this.ibtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnSalir.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
+            this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ibtnSalir.IconSize = 40;
+            this.ibtnSalir.Location = new System.Drawing.Point(931, 0);
+            this.ibtnSalir.Name = "ibtnSalir";
+            this.ibtnSalir.Size = new System.Drawing.Size(47, 48);
+            this.ibtnSalir.TabIndex = 17;
+            this.ibtnSalir.UseVisualStyleBackColor = true;
+            this.ibtnSalir.Click += new System.EventHandler(this.ibtnSalir_Click);
             // 
             // FrmVendedor
             // 
@@ -115,22 +119,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
             this.ClientSize = new System.Drawing.Size(978, 587);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.Heladera);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmVendedor_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.title.ResumeLayout(false);
+            this.title.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private DataGridViewTextBoxColumn Producto;
-        private Panel panel1;
-        private Panel panel2;
+        private Panel Heladera;
+        private Panel title;
         private FontAwesome.Sharp.IconButton ibtnSalir;
         private Label label1;
         private FontAwesome.Sharp.IconButton ibtnVendedor;

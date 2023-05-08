@@ -127,7 +127,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(139, 35);
             this.panel3.TabIndex = 18;
-         
             // 
             // label1
             // 
@@ -268,6 +267,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimizeBox = false;
             this.Name = "FrmHeladeraVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
