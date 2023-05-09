@@ -11,25 +11,24 @@ namespace Biblioteca_Carniceria
         #region PROPIEDADES
         private string email;
         private string password;
-        private string nombre;
-        private string apellido;
         #endregion
 
         #region PROPIEDADES
-        public string Nombre { get; }
-        public string Apellido { get; }
-
-        public string Email { get; }
-        public string Password { get; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         #endregion
 
         #region CONSTRUCTORES
-        protected Usuario(string email, string password, string nombre, string apellido)
+        protected Usuario ()
+        {
+            Email = string.Empty;
+            Password = string.Empty;
+        }
+
+        protected Usuario(string email, string password) : this () 
         {
             this.Email = email;
             this.Password = password;
-            this.Nombre = nombre;
-            this.Apellido = apellido;
         }
         #endregion
 

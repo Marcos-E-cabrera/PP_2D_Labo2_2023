@@ -16,33 +16,33 @@ namespace Login
     public partial class FrmHeladeraVendedor : Form
     {
         #region CAMPOS CLIENTE
-        private string nombre;
-        private string apellido;
-        private int saldo;
+        private Cliente clienteMain;
+        private List<Producto> listaHeladera;
+        private List<Producto> listaCarrito;
+        
         private bool carrito;
         private bool cliente;
         private bool productoEnCarrito;
-        private bool ValidarCarrito = false;
-        private List<Producto> listaHeladera = new List<Producto>();
-        private List<Producto> listaCarrito = new List<Producto>();
-        #endregion
-
-        #region PROPIEDADES CLIENTE
-        public int Saldo { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        private bool ValidarCarrito;
         #endregion
 
         #region FRM HELADERA VENDEDOR
         public FrmHeladeraVendedor()
         {
             InitializeComponent();
+            clienteMain = new Cliente();
+
+            listaHeladera = new List<Producto>();
+            listaCarrito = new List<Producto>();
+
             Heladera heladera = new Heladera();
+            
             listaHeladera = heladera.ListaProductos;
             carrito = false;
             cliente = false;
             productoEnCarrito = false;
-            Saldo = 0;
+            ValidarCarrito = false;
+            clienteMain.Saldo = 0;
         }
         #endregion
 
@@ -96,24 +96,24 @@ namespace Login
             if (cliente == false) // Si no se cargo un cliente
             {
                 FrmVenta frmVenta = new FrmVenta();
-                if (frmVenta.ShowDialog() == DialogResult.OK && frmVenta.Saldo > 0)
+                if (frmVenta.ShowDialog() == DialogResult.OK && frmVenta.cliente.Saldo > 0)
                 {
-                    Nombre = frmVenta.Nombre;
-                    Apellido = frmVenta.Apellido;
-                    Saldo = frmVenta.Saldo;
+                    clienteMain.Nombre = frmVenta.cliente.Nombre;
+                    clienteMain.Apellido = frmVenta.cliente.Apellido;
+                    clienteMain.Saldo = frmVenta.cliente.Saldo;
                     carrito = true;
                     cliente = true;
                     MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");
-                    label1.Text = $"$ {Saldo.ToString()}";
+                    label1.Text = $"$ {clienteMain.Saldo.ToString()}";
                 }
-                if (frmVenta.Saldo < 0)
+                if (frmVenta.cliente.Saldo < 0)
                 {
                     MensajeDeError("El Cliente no tiene el saldo suficiente", "Error, saldo");
                 }
             }
             else
             {
-                MensajeDeError($"Cliente ya Seleccionado: {Nombre} {Apellido}", "Error, seleccion");
+                MensajeDeError($"Cliente ya Seleccionado: {clienteMain.Nombre} {clienteMain.Apellido}", "Error, seleccion");
             }
         }
         #endregion
@@ -138,28 +138,28 @@ namespace Login
 
                 if (productoSeleccionado.Stock > 0)
                 {
-                    if (Saldo > 0 && productoSeleccionado.Precio <= Saldo)
+                    if (clienteMain.Saldo > 0 && productoSeleccionado.Precio <= clienteMain.Saldo)
                     {
 
-                        Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+                        clienteMain.Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
 
                         foreach (Producto p in listaCarrito)
                         {
                             if (p.Nombre == productoSeleccionado.Nombre)
                             {
                                 // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                                if ( p.Stock < productoSeleccionado.Stock)
+                                if (p.Stock < productoSeleccionado.Stock)
                                 {
                                     p.Stock++;
-                                   productoEnCarrito = true;
+                                    productoEnCarrito = true;
                                 }
                                 else
                                 {
                                     MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
-                                    Saldo += productoSeleccionado.Precio;
+                                    clienteMain.Saldo += productoSeleccionado.Precio;
                                     tope = true;
                                 }
-                                break;  
+                                break;
                             }
                         }
 
@@ -174,7 +174,7 @@ namespace Login
                             listaCarrito.Add(productoCarrito);
                         }
 
-                        
+
                         productoEnCarrito = false;
                         ValidarCarrito = true;
                     }
@@ -205,7 +205,7 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
 
@@ -213,14 +213,14 @@ namespace Login
                     {
                         foreach (Producto productoHeladera in listaHeladera)
                         {
-                            if (productoCarrito.Nombre == productoHeladera.Nombre )
+                            if (productoCarrito.Nombre == productoHeladera.Nombre)
                             {
                                 productoHeladera.Stock -= productoCarrito.Stock;
                                 break;
                             }
                         }
                     }
-                    label1.Text = $"$ {Saldo.ToString()}";
+                    label1.Text = $"$ {clienteMain.Saldo.ToString()}";
                     listaCarrito.Clear();
                     CargarListaHeladera(listaHeladera);
                 }

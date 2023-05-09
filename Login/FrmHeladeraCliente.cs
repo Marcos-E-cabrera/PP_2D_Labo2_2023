@@ -14,26 +14,28 @@ namespace Login
     public partial class FrmHeladeraCliente : Form
     {
         #region CAMPOS CLIENTE
-        private int saldo;
+        private Cliente clienteMain;
         private bool productoEnCarrito;
         private bool ValidarCarrito;
         private bool saldoIngresado;
 
-        private List<Producto> listaHeladeraPrincipal = new List<Producto>();
-        private List<Producto> listaHeladera = new List<Producto>();
-
-        private List<Producto> listaCarrito = new List<Producto>();
-        #endregion
-
-        #region PROPIEDADES CLIENTE
-        public int Saldo { get; set; }
+        private List<Producto> listaHeladeraPrincipal;
+        private List<Producto> listaHeladera;
+        private List<Producto> listaCarrito;
         #endregion
 
         #region FRM HELADERA CLIENTE CONSTRUCTOR
         public FrmHeladeraCliente()
         {
             InitializeComponent();
+            clienteMain = new Cliente();
+
+            listaHeladeraPrincipal = new List<Producto>();
+            listaHeladera = new List<Producto>();
+            listaCarrito = new List<Producto>();
+
             Heladera heladera = new Heladera();
+            
             listaHeladeraPrincipal = heladera.ListaProductos;
 
             foreach (Producto producto in listaHeladeraPrincipal)
@@ -75,9 +77,9 @@ namespace Login
             int aux;
             if (int.TryParse(txtSaldo.Text, out aux))
             {
-                Saldo = aux;
+                clienteMain.Saldo = aux;
                 saldoIngresado = true;
-                MensajeDeOK($"Saldo ingresado correctamente: ${Saldo}","Saldo Ingresado");
+                MensajeDeOK($"Saldo ingresado correctamente: ${clienteMain.Saldo}","Saldo Ingresado");
             }
             else
             {
@@ -130,9 +132,9 @@ namespace Login
                 Producto productoSeleccionado = listaHeladera[index];
                 productoSeleccionado = ObtenerProductoDGV(index, productoSeleccionado);
 
-                if (Saldo > 0 && productoSeleccionado.Precio <= Saldo )
+                if (clienteMain.Saldo > 0 && productoSeleccionado.Precio <= clienteMain.Saldo )
                 {
-                    Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+                    clienteMain.Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
 
                     foreach (Producto p in listaCarrito)
                     {
@@ -147,7 +149,7 @@ namespace Login
                             else
                             {
                                 MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
-                                Saldo += productoSeleccionado.Precio;
+                                clienteMain.Saldo += productoSeleccionado.Precio;
                                 tope = true;
                             }
                             break;
@@ -186,7 +188,7 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
 
@@ -201,7 +203,7 @@ namespace Login
                             }
                         }
                     }
-                    txtSaldo.Text = $"{Saldo.ToString()}";
+                    txtSaldo.Text = $"{clienteMain.Saldo.ToString()}";
                     listaCarrito.Clear();
                     CargarListaHeladera(listaHeladera);
                 }

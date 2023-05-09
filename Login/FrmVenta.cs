@@ -14,46 +14,39 @@ namespace Frm_Vendedor
     public partial class FrmVenta : Form
     {
         #region CAMPOS
-        private int saldo;
-        private string nombre;
-        private string apellido;
-        private List<VenderACliente> ListaCliente;
-        #endregion
-
-        #region PROPIEDADES
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public int Saldo { get; set; }
+        public  Cliente cliente = new Cliente();
+        private List<Cliente> ListaCliente;
         #endregion
 
         #region FRM VENTA CONSTRUCTOR
         public FrmVenta()
         {
             InitializeComponent();
-            ListaCliente = new List<VenderACliente>();
-            ListaCliente.Add(new VenderACliente("Nonah", "Dingle", 500));
-            ListaCliente.Add(new VenderACliente("Gage", "Withringten", 3737));
-            ListaCliente.Add(new VenderACliente("Zenia", "Ferrotti", 9793));
-            ListaCliente.Add(new VenderACliente("Diann", "Gaitung", 19855));
-            ListaCliente.Add(new VenderACliente("Gena", "Lembrick", 13681));
-            ListaCliente.Add(new VenderACliente("Susanna", "Childe", 4885));
-            ListaCliente.Add(new VenderACliente("Broderic", "Scintsbury", 4213));
-            ListaCliente.Add(new VenderACliente("Frederique", "Rowesby", 7223));
-            ListaCliente.Add(new VenderACliente("Abagael", "Cramphorn", 18678));
-            ListaCliente.Add(new VenderACliente("Kelsi", "Kinver", 12232));
-            ListaCliente.Add(new VenderACliente("Luca", "Morkham", 16142));
-            ListaCliente.Add(new VenderACliente("Brigg", "Winckles", 2880));
-            ListaCliente.Add(new VenderACliente("Malorie", "McCague", 14862));
-            ListaCliente.Add(new VenderACliente("Daisey", "Ateggart", 8772));
-            ListaCliente.Add(new VenderACliente("Cathi", "Heighway", 16726));
-            ListaCliente.Add(new VenderACliente("Ardys", "Belding", 4869));
-            ListaCliente.Add(new VenderACliente("Katinka", "Huggard", 13916));
-            ListaCliente.Add(new VenderACliente("Mab", "Falco", 14626));
-            ListaCliente.Add(new VenderACliente("Fairfax", "Clines", 17337));
-            ListaCliente.Add(new VenderACliente("Meridel", "Desorts", 14010));
-            ListaCliente.Add(new VenderACliente("Goldarina", "Iannuzzelli", 4444));
-            ListaCliente.Add(new VenderACliente("Alvinia", "Vian", 731));
-            ListaCliente.Add(new VenderACliente("Leonie", "Jaskowicz", 11462));
+
+            ListaCliente = new List<Cliente>();
+            ListaCliente.Add(new Cliente("Nonah", "Dingle", 500));
+            ListaCliente.Add(new Cliente("Gage", "Withringten", 3737));
+            ListaCliente.Add(new Cliente("Zenia", "Ferrotti", 9793));
+            ListaCliente.Add(new Cliente("Diann", "Gaitung", 19855));
+            ListaCliente.Add(new Cliente("Gena", "Lembrick", 13681));
+            ListaCliente.Add(new Cliente("Susanna", "Childe", 4885));
+            ListaCliente.Add(new Cliente("Broderic", "Scintsbury", 4213));
+            ListaCliente.Add(new Cliente("Frederique", "Rowesby", 7223));
+            ListaCliente.Add(new Cliente("Abagael", "Cramphorn", 18678));
+            ListaCliente.Add(new Cliente("Kelsi", "Kinver", 12232));
+            ListaCliente.Add(new Cliente("Luca", "Morkham", 16142));
+            ListaCliente.Add(new Cliente("Brigg", "Winckles", 2880));
+            ListaCliente.Add(new Cliente("Malorie", "McCague", 14862));
+            ListaCliente.Add(new Cliente("Daisey", "Ateggart", 8772));
+            ListaCliente.Add(new Cliente("Cathi", "Heighway", 16726));
+            ListaCliente.Add(new Cliente("Ardys", "Belding", 4869));
+            ListaCliente.Add(new Cliente("Katinka", "Huggard", 13916));
+            ListaCliente.Add(new Cliente("Mab", "Falco", 14626));
+            ListaCliente.Add(new Cliente("Fairfax", "Clines", 17337));
+            ListaCliente.Add(new Cliente("Meridel", "Desorts", 14010));
+            ListaCliente.Add(new Cliente("Goldarina", "Iannuzzelli", 4444));
+            ListaCliente.Add(new Cliente("Alvinia", "Vian", 731));
+            ListaCliente.Add(new Cliente("Leonie", "Jaskowicz", 11462));
         }
         #endregion
 
@@ -78,12 +71,11 @@ namespace Frm_Vendedor
             int index;
             index = ObtenerPosicionFilaDGV();
 
-            VenderACliente cliente = new VenderACliente();
             cliente = ObtenerClienteDGV(index, cliente);
 
-            Nombre = cliente.Nombre;
-            Apellido = cliente.Apellido;
-            Saldo = cliente.Saldo;
+            //Nombre = cliente.Nombre;
+            //Apellido = cliente.Apellido;
+            //Saldo = cliente.Saldo;
 
             this.DialogResult = DialogResult.OK;
         }
@@ -118,7 +110,7 @@ namespace Frm_Vendedor
         /// <param name="index"></param>
         /// <param name="p"></param>
         /// <returns>Devuelve un obj Producto con los datos del DataGridView </returns>
-        public VenderACliente ObtenerClienteDGV(int index, VenderACliente p)
+        public Cliente ObtenerClienteDGV(int index, Cliente p)
         {
             p.Nombre = dgvClientes[0, index].Value.ToString();
             p.Apellido = dgvClientes[1, index].Value.ToString();

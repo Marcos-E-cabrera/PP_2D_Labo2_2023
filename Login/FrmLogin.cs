@@ -69,7 +69,7 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnVendedor_Click(object sender, EventArgs e)
         {
-            Vendedor vendedor = new Vendedor("acottis2@toplist.cz", "jwAqIw0Alt5", "Abagail", "Cottis");
+            LoginVendedor vendedor = new LoginVendedor();
             txtUsuario.Text = vendedor.Email;
             txtPassword.Text = vendedor.Password;
         }
@@ -83,10 +83,9 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnCliente_Click(object sender, EventArgs e)
         {
-            Cliente comprador = new Cliente("djacquest0@unesco.org", "WqXtIk", "Dina", "Jacquest");
-
-            txtUsuario.Text = comprador.Email;
-            txtPassword.Text = comprador.Password;
+            LoginCliente cliente = new LoginCliente();
+            txtUsuario.Text = cliente.Email;
+            txtPassword.Text = cliente.Password;
         }
         #endregion
 
