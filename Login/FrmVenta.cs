@@ -73,10 +73,6 @@ namespace Frm_Vendedor
 
             cliente = ObtenerClienteDGV(index, cliente);
 
-            //Nombre = cliente.Nombre;
-            //Apellido = cliente.Apellido;
-            //Saldo = cliente.Saldo;
-
             this.DialogResult = DialogResult.OK;
         }
         #endregion

@@ -14,12 +14,16 @@ namespace Login
     public partial class FrmFactura : Form
     {
         #region CAMPOS
+        public Cliente cliente;
+
         private string cuit;
         private string telefono;
+
         private DateTime fechaHoraActual = DateTime.Now;
         private string fecha;
         private string hora;
         private static int ultimoNumeroFactura = 0;
+
         private string nroFactura;
         private decimal totalFinal;
         private string formaPago;
@@ -40,13 +44,14 @@ namespace Login
         public FrmFactura()
         {
             InitializeComponent();
+            cliente = new Cliente();
         }
 
-        public FrmFactura(List<Factura> listaCarrito, bool foD)
+        public FrmFactura(List<Factura> listaCarrito, bool foD, Cliente cliente)
         {
             InitializeComponent();
             listaFactura = listaCarrito;
-            switch(foD)
+            switch (foD)
             {
                 case true:
                     FormaPago = "Efectivo";
@@ -55,6 +60,8 @@ namespace Login
                     FormaPago = "Devito";
                     break;
             }
+
+            this.cliente = cliente;
         }
         #endregion
 
@@ -81,7 +88,7 @@ namespace Login
             dgvFacturaTitle.Rows.Add("", "", "", "");
             dgvFacturaTitle.Rows.Add("Fecha:", Fecha, "Hora:", Hora);
             dgvFacturaTitle.Rows.Add("Número de factura:", NroFactura, "", "");
-            dgvFacturaTitle.Rows.Add("Datos cliente:", "Consumidor Final", "", "");
+            dgvFacturaTitle.Rows.Add("Datos cliente:", "Consumidor Final", $"{cliente.Nombre}", $"{cliente.Apellido}");
 
             dgvFactura.Columns.Add("descripcion", "Descripción");
             dgvFactura.Columns.Add("cantidad", "Cantidad");
@@ -101,8 +108,8 @@ namespace Login
 
             dgvFactura.Rows.Add("", "", "Total:", $"$ {TotalFinal.ToString("0.00")}");
             dgvFactura.Rows.Add("Forma de pago:", $"{FormaPago}", "", "");
-
         }
+        
         #endregion
     }
 }

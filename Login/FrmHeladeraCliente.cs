@@ -15,6 +15,7 @@ namespace Login
     {
         #region CAMPOS CLIENTE
         private Cliente clienteMain;
+
         private bool productoEnCarrito;
         private bool ValidarCarrito;
         private bool saldoIngresado;
@@ -29,6 +30,8 @@ namespace Login
         {
             InitializeComponent();
             clienteMain = new Cliente();
+            clienteMain.Nombre = "Marcos";
+            clienteMain.Apellido = "Cabrera";
 
             listaHeladeraPrincipal = new List<Producto>();
             listaHeladera = new List<Producto>();
@@ -188,7 +191,7 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo, clienteMain.Nombre, clienteMain.Apellido);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
 

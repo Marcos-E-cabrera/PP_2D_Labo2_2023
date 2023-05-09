@@ -20,6 +20,7 @@ namespace Login
         private List<Producto> listaHeladera;
         private List<Producto> listaCarrito;
         
+        private decimal Saldo { get; set; }
         private bool carrito;
         private bool cliente;
         private bool productoEnCarrito;
@@ -44,6 +45,7 @@ namespace Login
             ValidarCarrito = false;
             clienteMain.Saldo = 0;
         }
+
         #endregion
 
         #region LOAD
@@ -205,7 +207,7 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo, clienteMain.Nombre, clienteMain.Apellido);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
 
@@ -344,9 +346,6 @@ namespace Login
             dgvProductos.DataSource = listaHeladera;
             dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
         }
-
-
-
         #endregion
     }
 }

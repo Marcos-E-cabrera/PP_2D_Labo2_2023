@@ -91,7 +91,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             this.dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowTemplate.Height = 29;
-            this.dgvProductos.Size = new System.Drawing.Size(993, 500);
+            this.dgvProductos.Size = new System.Drawing.Size(1004, 500);
             this.dgvProductos.TabIndex = 5;
             this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
@@ -104,9 +104,9 @@
             this.cbOrdenar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cbOrdenar.ForeColor = System.Drawing.Color.White;
             this.cbOrdenar.FormattingEnabled = true;
-            this.cbOrdenar.Location = new System.Drawing.Point(727, 11);
+            this.cbOrdenar.Location = new System.Drawing.Point(739, 12);
             this.cbOrdenar.Name = "cbOrdenar";
-            this.cbOrdenar.Size = new System.Drawing.Size(210, 28);
+            this.cbOrdenar.Size = new System.Drawing.Size(187, 28);
             this.cbOrdenar.TabIndex = 11;
             // 
             // panel1
@@ -116,14 +116,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(993, 500);
+            this.panel1.Size = new System.Drawing.Size(1004, 500);
             this.panel1.TabIndex = 13;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(851, 462);
+            this.panel3.Location = new System.Drawing.Point(861, 458);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(139, 35);
             this.panel3.TabIndex = 18;
@@ -150,7 +150,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 500);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(993, 51);
+            this.panel2.Size = new System.Drawing.Size(1004, 51);
             this.panel2.TabIndex = 14;
             // 
             // ibtnOrdenar
@@ -164,12 +164,11 @@
             this.ibtnOrdenar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             this.ibtnOrdenar.IconColor = System.Drawing.Color.White;
             this.ibtnOrdenar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ibtnOrdenar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnOrdenar.Location = new System.Drawing.Point(933, 2);
+            this.ibtnOrdenar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ibtnOrdenar.Location = new System.Drawing.Point(937, -1);
             this.ibtnOrdenar.Name = "ibtnOrdenar";
-            this.ibtnOrdenar.Size = new System.Drawing.Size(57, 50);
+            this.ibtnOrdenar.Size = new System.Drawing.Size(40, 50);
             this.ibtnOrdenar.TabIndex = 17;
-            this.ibtnOrdenar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnOrdenar.UseVisualStyleBackColor = true;
             this.ibtnOrdenar.Click += new System.EventHandler(this.ibtnOrdenar_Click);
             // 
@@ -185,7 +184,7 @@
             this.ibtnLista.IconColor = System.Drawing.Color.White;
             this.ibtnLista.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnLista.Location = new System.Drawing.Point(549, 2);
+            this.ibtnLista.Location = new System.Drawing.Point(559, 0);
             this.ibtnLista.Name = "ibtnLista";
             this.ibtnLista.Size = new System.Drawing.Size(136, 50);
             this.ibtnLista.TabIndex = 16;
@@ -206,7 +205,7 @@
             this.ibtnAñadir.IconColor = System.Drawing.Color.White;
             this.ibtnAñadir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnAñadir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnAñadir.Location = new System.Drawing.Point(360, 2);
+            this.ibtnAñadir.Location = new System.Drawing.Point(370, 0);
             this.ibtnAñadir.Name = "ibtnAñadir";
             this.ibtnAñadir.Size = new System.Drawing.Size(165, 50);
             this.ibtnAñadir.TabIndex = 15;
@@ -227,7 +226,7 @@
             this.ibtnSeleccionar.IconColor = System.Drawing.Color.White;
             this.ibtnSeleccionar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnSeleccionar.Location = new System.Drawing.Point(150, 2);
+            this.ibtnSeleccionar.Location = new System.Drawing.Point(160, 0);
             this.ibtnSeleccionar.Name = "ibtnSeleccionar";
             this.ibtnSeleccionar.Size = new System.Drawing.Size(195, 50);
             this.ibtnSeleccionar.TabIndex = 14;
@@ -249,7 +248,7 @@
             this.ibtnReponer.IconColor = System.Drawing.Color.White;
             this.ibtnReponer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnReponer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnReponer.Location = new System.Drawing.Point(12, 2);
+            this.ibtnReponer.Location = new System.Drawing.Point(22, 0);
             this.ibtnReponer.Name = "ibtnReponer";
             this.ibtnReponer.Size = new System.Drawing.Size(118, 50);
             this.ibtnReponer.TabIndex = 13;
@@ -263,7 +262,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(993, 551);
+            this.ClientSize = new System.Drawing.Size(1004, 551);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

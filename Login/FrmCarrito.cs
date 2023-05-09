@@ -15,13 +15,14 @@ namespace Login
     public partial class FrmCarrito : Form
     {
         #region CAMPOS
+        private Cliente clienteMain;
         private List<Producto> listaCarrito = new List<Producto>();
         private bool carrito = false;
         private bool efectivo;
         private bool carritoVacio = false;
         private bool validarFactura = false;
         public bool compraEfectuada = false;
-        private int saldo;
+        private decimal saldo;
         private decimal total;
         private decimal aux;
         #endregion
@@ -38,11 +39,14 @@ namespace Login
             InitializeComponent();
         }
 
-        public FrmCarrito(List<Producto> listaProductos, int saldo)
+        public FrmCarrito(List<Producto> listaProductos, decimal saldo, string nombre, string apellido)
         {
             InitializeComponent();
+            clienteMain = new Cliente();
             listaCarrito = listaProductos;
             Saldo = saldo;
+            clienteMain.Nombre = nombre;
+            clienteMain.Apellido = apellido;
         }
         #endregion
 
@@ -154,7 +158,7 @@ namespace Login
                     listaFactura.Add(factura);
                 }
 
-                FrmFactura frmFactura = new FrmFactura(listaFactura, efectivo);
+                FrmFactura frmFactura = new FrmFactura(listaFactura, efectivo, clienteMain);
                 frmFactura.ShowDialog();
             }
             else
