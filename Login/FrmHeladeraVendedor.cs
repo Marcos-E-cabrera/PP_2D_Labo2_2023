@@ -15,35 +15,28 @@ namespace Login
 {
     public partial class FrmHeladeraVendedor : Form
     {
-        #region CAMPOS CLIENTE
+        private Producto producto;
         private Cliente clienteMain;
-        private List<Producto> listaHeladera;
-        private List<Producto> listaCarrito;
-        
-        private decimal Saldo { get; set; }
+
+        private List<Producto> listaHeladera = new List<Producto>();
+        private List<Producto> listaCarrito = new List<Producto>();
+
         private bool carrito;
         private bool cliente;
         private bool productoEnCarrito;
         private bool ValidarCarrito;
-        #endregion
 
         #region FRM HELADERA VENDEDOR
         public FrmHeladeraVendedor()
         {
             InitializeComponent();
-            clienteMain = new Cliente();
 
-            listaHeladera = new List<Producto>();
-            listaCarrito = new List<Producto>();
+            listaHeladera = Producto.ListaProductos;
 
-            Heladera heladera = new Heladera();
-            
-            listaHeladera = heladera.ListaProductos;
             carrito = false;
             cliente = false;
             productoEnCarrito = false;
             ValidarCarrito = false;
-            clienteMain.Saldo = 0;
         }
 
         #endregion
@@ -54,7 +47,10 @@ namespace Login
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             ControlBox = false;
-            MostrarProductos();
+
+            // cargo la lista al datagridview;
+            DGV_ActualizarDatos(listaHeladera);
+
             cbOrdenar.Items.Add("Ordenar por Nombre");
             cbOrdenar.Items.Add("Ordenar por Precio");
             cbOrdenar.Items.Add("Ordenar por Stock");
@@ -65,25 +61,35 @@ namespace Login
 
         #region REPONER PRODUCTO
         /// <summary>
-        /// Repone el stock
+        /// Repone el stock del producto seleccionado
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ibtnReponer_Click(object sender, EventArgs e)
         {
+            producto = new Producto();
             int index;
-            index = ObtenerPosicionFilaDGV();
+            // Devuelvo la posicion del dataGridView
+            index = DGV_GetFila();
 
-            Producto stock = new Producto();
-            stock = ObtenerProductoDGV(index, stock);
+            // Devuelvo los productos en el index pasado
+            producto = DGV_GetProducto(index, producto);
 
-            FrmStock frmStock = new FrmStock(stock);
+            // llamo al form-stock pasandole el producto a reponer
+            FrmStock frmStock = new FrmStock(producto);
+
             if (frmStock.ShowDialog() == DialogResult.OK)
             {
-                stock = frmStock.ModificarProducto;
-                listaHeladera[index] = stock;
-                CargarListaHeladera(listaHeladera);
+                // Cambio el stock del producto original a el stock nuevo pasado por el auxiliar.
+                producto = frmStock.Producto_Aux;
+    
+                // Lo cargo en la posicion del index pasado por el DGV_GetFila
+                listaHeladera[index] = producto;
+                // Lo cargo en la lista heladera que es estatica y se compartira con la lista del cliente para  que pueda comprar el producto
+                DGV_ActualizarDatos(listaHeladera);
+                
             }
+            
         }
         #endregion
 
@@ -97,12 +103,13 @@ namespace Login
         {
             if (cliente == false) // Si no se cargo un cliente
             {
+                // Muestro la seleccion de clientes
                 FrmVenta frmVenta = new FrmVenta();
+
                 if (frmVenta.ShowDialog() == DialogResult.OK && frmVenta.cliente.Saldo > 0)
                 {
-                    clienteMain.Nombre = frmVenta.cliente.Nombre;
-                    clienteMain.Apellido = frmVenta.cliente.Apellido;
-                    clienteMain.Saldo = frmVenta.cliente.Saldo;
+                    // le paso los datos del cliente
+                    clienteMain = frmVenta.cliente;
                     carrito = true;
                     cliente = true;
                     MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");
@@ -130,27 +137,27 @@ namespace Login
         {
             if (carrito)
             {
+                // Catidad maxima que se puede poer en el carrito
                 bool tope = false;
                 int index;
-                index = ObtenerPosicionFilaDGV();
+                index = DGV_GetFila();
 
                 // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
-                Producto productoSeleccionado = listaHeladera[index];
-                productoSeleccionado = ObtenerProductoDGV(index, productoSeleccionado);
+                producto = DGV_GetProducto(index, producto);
 
-                if (productoSeleccionado.Stock > 0)
+                if (producto.Stock > 0)
                 {
-                    if (clienteMain.Saldo > 0 && productoSeleccionado.Precio <= clienteMain.Saldo)
+                    if (clienteMain.Saldo > 0 && producto.Precio <= clienteMain.Saldo)
                     {
 
-                        clienteMain.Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+                        clienteMain.Saldo -= producto.Precio;   // Actualizar el saldo
 
                         foreach (Producto p in listaCarrito)
                         {
-                            if (p.Nombre == productoSeleccionado.Nombre)
+                            if (p.Nombre == producto.Nombre)
                             {
                                 // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                                if (p.Stock < productoSeleccionado.Stock)
+                                if (p.Stock < producto.Stock)
                                 {
                                     p.Stock++;
                                     productoEnCarrito = true;
@@ -158,7 +165,7 @@ namespace Login
                                 else
                                 {
                                     MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
-                                    clienteMain.Saldo += productoSeleccionado.Precio;
+                                    clienteMain.Saldo += producto.Precio;
                                     tope = true;
                                 }
                                 break;
@@ -169,11 +176,11 @@ namespace Login
                         {
                             // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
                             Producto productoCarrito = new Producto();
-                            productoCarrito.Nombre = productoSeleccionado.Nombre;
-                            productoCarrito.Precio = productoSeleccionado.Precio;
+                            productoCarrito.Nombre = producto.Nombre;
+                            productoCarrito.Precio = producto.Precio;
                             productoCarrito.Stock = 1;
-                            productoCarrito.Detalle = productoSeleccionado.Detalle;
-                            listaCarrito.Add(productoCarrito);
+                            productoCarrito.Detalle = producto.Detalle;
+                            listaCarrito.Add(producto);
                         }
 
 
@@ -207,7 +214,7 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, Saldo, clienteMain.Nombre, clienteMain.Apellido);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo, clienteMain.Nombre, clienteMain.Apellido);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
 
@@ -235,70 +242,22 @@ namespace Login
         #endregion
 
         #region ORDENAR LISTA
-        /// <summary>
-        /// Ordena la lista
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ibtnOrdenar_Click(object sender, EventArgs e)
         {
-            Producto p = new Producto();
-
-            switch (cbOrdenar.SelectedIndex)
-            {
-                case 0:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Nombre).ToList();
-                    break;
-                case 1:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Precio).ToList();
-                    break;
-
-                case 2:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Stock).ToList();
-                    break;
-                case 3:
-                    listaHeladera = listaHeladera.OrderBy(p => p.Detalle).ToList();
-                    break;
-            }
-            CargarListaHeladera(listaHeladera);
+            producto = new Producto();
+            DGV_ActualizarDatos(producto.OrdenarProductos(cbOrdenar.SelectedIndex, listaHeladera));
         }
+
         #endregion
 
         #region METODOS
-
-        /// <summary>
-        /// Si el producto es 0 lo mostrara asi "Sin stock"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvProductos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.Value != null && e.Value.ToString() == "0")
-            {
-                e.Value = "Sin Stock";
-                e.FormattingApplied = true;
-            }
-        }
-
-        /// <summary>
-        /// Muestra un mensaje de OOK
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="title"></param>
-        public void MensajeDeOK(string msg, string title)
-        {
-            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-        }
-
-
         /// <summary>
         /// Obtengo la FILA del DataGridView que se encuentra el cursor
         /// </summary>
         /// <returns></returns>
-        public int ObtenerPosicionFilaDGV()
+        public int DGV_GetFila()
         {
-            int posicion;
-            return posicion = dgvProductos.CurrentRow.Index;
+            return  dgvProductos.CurrentRow.Index;
         }
 
         /// <summary>
@@ -307,9 +266,9 @@ namespace Login
         /// <param name="index"></param>
         /// <param name="p"></param>
         /// <returns>Devuelve un obj Producto con los datos del DataGridView </returns>
-        public Producto ObtenerProductoDGV(int index, Producto p)
+        public Producto DGV_GetProducto(int index, Producto p)
         {
-            p.Nombre = dgvProductos[0, index].Value.ToString();
+            p.Nombre = (eCortes)Convert.ToInt32(dgvProductos[0, index].Value);
             p.Precio = Convert.ToInt32(dgvProductos[1, index].Value);
             p.Stock = Convert.ToInt32(dgvProductos[2, index].Value);
             p.Detalle = dgvProductos[3, index].Value.ToString();
@@ -320,7 +279,7 @@ namespace Login
         /// Carga al DataGridView la nueva "Lista Heladera"
         /// </summary>
         /// <param name="l"></param>
-        public void CargarListaHeladera(List<Producto> l)
+        public void DGV_ActualizarDatos(List<Producto> l)
         {
             dgvProductos.Refresh();
             dgvProductos.DataSource = l;
@@ -338,14 +297,16 @@ namespace Login
         }
 
         /// <summary>
-        /// Muestra los productos de la listaProductos en el DataGridView
+        /// Muestra un mensaje de OOK
         /// </summary>
-        private void MostrarProductos()
+        /// <param name="msg"></param>
+        /// <param name="title"></param>
+        public void MensajeDeOK(string msg, string title)
         {
-            dgvProductos.Refresh();
-            dgvProductos.DataSource = listaHeladera;
-            dgvProductos.Columns[1].HeaderText = "Precio x Kilo";
+            MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
         #endregion
+
     }
 }

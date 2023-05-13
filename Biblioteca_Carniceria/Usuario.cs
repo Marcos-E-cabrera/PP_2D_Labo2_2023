@@ -8,29 +8,24 @@ namespace Biblioteca_Carniceria
 {
     public abstract class Usuario
     {
-        #region PROPIEDADES
-        private string email;
-        private string password;
-        #endregion
+        private string nombre;
+        private string apellido;
 
-        #region PROPIEDADES
-        public string Email { get; set; }
-        public string Password { get; set; }
-        #endregion
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Apellido { get => apellido; set => apellido = value; }
 
-        #region CONSTRUCTORES
-        protected Usuario ()
+        public Usuario() 
         {
-            Email = string.Empty;
-            Password = string.Empty;
+            Nombre = string.Empty;
+            Apellido = string.Empty;
         }
 
-        protected Usuario(string email, string password) : this () 
+        public Usuario( string nombre, string apellido) : this()
         {
-            this.Email = email;
-            this.Password = password;
+            Nombre = nombre;
+            Apellido = apellido;
         }
-        #endregion
+
 
     }
 }

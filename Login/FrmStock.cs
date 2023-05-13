@@ -7,39 +7,30 @@ namespace Frm_Vendedor
 {
     public partial class FrmStock : Form
     {
-        #region CAMPOS
-        private Producto modificarProducto;
-        #endregion
 
-        #region PROPIEDADES
-        public Producto ModificarProducto { get { return  modificarProducto; } }
-        #endregion
+        private Producto producto_Aux;
+        
+        public Producto Producto_Aux { get => producto_Aux; }
 
-        #region FRM STOCK CONSTRUCTOR
         public FrmStock()
         {
             InitializeComponent();
         }
 
-        public FrmStock(Producto producto)
+        public FrmStock(Producto producto_Reponer) : this() 
         {
-            InitializeComponent();
-
-            txtStockProducto.Text = producto.Stock.ToString();
-            modificarProducto = producto;
+            // Le paso al producto aux el stock a reponer
+            producto_Aux = producto_Reponer;
         }
-        #endregion
 
-        #region LOAD
         private void FrmStock_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             ControlBox = false;
         }
-        #endregion
 
-        #region ACEPTAR
+
         /// <summary>
         /// Evento de Aceptar que Valida antes el Stock
         /// </summary>
@@ -47,36 +38,31 @@ namespace Frm_Vendedor
         /// <param name="e"></param>
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            int nuevoStock;
-            if (int.TryParse(txtStockProducto.Text, out nuevoStock))
+            int error;
+
+            error = Producto_Aux.ReponerStock(Producto_Aux, txtStockProducto.Text);
+
+            switch(error)
             {
-                if (nuevoStock > 0 && ModificarProducto.Stock <= nuevoStock)
-                {
-                    // Actualizar el stock del producto
-                    ModificarProducto.Stock = nuevoStock;
-                    this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
+                case 1:
+                    MensajeDeError("El stock debe ser un número entero", "Error de validación");
+                    break;
+                case 2:
                     MensajeDeError("El stock no puede ser menor a 0 y no puede bajar el stock", "Error de validación");
-                }
-            }
-            else
-            {
-                MensajeDeError("El stock debe ser un número entero", "Error de validación");
+                    break;
+                default:
+                    this.DialogResult = DialogResult.OK;
+                    // devuelvo el valor del stock parseado a int
+                    Producto_Aux.Stock = int.Parse(txtStockProducto.Text);
+                    break; 
             }
         }
-        #endregion
 
-        #region CANCELAR
         private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
 
         }
-        #endregion
-
-        #region METODOS
 
         /// <summary>
         /// Muestra un mensaje de eror 
@@ -87,8 +73,7 @@ namespace Frm_Vendedor
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-        #endregion
-
+        
        
     }
 }

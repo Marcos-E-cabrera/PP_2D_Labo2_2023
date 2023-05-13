@@ -93,7 +93,7 @@
             this.dgvProductos.RowTemplate.Height = 29;
             this.dgvProductos.Size = new System.Drawing.Size(1004, 500);
             this.dgvProductos.TabIndex = 5;
-            this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
+            //this.dgvProductos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvProductos_CellFormatting);
             // 
             // cbOrdenar
             // 

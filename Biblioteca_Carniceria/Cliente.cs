@@ -7,35 +7,51 @@ using System.Threading.Tasks;
 // LOGIN -> Cliente
 namespace Biblioteca_Carniceria
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
-        #region CAMPOS
-        private string nombre;
-        private string apellido;
-        private int saldo;
-        #endregion
+        private decimal saldo;
+        public decimal Saldo { get => saldo; set => saldo = value; }
 
-        #region PROPIEDADES
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public int Saldo { get; set; }
-        #endregion
-
-        #region CONSTRUCTOR
-        public Cliente()
+        public Cliente ()
         {
-            Nombre = string.Empty;
-            Apellido = string.Empty;
             Saldo = 0;
         }
 
-        public Cliente(string nombre, string apellido, int saldo) : this()
+        public Cliente(string nombre, string apellido, decimal saldo) : base(nombre, apellido)
         {
-            this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.Saldo = saldo;
+            Saldo = saldo;
         }
-        #endregion
 
-    }
+
+
+        /// <summary>
+        /// Instacion los clientes a la lista productos.
+        /// </summary>
+        public static List<Cliente> ListaClientes = new List<Cliente>()
+        {
+            new Cliente("Nonah", "Dingle", 500),
+            new Cliente("Gage", "Withringten", 3737),
+            new Cliente("Zenia", "Ferrotti", 9793),
+            new Cliente("Diann", "Gaitung", 19855),
+            new Cliente("Gena", "Lembrick", 13681),
+            new Cliente("Susanna", "Childe", 4885),
+            new Cliente("Broderic", "Scintsbury", 4213),
+            new Cliente("Frederique", "Rowesby", 7223),
+            new Cliente("Abagael", "Cramphorn", 18678),
+            new Cliente("Kelsi", "Kinver", 12232),
+            new Cliente("Luca", "Morkham", 16142),
+            new Cliente("Brigg", "Winckles", 2880),
+            new Cliente("Malorie", "McCague", 14862),
+            new Cliente("Daisey", "Ateggart", 8772),
+            new Cliente("Cathi", "Heighway", 16726),
+            new Cliente("Ardys", "Belding", 4869),
+            new Cliente("Katinka", "Huggard", 13916),
+            new Cliente("Mab", "Falco", 14626),
+            new Cliente("Fairfax", "Clines", 17337),
+            new Cliente("Meridel", "Desorts", 14010),
+            new Cliente("Goldarina", "Iannuzzelli", 4444),
+            new Cliente("Alvinia", "Vian", 731),
+            new Cliente("Leonie", "Jaskowicz", 11462)
+        };
+    }    
 }

@@ -30,7 +30,7 @@ namespace Frm_Vendedor
         {
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
-            this.Heladera.Controls.Add(form);
+            this.Heladera.Controls.Add(form);             
             form.Show();
         }
         #endregion

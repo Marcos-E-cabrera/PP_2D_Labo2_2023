@@ -15,8 +15,10 @@ namespace Login
     public partial class FrmCarrito : Form
     {
         #region CAMPOS
-        private Cliente clienteMain;
+        
+        private Cliente clienteMain = new Cliente();
         private List<Producto> listaCarrito = new List<Producto>();
+
         private bool carrito = false;
         private bool efectivo;
         private bool carritoVacio = false;
@@ -33,7 +35,7 @@ namespace Login
         public decimal Aux { get; set; }
         #endregion
 
-        #region FRM CARRITO CONSTRUCTOR
+       
         public FrmCarrito()
         {
             InitializeComponent();
@@ -42,15 +44,12 @@ namespace Login
         public FrmCarrito(List<Producto> listaProductos, decimal saldo, string nombre, string apellido)
         {
             InitializeComponent();
-            clienteMain = new Cliente();
             listaCarrito = listaProductos;
             Saldo = saldo;
             clienteMain.Nombre = nombre;
             clienteMain.Apellido = apellido;
         }
-        #endregion
 
-        #region LOAD
         private void FrmCarrito_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
@@ -58,9 +57,7 @@ namespace Login
             this.ControlBox = false;
             MostrarCarrito();
         }
-        #endregion
 
-        #region COMPRAR
         private void ibtnComprar_Click(object sender, EventArgs e)
         {
             if (listaCarrito.Count == 0)
@@ -134,11 +131,9 @@ namespace Login
                     MensajeDeError("Compra ya Efectuada", "Error, de compra");
                 }
             }
-            
-        }
-        #endregion
 
-        #region FACTURA
+        }
+
         private void ibtnFactura_Click(object sender, EventArgs e)
         {
             if (validarFactura == true)
@@ -166,10 +161,9 @@ namespace Login
                 MensajeDeError("Hacer compra primero", "Error, de compra");
             }
         }
-        #endregion
+        
 
-        #region SALIR
-        private void ibtnSalir_Click(object sender, EventArgs e)
+]        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
             if (!compraEfectuada)
@@ -181,7 +175,6 @@ namespace Login
                 DialogResult = DialogResult.OK;
             }
         }
-        #endregion
 
         #region METODOS 
 

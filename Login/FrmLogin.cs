@@ -28,7 +28,7 @@ namespace Login
             panel8.Visible = false;
             panel10.Visible = false;
 
-            switch ( txtUsuario.Text) 
+            switch (txtUsuario.Text) 
             {
                 case "acottis2@toplist.cz":
                     if (txtPassword.Text == "jwAqIw0Alt5")
@@ -52,7 +52,6 @@ namespace Login
                         panel10.Visible = true;
                     }
                     break;
-                    break;
                 default:
                     panel8.Visible = true;
                     panel10.Visible = true;
@@ -69,9 +68,8 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnVendedor_Click(object sender, EventArgs e)
         {
-            LoginVendedor vendedor = new LoginVendedor();
-            txtUsuario.Text = vendedor.Email;
-            txtPassword.Text = vendedor.Password;
+            txtUsuario.Text = "acottis2@toplist.cz";
+            txtPassword.Text = "jwAqIw0Alt5";
         }
         #endregion
 
@@ -83,9 +81,8 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnCliente_Click(object sender, EventArgs e)
         {
-            LoginCliente cliente = new LoginCliente();
-            txtUsuario.Text = cliente.Email;
-            txtPassword.Text = cliente.Password;
+            txtUsuario.Text = "djacquest0@unesco.org";
+            txtPassword.Text = "WqXtIk";
         }
         #endregion
 
@@ -128,17 +125,10 @@ namespace Login
         #endregion
 
         #region SALIR
-       
         private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
-
-
-
-
         #endregion
 
         

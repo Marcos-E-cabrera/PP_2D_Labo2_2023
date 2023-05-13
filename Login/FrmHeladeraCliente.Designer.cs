@@ -119,7 +119,7 @@
             this.ibtnSaldo.Text = "Añadir Saldo";
             this.ibtnSaldo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnSaldo.UseVisualStyleBackColor = true;
-            this.ibtnSaldo.Click += new System.EventHandler(this.ibtnSaldo_Click);
+            //this.ibtnSaldo.Click += new System.EventHandler(this.ibtnSaldo_Click);
             // 
             // panel2
             // 
@@ -182,7 +182,7 @@
             this.ibtnLista.Text = "Ver Carrito";
             this.ibtnLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnLista.UseVisualStyleBackColor = true;
-            this.ibtnLista.Click += new System.EventHandler(this.ibtnLista_Click);
+            //this.ibtnLista.Click += new System.EventHandler(this.ibtnLista_Click);
             // 
             // ibtnAñadir
             // 
@@ -203,7 +203,7 @@
             this.ibtnAñadir.Text = "Añadir Carrito";
             this.ibtnAñadir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnAñadir.UseVisualStyleBackColor = true;
-            this.ibtnAñadir.Click += new System.EventHandler(this.ibtnAñadir_Click);
+            //this.ibtnAñadir.Click += new System.EventHandler(this.ibtnAñadir_Click);
             // 
             // cbOrdenar
             // 

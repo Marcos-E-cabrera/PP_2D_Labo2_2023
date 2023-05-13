@@ -44,7 +44,7 @@ namespace Login
         public FrmFactura()
         {
             InitializeComponent();
-            cliente = new Cliente();
+            //cliente = new Cliente();
         }
 
         public FrmFactura(List<Factura> listaCarrito, bool foD, Cliente cliente)
