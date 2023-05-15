@@ -26,6 +26,6 @@ namespace Biblioteca_Carniceria
             Apellido = apellido;
         }
 
-
+        public abstract string SaludarUsuario();
     }
 }

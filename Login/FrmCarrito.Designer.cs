@@ -56,7 +56,7 @@
             this.ibtnSalir.Size = new System.Drawing.Size(48, 43);
             this.ibtnSalir.TabIndex = 17;
             this.ibtnSalir.UseVisualStyleBackColor = true;
-            //this.ibtnSalir.Click += new System.EventHandler(this.ibtnSalir_Click);
+            this.ibtnSalir.Click += new System.EventHandler(this.ibtnSalir_Click);
             // 
             // panel1
             // 
@@ -143,7 +143,7 @@
             this.ibtnFactura.Text = "Ver Factura";
             this.ibtnFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnFactura.UseVisualStyleBackColor = true;
-            //this.ibtnFactura.Click += new System.EventHandler(this.ibtnFactura_Click);
+            this.ibtnFactura.Click += new System.EventHandler(this.ibtnFactura_Click);
             // 
             // ibtnComprar
             // 
@@ -164,7 +164,7 @@
             this.ibtnComprar.Text = "Comprar";
             this.ibtnComprar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ibtnComprar.UseVisualStyleBackColor = true;
-            //this.ibtnComprar.Click += new System.EventHandler(this.ibtnComprar_Click);
+            this.ibtnComprar.Click += new System.EventHandler(this.ibtnComprar_Click);
             // 
             // FrmCarrito
             // 
@@ -178,7 +178,7 @@
             this.Name = "FrmCarrito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCarrito";
-            //this.Load += new System.EventHandler(this.FrmCarrito_Load);
+            this.Load += new System.EventHandler(this.FrmCarrito_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
             this.panel2.ResumeLayout(false);

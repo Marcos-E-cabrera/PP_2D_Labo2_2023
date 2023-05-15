@@ -52,7 +52,7 @@
             this.Heladera.BackColor = System.Drawing.Color.White;
             this.Heladera.Location = new System.Drawing.Point(0, 48);
             this.Heladera.Name = "Heladera";
-            this.Heladera.Size = new System.Drawing.Size(978, 539);
+            this.Heladera.Size = new System.Drawing.Size(1222, 542);
             this.Heladera.TabIndex = 4;
             // 
             // title
@@ -65,7 +65,7 @@
             this.title.Controls.Add(this.ibtnSalir);
             this.title.Location = new System.Drawing.Point(0, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(978, 48);
+            this.title.Size = new System.Drawing.Size(1222, 48);
             this.title.TabIndex = 5;
             // 
             // label1
@@ -106,7 +106,7 @@
             this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(931, 0);
+            this.ibtnSalir.Location = new System.Drawing.Point(1175, 0);
             this.ibtnSalir.Name = "ibtnSalir";
             this.ibtnSalir.Size = new System.Drawing.Size(47, 48);
             this.ibtnSalir.TabIndex = 17;
@@ -118,7 +118,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ClientSize = new System.Drawing.Size(978, 587);
+            this.ClientSize = new System.Drawing.Size(1222, 590);
             this.Controls.Add(this.title);
             this.Controls.Add(this.Heladera);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

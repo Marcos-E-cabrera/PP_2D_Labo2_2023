@@ -13,9 +13,9 @@ namespace Login
 {
     public partial class FrmHeladeraCliente : Form
     {
-        // Onjeto
-        private Producto producto = new Producto();
-        
+        // Objeto
+        private Cliente clienteMain = new Cliente();
+
         // Lista
         private List<Producto> listaHeladera = new List<Producto>();
         private List<Producto> listaCarrito = new List<Producto>();
@@ -29,9 +29,10 @@ namespace Login
         public FrmHeladeraCliente()
         {
             InitializeComponent();
-             
+            clienteMain.Nombre = "Marcos";
+            clienteMain.Apellido = "Cabrera";
             // Lista heladera sera cargada por la lista correspondiente para cliente
-            listaHeladera = producto.HeladeraCliente();
+            listaHeladera = Producto.HeladeraCliente();
 
             productoEnCarrito = false;
             ValidarCarrito = false;
@@ -56,128 +57,133 @@ namespace Login
         }
         #endregion
 
-        //#region AÑADIR SALDO
-        //private void ibtnSaldo_Click(object sender, EventArgs e)
-        //{
-        //    int aux;
-        //    if (int.TryParse(txtSaldo.Text, out aux) && aux > 0)
-        //    {
-        //        clienteMain.Saldo = aux;
-        //        saldoIngresado = true;
-        //        MensajeDeOK($"Saldo ingresado correctamente: ${clienteMain.Saldo}","Saldo Ingresado");
-        //    }
-        //    else
-        //    {
-        //        MensajeDeError("El Monto debe ser un número entero", "Error de validación");
-        //    }
-        //}
-        //#endregion
+        #region AÑADIR SALDO
+        private void ibtnSaldo_Click_1(object sender, EventArgs e)
+        {
+            decimal aux;
+            if (decimal.TryParse(txtSaldo.Text, out aux) && aux > 0)
+            {
+                clienteMain.Saldo = aux;
+                saldoIngresado = true;
+                MensajeDeOK($"Saldo ingresado correctamente: ${clienteMain.Saldo}", "Saldo Ingresado");
+            }
+            else
+            {
+                MensajeDeError("El Monto debe ser un número entero", "Error de validación");
+            }
+        }
+        #endregion
 
         private void ibtnOrdenar_Click(object sender, EventArgs e)
         {
+            Producto producto = new Producto();
             DGV_ActualizarDatos(producto.OrdenarProductos(cbOrdenar.SelectedIndex, listaHeladera));
         }
 
-        //#region AÑADIR AL CARRITO
-        //    /// <summary>
-        ///// Se produce el evento que llama a "ANAÑADIR que deja añadir un producto a la lista "ListaCarrito""
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void ibtnAñadir_Click(object sender, EventArgs e)
-        //{
-        //    //if (saldoIngresado)
-        //    //{
-        //    //    bool tope = false;
-        //    //    int index;
-        //    //    index = ObtenerPosicionFilaDGV();
+        #region AÑADIR AL CARRITO
+        /// <summary>
+        /// Se produce el evento que llama a "ANAÑADIR que deja añadir un producto a la lista "ListaCarrito""
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ibtnAñadir_Click_1(object sender, EventArgs e)
+        {
+            if (saldoIngresado)
+            {
+                Producto producto = new Producto();
+                Carrito carrito = new Carrito();
 
-        //    //    // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
-        //    //    Producto productoSeleccionado = listaHeladera[index];
-        //    //    productoSeleccionado = ObtenerProductoDGV(index, productoSeleccionado);
+                // Catidad maxima que se puede poer en el carrito
+                bool stockMax = false; // stockMax del stock
 
-        //    //    if (clienteMain.Saldo > 0 && productoSeleccionado.Precio <= clienteMain.Saldo )
-        //    //    {
-        //    //        clienteMain.Saldo -= productoSeleccionado.Precio;   // Actualizar el saldo
+                int index;
+                // obtengo la fila del producto
+                index = DGV_GetFila();
 
-        //    //        foreach (Producto p in listaCarrito)
-        //    //        {
-        //    //            if (p.Nombre == productoSeleccionado.Nombre)
-        //    //            {
-        //    //                // Si el producto ya está en la lista de carrito, aumentar su cantidad
-        //    //                if (p.Stock < productoSeleccionado.Stock)
-        //    //                {
-        //    //                    p.Stock++;
-        //    //                    productoEnCarrito = true;
-        //    //                }
-        //    //                else
-        //    //                {
-        //    //                    MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
-        //    //                    clienteMain.Saldo += productoSeleccionado.Precio;
-        //    //                    tope = true;
-        //    //                }
-        //    //                break;
-        //    //            }
-        //    //        }
+                // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
+                producto = DGV_GetProducto(index, producto);
 
-        //    //        if (!productoEnCarrito && tope == false)
-        //    //        {
-        //    //            // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
-        //    //            Producto productoCarrito = new Producto();
-        //    //            productoCarrito.Nombre = productoSeleccionado.Nombre;
-        //    //            productoCarrito.Precio = productoSeleccionado.Precio;
-        //    //            productoCarrito.Stock = 1;
-        //    //            productoCarrito.Detalle = productoSeleccionado.Detalle;
-        //    //            listaCarrito.Add(productoCarrito);
-        //    //        }
+                if (clienteMain.Saldo > 0 && producto.Precio <= clienteMain.Saldo)
+                {
+                    clienteMain.Saldo -= producto.Precio;   // Actualizar el saldo
 
+                    foreach (Producto aux in listaCarrito)
+                    {
+                        if (aux == producto) // sobrecarga de operadores
+                        {
+                            // Si el producto ya está en la lista de carrito, aumentar su cantidad
+                            if (aux.Stock < producto.Stock)
+                            {
+                                aux.Stock++;
+                                productoEnCarrito = true;
+                            }
+                            else
+                            {
+                                MensajeDeError("stock de producto alcanzado", "Error, stockMax producto ");
+                                clienteMain.Saldo += producto.Precio;
+                                stockMax = true;
+                            }
+                            break;
+                        }
+                    }
 
-        //    //        productoEnCarrito = false;
-        //    //        ValidarCarrito = true;
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        MensajeDeError("El saldo no es suficiente para comprar el producto", "Error, Saldo no suficiente ");
-        //    //    }
-        //    //}
-        //    //else
-        //    //{
-        //    //    MensajeDeError("Ingresar primero el Monto", "Error, Ingresar Monto");
-        //    //}
-        //}
-        //#endregion
+                    // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
+                    if (!productoEnCarrito && !stockMax)
+                    {
+                        producto.Stock = 1; // el stock lo paso como cantidad de producto.
+                        listaCarrito.Add(producto);
+                    }
 
-        //#region LISTA DEL CARRITO
-        //private void ibtnLista_Click(object sender, EventArgs e)
-        //{
-        //    if (ValidarCarrito == true)
-        //    {
-        //        FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo, clienteMain.Nombre, clienteMain.Apellido);
-        //        if (frmCarrito.ShowDialog() == DialogResult.OK)
-        //        {
+                    // se sumo un producto al carrito
+                    productoEnCarrito = false;
+                    // se puede listar el carrito
+                    ValidarCarrito = true;
+                }
+                else
+                {
+                    MensajeDeError("El saldo no es suficiente para comprar el producto", "Error, Saldo no suficiente ");
+                }
+            }
+            else
+            {
+                MensajeDeError("Ingresar primero el Monto", "Error, Ingresar Monto");
+            }
+        }
+        #endregion
 
-        //            foreach (Producto productoCarrito in listaCarrito)
-        //            {
-        //                foreach (Producto productoHeladera in listaHeladera)
-        //                {
-        //                    if (productoCarrito.Nombre == productoHeladera.Nombre)
-        //                    {
-        //                        productoHeladera.Stock -= productoCarrito.Stock;
-        //                        break;
-        //                    }
-        //                }
-        //            }
-        //            txtSaldo.Text = $"{clienteMain.Saldo.ToString()}";
-        //            listaCarrito.Clear();
-        //            CargarListaHeladera(listaHeladera);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MensajeDeError("Primero Añadir productos al carrito", "Error, carrito");
-        //    }
-        //}
-        //#endregion
+        #region LISTA DEL CARRITO
+        private void ibtnLista_Click_1(object sender, EventArgs e)
+        {
+            if (ValidarCarrito == true)
+            {
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain);
+                if (frmCarrito.ShowDialog() == DialogResult.OK)
+                {
+                    // recorro es la lista de lcarrito
+                    foreach (Producto carrito in listaCarrito)
+                    {
+                        // recorrto la lista de la heladera
+                        foreach (Producto producto in listaHeladera)
+                        {
+                            // si los dos obj son iguales se le restara al stock princiapal ( a la lista heladera)
+                            if (carrito == producto)
+                            {
+                                producto.Stock -= carrito.Stock;
+                                break;
+                            }
+                        }
+                    }
+                    txtSaldo.Text = $"{clienteMain.Saldo.ToString()}";
+                    listaCarrito.Clear();
+                    DGV_ActualizarDatos(listaHeladera);
+                }
+            }
+            else
+            {
+                MensajeDeError("Primero Añadir productos al carrito", "Error, carrito");
+            }
+        }
+        #endregion
 
         #region METODOS
         /// <summary>
@@ -186,8 +192,7 @@ namespace Login
         /// <returns></returns>
         public int DGV_GetFila()
         {
-            int posicion;
-            return posicion = dgvProductos.CurrentRow.Index;
+            return dgvProductos.CurrentRow.Index;
         }
 
         /// <summary>
@@ -198,8 +203,8 @@ namespace Login
         /// <returns>Devuelve un obj Producto con los datos del DataGridView </returns>
         public Producto DGV_GetProducto(int index, Producto p)
         {
-            p.Nombre = (eCortes)Convert.ToInt32(dgvProductos[1, index].Value);
-            p.Precio = Convert.ToInt32(dgvProductos[2, index].Value);
+            p.Nombre = (eCortes)Convert.ToInt32(dgvProductos[0, index].Value);
+            p.Precio = Convert.ToInt32(dgvProductos[1, index].Value);
             p.Stock = Convert.ToInt32(dgvProductos[2, index].Value);
             p.Detalle = dgvProductos[3, index].Value.ToString();
             return p;
@@ -235,6 +240,7 @@ namespace Login
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
 
         #endregion
 

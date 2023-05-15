@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca_Carniceria;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,9 @@ namespace Login
         {
             this.MinimizeBox = false;
             this.MaximizeBox = false;
+
+            Cliente cliente = new Cliente();
+            MessageBox.Show(cliente.SaludarUsuario());
             FrmHeladeraCliente frmHeladeraVendedor = new FrmHeladeraCliente();
             addForm(frmHeladeraVendedor);
         }

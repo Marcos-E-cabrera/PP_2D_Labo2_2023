@@ -22,8 +22,6 @@ namespace Biblioteca_Carniceria
             Saldo = saldo;
         }
 
-
-
         /// <summary>
         /// Instacion los clientes a la lista productos.
         /// </summary>
@@ -53,5 +51,10 @@ namespace Biblioteca_Carniceria
             new Cliente("Alvinia", "Vian", 731),
             new Cliente("Leonie", "Jaskowicz", 11462)
         };
+
+        public override string SaludarUsuario()
+        {
+            return "Hola, Haz Iniciado como Cliente";
+        }
     }    
 }

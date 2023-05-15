@@ -20,12 +20,19 @@ namespace Frm_Vendedor
         {
             this.MinimizeBox = false;
             this.MaximizeBox = false;
+            Vendedor vendedor = new Vendedor("Marcos", "Cabrera");
+            MessageBox.Show(vendedor.SaludarUsuario());
             FrmHeladeraVendedor frmHeladeraVendedor = new FrmHeladeraVendedor();
             addForm(frmHeladeraVendedor);
         }
         #endregion
 
         #region METODOS
+        /// <summary>
+        /// Agrega un formulario al panel principal del formulario actual, ajustando su tamaño
+        /// para que llene todo el espacio disponible.
+        /// </summary>
+        /// <param name="form">El formulario que se quiere agregar al panel.</param>
         public void addForm(Form form)
         {
             form.TopLevel = false;
@@ -40,10 +47,6 @@ namespace Frm_Vendedor
             this.Close();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
     }
 
 }

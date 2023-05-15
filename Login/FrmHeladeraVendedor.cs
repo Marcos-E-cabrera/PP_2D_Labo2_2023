@@ -15,14 +15,12 @@ namespace Login
 {
     public partial class FrmHeladeraVendedor : Form
     {
-        private Producto producto;
         private Cliente clienteMain;
 
         private List<Producto> listaHeladera = new List<Producto>();
         private List<Producto> listaCarrito = new List<Producto>();
 
-        private bool carrito;
-        private bool cliente;
+        private bool clienteIngresado;
         private bool productoEnCarrito;
         private bool ValidarCarrito;
 
@@ -33,8 +31,7 @@ namespace Login
 
             listaHeladera = Producto.ListaProductos;
 
-            carrito = false;
-            cliente = false;
+            clienteIngresado = false;
             productoEnCarrito = false;
             ValidarCarrito = false;
         }
@@ -67,7 +64,7 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnReponer_Click(object sender, EventArgs e)
         {
-            producto = new Producto();
+            Producto producto = new Producto();
             int index;
             // Devuelvo la posicion del dataGridView
             index = DGV_GetFila();
@@ -101,7 +98,7 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (cliente == false) // Si no se cargo un cliente
+            if (clienteIngresado == false) // Si no se cargo un cliente
             {
                 // Muestro la seleccion de clientes
                 FrmVenta frmVenta = new FrmVenta();
@@ -110,8 +107,7 @@ namespace Login
                 {
                     // le paso los datos del cliente
                     clienteMain = frmVenta.cliente;
-                    carrito = true;
-                    cliente = true;
+                    clienteIngresado = true;
                     MensajeDeOK("Carga de Cliente Exitosa!!!", " Carga de Cliente");
                     label1.Text = $"$ {clienteMain.Saldo.ToString()}";
                 }
@@ -135,56 +131,62 @@ namespace Login
         /// <param name="e"></param>
         private void ibtnAñadir_Click(object sender, EventArgs e)
         {
-            if (carrito)
+            // valida si se 
+            if (clienteIngresado)
             {
+                Producto producto = new Producto();
+                Carrito carrito = new Carrito();
+
                 // Catidad maxima que se puede poer en el carrito
-                bool tope = false;
-                int index;
+                bool stockMax = false; // stockMax del stock
+
+                int index; 
+                // obtengo la fila del producto
                 index = DGV_GetFila();
 
                 // Obtener el objeto Producto correspondiente a la fila seleccionada de la lista
                 producto = DGV_GetProducto(index, producto);
 
+                // el stock tiene q ser mayor que 0 para poder venderle
                 if (producto.Stock > 0)
                 {
+                    // el saldo tiene q ser mayor a 0 y mayor al precio del producto
                     if (clienteMain.Saldo > 0 && producto.Precio <= clienteMain.Saldo)
                     {
 
                         clienteMain.Saldo -= producto.Precio;   // Actualizar el saldo
 
-                        foreach (Producto p in listaCarrito)
+                        foreach (Producto aux in listaCarrito)
                         {
-                            if (p.Nombre == producto.Nombre)
+                            if (aux == producto) // sobrecarga de operadores
                             {
                                 // Si el producto ya está en la lista de carrito, aumentar su cantidad
-                                if (p.Stock < producto.Stock)
+                                if (aux.Stock < producto.Stock)
                                 {
-                                    p.Stock++;
+                                    aux.Stock++;
                                     productoEnCarrito = true;
                                 }
                                 else
                                 {
-                                    MensajeDeError("Tpo de producto alcanzado", "Error, Tope producto ");
+                                    MensajeDeError("stock de producto alcanzado", "Error, stockMax producto ");
                                     clienteMain.Saldo += producto.Precio;
-                                    tope = true;
+                                    stockMax = true;
                                 }
                                 break;
                             }
                         }
 
-                        if (!productoEnCarrito && tope == false)
+                 
+                        // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
+                        if (!productoEnCarrito && !stockMax)
                         {
-                            // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
-                            Producto productoCarrito = new Producto();
-                            productoCarrito.Nombre = producto.Nombre;
-                            productoCarrito.Precio = producto.Precio;
-                            productoCarrito.Stock = 1;
-                            productoCarrito.Detalle = producto.Detalle;
+                            producto.Stock = 1; // el stock lo paso como cantidad de producto.
                             listaCarrito.Add(producto);
                         }
 
-
+                        // se sumo un producto al carrito
                         productoEnCarrito = false;
+                        // se puede listar el carrito
                         ValidarCarrito = true;
                     }
                     else
@@ -214,24 +216,26 @@ namespace Login
         {
             if (ValidarCarrito == true)
             {
-                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain.Saldo, clienteMain.Nombre, clienteMain.Apellido);
+                FrmCarrito frmCarrito = new FrmCarrito(listaCarrito, clienteMain);
                 if (frmCarrito.ShowDialog() == DialogResult.OK)
                 {
-
-                    foreach (Producto productoCarrito in listaCarrito)
+                    // recorro es la lista de lcarrito
+                    foreach (Producto carrito in listaCarrito)
                     {
-                        foreach (Producto productoHeladera in listaHeladera)
+                        // recorrto la lista de la heladera
+                        foreach (Producto producto in listaHeladera)
                         {
-                            if (productoCarrito.Nombre == productoHeladera.Nombre)
+                            // si los dos obj son iguales se le restara al stock princiapal ( a la lista heladera)
+                            if (carrito == producto)
                             {
-                                productoHeladera.Stock -= productoCarrito.Stock;
+                                producto.Stock -= carrito.Stock;
                                 break;
                             }
                         }
                     }
                     label1.Text = $"$ {clienteMain.Saldo.ToString()}";
                     listaCarrito.Clear();
-                    CargarListaHeladera(listaHeladera);
+                    DGV_ActualizarDatos(listaHeladera);
                 }
             }
             else
@@ -244,7 +248,7 @@ namespace Login
         #region ORDENAR LISTA
         private void ibtnOrdenar_Click(object sender, EventArgs e)
         {
-            producto = new Producto();
+            Producto producto = new Producto();
             DGV_ActualizarDatos(producto.OrdenarProductos(cbOrdenar.SelectedIndex, listaHeladera));
         }
 
@@ -308,5 +312,10 @@ namespace Login
 
         #endregion
 
+        private void ibtnHistorial_Click(object sender, EventArgs e)
+        {
+            FrmHistorial frmHistorial = new FrmHistorial();
+            frmHistorial.ShowDialog();
+        }
     }
 }

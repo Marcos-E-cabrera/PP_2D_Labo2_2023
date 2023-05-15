@@ -45,7 +45,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(997, 45);
+            this.panel2.Size = new System.Drawing.Size(1216, 45);
             this.panel2.TabIndex = 6;
             // 
             // label1
@@ -86,7 +86,7 @@
             this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
             this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(950, 0);
+            this.ibtnSalir.Location = new System.Drawing.Point(1169, 0);
             this.ibtnSalir.Name = "ibtnSalir";
             this.ibtnSalir.Size = new System.Drawing.Size(47, 45);
             this.ibtnSalir.TabIndex = 17;
@@ -96,17 +96,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(997, 597);
+            this.panel1.Size = new System.Drawing.Size(1216, 597);
             this.panel1.TabIndex = 7;
             // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 642);
+            this.ClientSize = new System.Drawing.Size(1216, 642);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

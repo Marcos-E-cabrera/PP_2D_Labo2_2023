@@ -115,7 +115,7 @@ namespace Biblioteca_Carniceria
         /// Filtra los productos que estan sin stock (0) y los elimina de la lista
         /// </summary>
         /// <returns> Retorna la lista de heladera filtrada </returns>
-        public List<Producto> HeladeraCliente()
+        public static List<Producto> HeladeraCliente()
         {
             List<Producto> heladeraCliente = new List<Producto>();
 
@@ -157,7 +157,6 @@ namespace Biblioteca_Carniceria
             return l;
         }
 
-
         /// <summary>
         /// Valida la cantidad del stock y determina si es valido o no
         /// </summary>
@@ -189,5 +188,17 @@ namespace Biblioteca_Carniceria
 
             return retorno;
         }
+   
+        public static bool operator == ( Producto a, Producto b) 
+        {
+            return a.Nombre.Equals(b.Nombre);
+        }
+
+        public static bool operator != ( Producto a, Producto b ) 
+        { 
+           return !(a == b);
+        }
+    
+    
     }   
 }

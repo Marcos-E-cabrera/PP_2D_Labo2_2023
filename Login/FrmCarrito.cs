@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,41 +14,26 @@ using System.Windows.Forms;
 namespace Login
 {
     public partial class FrmCarrito : Form
-    {
-        #region CAMPOS
-        
+    {        
         private Cliente clienteMain = new Cliente();
-        private List<Producto> listaCarrito = new List<Producto>();
+        private Carrito carritoMain = new Carrito();
+        private Factura factura = new Factura();
+        private Historial historial = new Historial();
 
-        private bool carrito = false;
         private bool efectivo;
         private bool carritoVacio = false;
         private bool validarFactura = false;
         public bool compraEfectuada = false;
-        private decimal saldo;
-        private decimal total;
-        private decimal aux;
-        #endregion
-
-        #region PROPIEDADES
-        public decimal Saldo { get; set; }
-        public decimal Total { get; set; }
-        public decimal Aux { get; set; }
-        #endregion
-
        
         public FrmCarrito()
         {
             InitializeComponent();
         }
 
-        public FrmCarrito(List<Producto> listaProductos, decimal saldo, string nombre, string apellido)
+        public FrmCarrito(List<Producto> listaProductos, Cliente cliente) : this()
         {
-            InitializeComponent();
-            listaCarrito = listaProductos;
-            Saldo = saldo;
-            clienteMain.Nombre = nombre;
-            clienteMain.Apellido = apellido;
+            carritoMain.ListaCarrito = listaProductos;
+            clienteMain = cliente;
         }
 
         private void FrmCarrito_Load(object sender, EventArgs e)
@@ -60,32 +46,42 @@ namespace Login
 
         private void ibtnComprar_Click(object sender, EventArgs e)
         {
-            if (listaCarrito.Count == 0)
+            // pregunto si el carrito esta vacio
+            if (carritoMain.ListaCarrito.Count == 0)
             {
                 MessageBox.Show("El Carrito esta vacio");
                 carritoVacio = true;
             }
             else
             {
+                // si no se compro y el carrito esta lleno se peudo comprar
                 if (compraEfectuada == false && carritoVacio == false)
                 {
-                    Factura factura = new Factura();
+                    // pregunto como lo va a pagar
                     FrmOpcionPago frmOpcionPago = new FrmOpcionPago();
+
+                    // si es ok, pagara con efectivo y no lo paga con devito
                     if (frmOpcionPago.ShowDialog() == DialogResult.OK)
                     {
-                        efectivo = true;
-                        foreach (Producto producto in listaCarrito)
-                        {
-                            factura.Cantidad = producto.Stock;
-                            factura.PrecioUnitario = producto.Precio;
-                            factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                            Total = factura.Total;
-                        }
-                        Saldo += Total;
+                        efectivo = true; // se pagara con efectivo
 
-                        if (Total <= Saldo)
+                        // cargo los productos comprados a la factura
+                        factura.CrearFactura(carritoMain.ListaCarrito);
+
+                        // le paso la cantidad a pagar al carrito
+                        carritoMain.Total = factura.Total;
+
+                        // el total apagar tiene que ser igual o menor al saldo del cliente
+                        if (carritoMain.Total <= carritoMain.Saldo)
                         {
                             MensajeDeOK("Compra exitosa!!!", "Compra");
+
+                            // Guardo la factura del cliente
+                            historial.AgregarAlHistorial( clienteMain.Nombre, clienteMain.Apellido);
+
+                            // estome da el gasto total
+                            carritoMain.Saldo += carritoMain.Total;
+
                             validarFactura = true;
                             compraEfectuada = true;
                         }
@@ -96,22 +92,28 @@ namespace Login
                     }
                     else
                     {
-                        efectivo = false;
-                        foreach (Producto producto in listaCarrito)
-                        {
-                            factura.Cantidad = producto.Stock;
-                            factura.PrecioUnitario = producto.Precio;
-                            factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                            Total = factura.Total;
-                        }
-                        Saldo += Total;
                         DialogResult dialogResult = MessageBox.Show("Con devito Tendras un 5% de recargo", "Pago por Devito", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
-                            Aux = AgregarCincoPorCiento((decimal)Total);
-                            if (Aux <= Saldo)
+                            // sepagara con devito
+                            efectivo = false;
+
+                            // cargo los productos comprados a la factura
+                            factura.CrearFactura(carritoMain.ListaCarrito);
+
+                            // le paso la cantidad a pagar al carrito
+                            carritoMain.Total = factura.Total;
+
+                            carritoMain.Aux = carritoMain.RecargoDevito(carritoMain.Total);
+
+                            if (carritoMain.Aux <= carritoMain.Saldo)
                             {
                                 MensajeDeOK("Compra exitosa!!!", "Compra");
+                                // Guardo la factura del cliente
+                                historial.AgregarAlHistorial(clienteMain.Nombre, clienteMain.Apellido);
+
+                                // estome da el gasto total
+                                carritoMain.Saldo += carritoMain.Total;
                                 validarFactura = true;
                                 compraEfectuada = true;
                             }
@@ -138,22 +140,7 @@ namespace Login
         {
             if (validarFactura == true)
             {
-                List<Factura> listaFactura = new List<Factura>();
-                foreach (Producto producto in listaCarrito)
-                {
-                    Factura factura = new Factura();
-                    factura.Descripcion = producto.Nombre;
-                    factura.Cantidad = producto.Stock;
-                    factura.PrecioUnitario = producto.Precio;
-                    factura.Total = factura.Cantidad * factura.PrecioUnitario;
-                    if (!efectivo)
-                    {
-                        factura.Total = Aux;
-                    }
-                    listaFactura.Add(factura);
-                }
-
-                FrmFactura frmFactura = new FrmFactura(listaFactura, efectivo, clienteMain);
+                FrmFactura frmFactura = new FrmFactura( efectivo, clienteMain);
                 frmFactura.ShowDialog();
             }
             else
@@ -163,7 +150,7 @@ namespace Login
         }
         
 
-]        private void ibtnSalir_Click(object sender, EventArgs e)
+        private void ibtnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
             if (!compraEfectuada)
@@ -178,22 +165,10 @@ namespace Login
 
         #region METODOS 
 
-        /// <summary>
-        /// Agregra 5% de recargo al total
-        /// </summary>
-        /// <param name="total"></param>
-        /// <returns></returns>
-        public decimal AgregarCincoPorCiento(decimal total)
-        {
-            decimal cincoPorCiento = total * 0.05m;
-
-            return total += cincoPorCiento;
-        }
-
         private void MostrarCarrito()
         {
             dgvCarrito.Refresh();
-            dgvCarrito.DataSource = listaCarrito;
+            dgvCarrito.DataSource = carritoMain.ListaCarrito;
             dgvCarrito.Columns[1].HeaderText = "Precio x Kilo";
             dgvCarrito.Columns[2].HeaderText = "Cantidad";
         }
@@ -217,11 +192,6 @@ namespace Login
         {
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
-
-
-
-
-
         #endregion
 
         
