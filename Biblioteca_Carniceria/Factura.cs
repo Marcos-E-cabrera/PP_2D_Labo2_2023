@@ -36,21 +36,7 @@ namespace Biblioteca_Carniceria
             PrecioUnitario = preU;
         }
 
-        public void CrearFactura(List<Producto> aux)
-        {
-            Factura factura = new Factura();
-
-            foreach (Producto prod in aux)
-            {
-                factura.Nombre = prod.Nombre.ToString();
-                factura.cantidad = prod.Stock;
-                factura.PrecioUnitario = prod.Precio;
-                factura.Total = prod.Stock * prod.Precio;
-
-                Factura.ListaFactura.Add(new Factura(factura.Nombre, factura.cantidad, factura.Total, factura.PrecioUnitario));
-            }
-        }
-
+        // Mostrar factura
 
     }
 }

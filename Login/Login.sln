@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login", "Login.csproj", "{46C421B3-6B82-44F8-9E34-88599AEEB930}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_Carniceria", "..\Biblioteca_Carniceria\Biblioteca_Carniceria.csproj", "{F5B679D3-07BF-4AF3-BE24-47B009F254E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_Carniceria", "..\Biblioteca_Carniceria\Biblioteca_Carniceria.csproj", "{F5B679D3-07BF-4AF3-BE24-47B009F254E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\Logica\Logica.csproj", "{DCB4C2BC-D1BD-487A-8DD5-BDEE74AEEA9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F5B679D3-07BF-4AF3-BE24-47B009F254E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B679D3-07BF-4AF3-BE24-47B009F254E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B679D3-07BF-4AF3-BE24-47B009F254E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB4C2BC-D1BD-487A-8DD5-BDEE74AEEA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB4C2BC-D1BD-487A-8DD5-BDEE74AEEA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB4C2BC-D1BD-487A-8DD5-BDEE74AEEA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB4C2BC-D1BD-487A-8DD5-BDEE74AEEA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

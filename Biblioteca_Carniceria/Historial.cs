@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_Carniceria
 {
-    public class Historial : Cliente
+    public class Historial 
     {
         private string nombreProducto;
         private int cantidad;
         private decimal total;
+        private string nombre;
+        private string apellido;
 
         public string NombreProducto { get => nombreProducto; set => nombreProducto = value; }
         public int Cantidad { get => cantidad; set => cantidad = value; }
         public decimal Total { get => total; set => total = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Apellido { get => apellido; set => apellido = value; }
 
         public static List<Historial> listaHistorial = new List<Historial>();
 
@@ -35,19 +39,5 @@ namespace Biblioteca_Carniceria
             Nombre = nombre;
             Apellido = apellido;
         }
-
-        public void AgregarAlHistorial(string nombre, string apellido)
-        {
-            Historial historial = new Historial();
-            foreach (Factura factura in Factura.ListaFactura) 
-            {
-                historial.NombreProducto = factura.Nombre.ToString();
-                historial.cantidad = factura.Cantidad;
-                historial.Total = factura.Total;
-
-                Historial.listaHistorial.Add(new Historial( historial.NombreProducto, historial.Cantidad,historial.Total, nombre, apellido));
-            }
-        }
-
     }
 }
