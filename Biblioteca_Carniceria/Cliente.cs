@@ -7,37 +7,161 @@ using System.Threading.Tasks;
 // LOGIN -> Cliente
 namespace Biblioteca_Carniceria
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
         // atributos
-        private string nombre;
-        private string apellido;
-        private decimal saldo;
+        string nombre;
+        string apellido;
 
-        // Propiedades
-        public decimal Saldo { get => saldo; set => saldo = value; }
+        // variables globales
+        int _indexCliente;
+        int _indexProducto;
+        decimal _saldo;
+        decimal _auxMonto;
+
+        // flag saldo
+        private bool _clienteCargado;
+
+        // flag Carrito
+        private bool _stockMax;
+        private bool _productoCargado;
+
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
+        public int IndexCliente { get => _indexCliente; set => _indexCliente = value; }
+        public int IndexProducto { get => _indexProducto; set => _indexProducto = value; }
+        public decimal Saldo { get => _saldo; set => _saldo = value; }
+        public decimal AuxMonto { get => _auxMonto = Saldo; set => _auxMonto = value; }
+
+        /// <summary>
+        /// Lista harcodeada de clientes. El vendedor va a seleccionar uno de estos clientes.
+        /// </summary>
+        public List<Cliente> ListClientes;
+        public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
 
         // constructores
         public Cliente ()
         {
-            Nombre = string.Empty;
-            Apellido = string.Empty;
+            ListClientes = new List<Cliente>();
+            ListCarrito = new List<Producto>();
+            Nombre = "XXXXXX";
+            Apellido = "XXXXXX";
             Saldo = 0;
+            _stockMax = false;
+            _productoCargado = false;
         }
 
-        public Cliente(string nombre, string apellido, decimal saldo)
+        public Cliente(string nombre, string apellido) : this()
         {
             Nombre = nombre;
             Apellido = apellido;
+        }
+
+        public Cliente(string nombre, string apellido, decimal saldo) : this (nombre,apellido)
+        {
             Saldo = saldo;
+        }
+
+        #region VENTA
+
+
+        /// <summary>
+        /// Valida la carga de un producto para ser cargado al carrito
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns>retorna 0 (OK), 1(sin stock), 2(no alcanza el saldo), 3(Tope de producto)</returns>
+        public override int CargarCarrito(Producto producto)
+        {
+            Producto aux = new Producto();
+
+            int retorno = 1; // cliente no cargado
+
+            if (producto.Stock > 0) // pregunta si el produto tiene stock
+            {
+                // el saldo tiene q ser mayor a 0 y mayor al precio del producto
+                if (Saldo > 0 && producto.Precio <= Saldo)
+                {
+                    foreach (Producto producto_Carrito in ListCarrito)
+                    {
+                        // al saldo le voy restando eel precio del producto
+                        AuxMonto -= producto.Precio;   // Actualizar el saldo
+
+                        // SI el producto_Carrito = al producto seleccionado se acumula
+                        if (producto_Carrito == producto) // sobrecarga de operadores
+                        {
+                            // Si el producto ya está en la lista de carrito, aumentar su cantidad
+                            if (producto_Carrito.Stock < producto.Stock)  // la cantidad que se compra tiene q ser menor al stock del producto
+                            {
+                                // El stock pasara a ser cantidad en la lista del carrito
+                                producto_Carrito.Stock++;
+                                // producto ya carcado
+                                _productoCargado = true;
+                                retorno = 0;
+                            }
+                            else
+                            {
+                                retorno = 3; // tope de producto
+                                _stockMax = true;
+                            }
+                            break;
+                        }
+                    }
+
+
+                    // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
+                    if (!_productoCargado && !_stockMax)
+                    {
+                        aux = producto;
+                        ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1, aux.Tipo));
+                        retorno = 0;
+                    }
+
+                    // se sumo un producto al carrito
+                    _productoCargado = false;
+
+                }
+                else
+                {
+                    retorno = 2;
+                    Console.WriteLine("El saldo no es suficiente para comprar el producto");
+                }
+            }
+            else
+            {
+                retorno = 1;
+                Console.WriteLine("No hay stock en ese producto");
+            }
+
+            return retorno;
+        }
+        #endregion
+
+
+        #region selecionar producto
+        /// <summary>
+        /// Obtiene un producto de la lista productos y lo devuelve.
+        /// </summary>
+        /// <param name="index"> index del producto que se quiere obtener</param>
+        /// <returns>Retorna el producto obtenido del index</returns>
+        public Producto getProducto(int index)
+        {
+            Producto producto = new Producto();
+            if (index < Heladera.ListHeladera.Count && index >= 0)
+            {
+                producto = Heladera.ListHeladera[index];
+            }
+
+            return producto;
+        }
+        #endregion
+
+
+        public override string ObtenerUsuario()
+        {
+            return "Cliente";
         }
 
 
 
-
-
-
-    }    
+    }
 }

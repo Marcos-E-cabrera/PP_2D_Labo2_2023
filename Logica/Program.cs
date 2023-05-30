@@ -29,13 +29,13 @@ namespace Logica
             //Console.WriteLine($"Stock del producto: {producto.Stock}");
 
             Console.WriteLine("[ VENDER ]");
-            producto = vendedor.getProducto(2);
+            heladera.getProducto(2, out producto);
             vendedor.CargarCarrito(producto);
             vendedor.CargarCarrito(producto);
-            producto = vendedor.getProducto(4);
-            vendedor.CargarCarrito(producto);
-            producto = vendedor.getProducto(5);
-            vendedor.CargarCarrito(producto);
+            //producto = vendedor.getProducto(4);
+            //vendedor.CargarCarrito(producto);
+            //producto = vendedor.getProducto(5);
+            //vendedor.CargarCarrito(producto);
 
             Console.WriteLine("[ COMPRAR ]");
             carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente, true);
@@ -65,13 +65,13 @@ namespace Logica
             Console.WriteLine($"Cliente: {cliente2.Nombre} {cliente2.Apellido}, Saldo: {Vendedor.MontoCliene}");
 
             Console.WriteLine("[ VENDER ]");
-            producto = vendedor.getProducto(6);
+            heladera.getProducto(6, out producto);
             vendedor.CargarCarrito(producto);
             vendedor.CargarCarrito(producto);
-            producto = vendedor.getProducto(24);
-            vendedor.CargarCarrito(producto);
-            producto = vendedor.getProducto(19);
-            vendedor.CargarCarrito(producto);
+            //producto = vendedor.getProducto(24);
+            //vendedor.CargarCarrito(producto);
+            //producto = vendedor.getProducto(19);
+            //vendedor.CargarCarrito(producto);
 
             Console.WriteLine("[ COMPRAR ]");
             carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente2, false);
@@ -100,13 +100,13 @@ namespace Logica
             Console.WriteLine($"Cliente: {cliente3.Nombre} {cliente3.Apellido}, Saldo: {cliente3.Saldo}");  
 
             Console.WriteLine("[ VENDER ]");
-            producto = cliente3.getProducto(2);
+            heladera.getProducto(2,out producto);
             cliente3.CargarCarrito(producto);
             cliente3.CargarCarrito(producto);
-            producto = cliente3.getProducto(4);
-            cliente3.CargarCarrito(producto);
-            producto = cliente3.getProducto(5);
-            cliente3.CargarCarrito(producto);
+            //producto = cliente3.getProducto(4);
+            //cliente3.CargarCarrito(producto);
+            //producto = cliente3.getProducto(5);
+            //cliente3.CargarCarrito(producto);
 
 
             Console.WriteLine("[ COMPRAR ]");

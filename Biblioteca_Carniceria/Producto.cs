@@ -8,31 +8,37 @@ namespace Biblioteca_Carniceria
 {
     public class Producto
     {
-        private eCortes nombre;
-        private int precio;
-        private int stock;
-        private string detalle;
+        private eCortes _nombre;
+        private decimal _Precio;
+        private int _Stock;
+        private eTipo _tipo;
 
-        public eCortes Nombre { get => nombre; set => nombre = value; }
-        public int Precio { get => precio; set => precio = value; }
-        public int Stock { get => stock; set => stock = value; }
-        public string Detalle { get => detalle; set => detalle = value; }
+        public eCortes Nombre { get => _nombre; set => _nombre = value; }
+        public decimal Precio { get => _Precio; set => _Precio = value; }
+        public int Stock { get => _Stock; set => _Stock = value; }
+        public eTipo Tipo { get => _tipo; set => _tipo = value; }
 
         public Producto()
         {
-            Nombre = new eCortes();
-            precio = 0;
+            Nombre = 0;
+            Precio = 0;
             Stock = 0;
-            Detalle= string.Empty;
+            Tipo = 0;
         }
 
-        public Producto(eCortes nombre, int precio, int stock, string detalle) : this()
+        public Producto(eCortes nombre, decimal precio, int stock) : this()
         {
             Nombre = nombre;
             Precio = precio;
             Stock = stock;
-            Detalle = detalle;
         }
+
+        public Producto(eCortes nombre, decimal precio, int stock, eTipo tipo) : this( nombre, precio,stock)
+        {
+            Tipo = tipo;
+        }
+
+      
 
         public static bool operator == ( Producto a, Producto b) 
         {

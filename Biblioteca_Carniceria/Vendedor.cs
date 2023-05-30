@@ -1,50 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+    
 
 namespace Biblioteca_Carniceria
 {
-    public class Vendedor : Heladera
+    public class Vendedor : Usuario
     {
         // variables globales
-        private static int indexCliente;
-        private static int indexProducto;
-        private static decimal saldoCliente;
+        public static decimal MontoCliene;
 
         // flag saldo
-        private bool clienteCargado;
+        bool _clienteCargado;
 
         // flag Carrito
-        private bool stockMax;
-        private bool productoCargado;
+        bool _stockMax;
+        bool _productoCargado;
 
         /// <summary>
         /// Lista harcodeada de clientes. El vendedor va a seleccionar uno de estos clientes.
         /// </summary>
-        private List<Cliente> ListClientes = new List<Cliente>();
-
-        public static List<Producto> ListCarrito = new List<Producto>(); // Lista carrito ( contiene los productos en el changito)
-
-        public static decimal SaldoCliente { get => saldoCliente; set => saldoCliente = value; }
-        public static int IndexCliente { get => indexCliente; set => indexCliente = value; }
-        public static int IndexProducto { get => indexProducto; set => indexProducto = value; }
+        public List<Cliente> ListClientes;
+        public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
+        public static List<Historial> ListaHistorial = new List<Historial>();
 
         public Vendedor()
         {
+            ListClientes = new List<Cliente>();
+            ListCarrito = new List<Producto>();
+
             GenerarClientes();
-            SaldoCliente = 0;
-            clienteCargado= false;
-            stockMax = false;
-            productoCargado = false;
+            MontoCliene = 0;
+            _clienteCargado = false;
+            _stockMax = false;
+            _productoCargado = false;
         }
 
-        // PUNTO 1 - SELECCION DE CLIENTE
+        #region SELECCION DE CLIENTE
+
         #region Generar Cliente
         /// <summary>
-        /// Genero una lista de cliente para ser seleccionado
+        /// Genera una lista de clientes
         /// </summary>
         private void GenerarClientes()
         {
@@ -74,105 +75,43 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Mostrar Clientes
-        /// <summary>
-        /// Permite Listar un grupo de clientes para porder venderle
-        /// </summary>
-        /// <returns></returns>
-        public void MostrarCliente(List<Cliente> cliente) // Despues pasarlo al datagridview
-        {
-            Console.WriteLine("Nombre,Apellido,Saldo");
-            foreach (Cliente aux in cliente)
-            {
-                Console.WriteLine($"{aux.Nombre}, {aux.Apellido}, ${aux.Saldo}");
-            }
-        }
-        #endregion
-
-        #region Mostrar Cliente seleccionado
-        /// <summary>
-        /// Muestra el Cliente pasado como parametro
-        /// </summary>
-        /// <param name="cliente"></param>
-        public void MostrarClienteSeleccionado(Cliente cliente) // Despues pasarlo al datagridview
-        {
-           Console.WriteLine($"{cliente.Nombre}, {cliente.Apellido}, ${cliente.Saldo}");
-        }
-        #endregion
-
         #region Seleccionar Cliente
         /// <summary>
-        /// Pide seleccionar un cliente de la ListCliente y lo devuelve para poder ser usado
+        /// Obtiene un cliente de la lista clintes y lo devuelve.
         /// </summary>
-        /// <returns> retorna el cliente selecionado</returns>
-        public Cliente SeleccionDeCliente()
+        /// <param name="index"> index del cliente que se quiere obtener</param>
+        /// <returns>Retorna el cliente obtenido del index</returns>
+        public Cliente getCliente(int index)
         {
-            Cliente clienteSelecionado = new Cliente();
+            Cliente cliente = new Cliente();
 
-            MostrarCliente(ListClientes);
-
-            Console.WriteLine("Selecione el indice del cliente: ");
-            indexCliente = int.Parse(Console.ReadLine());
-
-            if (IndexCliente < ListClientes.Count && IndexCliente >= 0)
+            if (index < ListClientes.Count && index >= 0)
             {
-                clienteSelecionado = ListClientes[IndexCliente];
-                CargarSalso(clienteSelecionado);
-                clienteCargado = true;
-            }           
-
-            return clienteSelecionado;
-        }
-        #endregion
-
-        // PUNTO 2 - REPONER
-
-        #region Mostrar Heladera
-        /// <summary>
-        /// Muestra la listHeladera
-        /// </summary>
-        /// <param name="lista"></param>
-        public void MostrarHeladera()
-        {
-            Console.WriteLine("Nombre, Precio, Stock. Detalle");
-            foreach (Producto producto in ListHeladera)
-            {
-                Console.WriteLine($"{producto.Nombre}, {producto.Precio}, {producto.Stock}, {producto.Detalle}");
+                cliente = ListClientes[index];
+                getMontoCliente(cliente);
+                _clienteCargado = true;
             }
+            
+            return cliente;
         }
         #endregion
 
-        #region Mostrar producto seleccionado
+        #region Carga de Monto
         /// <summary>
-        /// Muestra el producto seleccionado
+        /// Carga el dinero del cliente en la variable estatica MontoCliente
         /// </summary>
-        /// <param name="producto"></param>
-        public void MostrarProductoSeleccionado(Producto producto)
+        /// <param name="cliente"></param>
+        public void getMontoCliente(Cliente cliente)
         {
-            Console.WriteLine($"{producto.Nombre}, {producto.Precio}, {producto.Stock}, {producto.Detalle}");
+            MontoCliene = cliente.Saldo;
         }
         #endregion
 
-        #region selecionar producto
-        /// <summary>
-        /// Selecciona un producto de la lista
-        /// </summary>
-        /// <returns> devuelve el producto seleccionado</returns>
-        public Producto SeleccionarProducto ()
-        {
-            Producto producto = new Producto();
-           
-            Console.WriteLine("Selecione el indice del producto: ");
-            indexProducto = int.Parse(Console.ReadLine());
-
-            if (IndexProducto < ListHeladera.Count && IndexProducto >= 0)
-            {
-                producto = ListHeladera[IndexProducto];
-            }
-
-            return producto;
-        }
         #endregion
+
+        #region REPONER
+
+       
 
         #region Reponer stock
         /// <summary>
@@ -181,17 +120,16 @@ namespace Biblioteca_Carniceria
         /// <param name="producto"></param>
         /// <param name="cantidad"></param>
         /// <returns> si hay error devuelve 1 ( es menor a 0 o menor al stock original)); 2 ( es una letra ) y 0 (si esta ok)</returns>
-        public int ReponerStock(Producto producto, string cantidad)
+        public static int Reponer(Producto producto, string cantidad)
         {
             int retorno;
             int aux;
 
             if (int.TryParse(cantidad, out aux))
             {
-                if (aux > 0 && producto.Stock <= aux)
+                if (aux > 0 )
                 {
-                    // Actualizar el stock del producto
-                    producto.Stock = aux;
+                    producto.Stock += aux;
                     retorno = 0;
                 }
                 else
@@ -208,49 +146,33 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        // PUNTO 3 - VENTA
-        #region Carga de SAaldo
-        /// <summary>
-        /// Cargo el saldo del cliente a la variable goblal para poder hacer compras
-        /// </summary>
-        /// <param name="cliente"></param>
-        public void CargarSalso( Cliente cliente )
-        {
-            SaldoCliente = cliente.Saldo;
-            Console.WriteLine($"Se cargo el saldo: ${SaldoCliente}");
-        }
         #endregion
 
-        #region aviso de carga de cliente 
-        public bool CargaDeCliente ()
-        {
-            return clienteCargado;
-        }
-        #endregion
+        #region VENTA
 
-        #region Carga de carrito
+
         /// <summary>
         /// Valida la carga de un producto para ser cargado al carrito
         /// </summary>
         /// <param name="producto"></param>
-        /// <returns>retorna 0 (OK)< 1(Cliente no selecionado), 2(sin stock), 3(no alcanza el saldo)</returns>
-        public int CargaCarrito(Producto producto) // ARREGLAR ACA!!
+        /// <returns>retorna 0 (OK)< 1(Cliente no selecionado), 2(sin stock), 3(no alcanza el saldo), 4(Tope de producto)</returns>
+        public override int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
 
             int retorno = 1; // cliente no cargado
 
-            if (CargaDeCliente())
+            if (_clienteCargado)
             {
-                if ( producto.Stock > 0 ) // pregunta si el produto tiene stock
+                if (producto.Stock > 0) // pregunta si el produto tiene stock
                 {
                     // el saldo tiene q ser mayor a 0 y mayor al precio del producto
-                    if (saldoCliente > 0 && producto.Precio <= saldoCliente)
-                    {                      
-                        foreach (Producto producto_Carrito in ListCarrito) 
+                    if (MontoCliene > 0 && producto.Precio <= MontoCliene)
+                    {
+                        foreach (Producto producto_Carrito in ListCarrito)
                         {
                             // al saldo le voy restando eel precio del producto
-                            saldoCliente -= producto.Precio;   // Actualizar el saldo
+                            MontoCliene -= producto.Precio;   // Actualizar el saldo
 
                             // SI el producto_Carrito = al producto seleccionado se acumula
                             if (producto_Carrito == producto) // sobrecarga de operadores
@@ -260,14 +182,14 @@ namespace Biblioteca_Carniceria
                                 {
                                     // El stock pasara a ser cantidad en la lista del carrito
                                     producto_Carrito.Stock++;
-                                     // producto ya carcado
-                                    productoCargado = true;
+                                    // producto ya carcado
+                                    _productoCargado = true;
                                     retorno = 0;
                                 }
                                 else
                                 {
-                                    Console.WriteLine("stock de producto alcanzado");
-                                    stockMax = true;
+                                    retorno = 4; // tope de producto
+                                    _stockMax = true;
                                 }
                                 break;
                             }
@@ -275,16 +197,16 @@ namespace Biblioteca_Carniceria
 
 
                         // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
-                        if (!productoCargado && !stockMax)
+                        if (!_productoCargado && !_stockMax)
                         {
                             aux = producto;
+                            ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1, aux.Tipo));
                             retorno = 0;
-                            ListCarrito.Add(new Producto(aux.Nombre,aux.Precio,1, aux.Detalle));
-                            Console.WriteLine("Se añadio correctamente!!");
                         }
 
                         // se sumo un producto al carrito
-                        productoCargado = false;
+                        _productoCargado = false;
+
                     }
                     else
                     {
@@ -307,37 +229,37 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Mostrar carrito
-        public void MostrarCarrito ()
+
+
+        #region Cargar factura al historial Historial
+        public static void CargarHistorial(List<Factura> factura,string nombre, string apellido)
         {
-            Console.WriteLine("Nombre,precio,cantidad,detalle");
-            foreach (Producto aux in ListCarrito)
+            Historial newHistorial = new Historial();
+
+            foreach (Factura f in factura)
             {
-                Console.WriteLine($"{aux.Nombre}, {aux.Precio}, {aux.Stock}, {aux.Detalle}");
+                newHistorial.NombreProducto = f.Nombre.ToString();
+                newHistorial.Cantidad = f.Cantidad;
+                newHistorial.Total = f.Total;
+                newHistorial.Nombre = nombre;
+                newHistorial.Apellido = apellido;
+
+                ListaHistorial.Add(new Historial(newHistorial.NombreProducto, newHistorial.Cantidad, newHistorial.Total, newHistorial.Nombre, newHistorial.Apellido));
             }
         }
         #endregion
 
-      
 
-        // ACTUALIZAR HELADERA
-        #region Actualizacion de la lista heladera
-        /// <summary>
-        /// Actualiza la lista de la heladera principal
-        /// </summary>
-        /// <param name="producto"></param>
-        public void ActualizarHeladera(Producto producto)
+        public void LimpiarCarrito()
         {
-      
-            foreach ( Producto aux in ListHeladera )
-            {
-                if ( ListHeladera[IndexProducto] == aux )
-                {
-                    aux.Stock = producto.Stock;
-                }
-            }
+            ListCarrito.Clear();
         }
-        #endregion
+
+
+        public override string ObtenerUsuario()
+        {
+            return "Vendedor";
+        }
 
     }
 }

@@ -6,38 +6,32 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_Carniceria
 {
-    public class Historial 
+    public class Historial : Factura
     {
-        private string nombreProducto;
-        private int cantidad;
-        private decimal total;
-        private string nombre;
-        private string apellido;
+        // Nombre Cliente
+        string _nombre;
+        string _apellido;
+        string _nombreProducto;
 
-        public string NombreProducto { get => nombreProducto; set => nombreProducto = value; }
-        public int Cantidad { get => cantidad; set => cantidad = value; }
-        public decimal Total { get => total; set => total = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-
-        public static List<Historial> listaHistorial = new List<Historial>();
+        public string Nombre { get => _nombre; set => _nombre = value; }
+        public string Apellido { get => _apellido; set => _apellido = value; }
+        public string NombreProducto { get => _nombreProducto; set => _nombreProducto = value; }
 
         public Historial()
         {
-            NombreProducto = string.Empty;
-            Cantidad = 0;
-            Total = 0;
-            Nombre = string.Empty;
-            Apellido= string.Empty;
+            NombreProducto = "XXXXXX";
+            Nombre = "XXXXXX";
+            Apellido= "XXXXXX";
         }
 
-        public Historial(string producto, int cantidad, decimal total, string nombre, string apellido) :this()
+        public Historial(string producto, int cantidad, decimal total, string nombre, string apellido) :base(cantidad, total)
         {
             NombreProducto = producto;
-            Cantidad = cantidad;
-            Total = total;
             Nombre = nombre;
             Apellido = apellido;
         }
+
+
+
     }
 }

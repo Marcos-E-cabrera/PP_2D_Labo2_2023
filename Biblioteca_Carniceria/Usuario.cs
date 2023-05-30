@@ -8,24 +8,26 @@ namespace Biblioteca_Carniceria
 {
     public abstract class Usuario
     {
-        private string nombre;
-        private string apellido;
+        private string _nombre;
+        private string _apellido;
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
+        public string Nombre { get => _nombre; set => _nombre = value; }
+        public string Apellido { get => _apellido; set => _apellido = value; }
 
-        public Usuario() 
+        public Usuario()
         {
-            Nombre = string.Empty;
-            Apellido = string.Empty;
+            Nombre = "XXXXXX";
+            Apellido = "XXXXXX";
         }
 
-        public Usuario( string nombre, string apellido) : this()
+        public Usuario( string nombre, string apellido): this()
         {
             Nombre = nombre;
             Apellido = apellido;
         }
 
-        public abstract string SaludarUsuario();
+        public abstract string ObtenerUsuario();
+
+        public abstract int CargarCarrito(Producto producto);
     }
 }
