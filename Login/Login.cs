@@ -48,8 +48,8 @@ namespace Login
                 case "djacquest0@unesco.org":
                     if (txtPassword.Text == "WqXtIk")
                     {
-                        Frm_Cliente frmCliente = new Frm_Cliente();
-                        frmCliente.Show(this);
+                        //Frm_Cliente frmCliente = new Frm_Cliente();
+                        //frmCliente.Show(this);
                     }
                     else
                     {

@@ -28,29 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            panel1 = new Panel();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            panelHeladera = new Panel();
             dgvHeladera = new DataGridView();
-            panel2 = new Panel();
-            btnEliminar = new FontAwesome.Sharp.IconButton();
-            btnReponer = new FontAwesome.Sharp.IconButton();
-            btnModificar = new FontAwesome.Sharp.IconButton();
-            panel1.SuspendLayout();
+            btnReponer = new Button();
+            label1 = new Label();
+            txtStock = new TextBox();
+            grbReponer = new GroupBox();
+            btnLimpiar = new Button();
+            btnEliminar = new Button();
+            btnAgregar = new Button();
+            cbxTipo = new ComboBox();
+            label4 = new Label();
+            txtPrecio = new TextBox();
+            txtNombre = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            panelHeladera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHeladera).BeginInit();
-            panel2.SuspendLayout();
+            grbReponer.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // panelHeladera
             // 
-            panel1.BackColor = SystemColors.ControlDark;
-            panel1.Controls.Add(dgvHeladera);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(870, 631);
-            panel1.TabIndex = 0;
+            panelHeladera.BackColor = SystemColors.ControlDark;
+            panelHeladera.Controls.Add(dgvHeladera);
+            panelHeladera.Dock = DockStyle.Top;
+            panelHeladera.Location = new Point(0, 0);
+            panelHeladera.Name = "panelHeladera";
+            panelHeladera.Size = new Size(1200, 579);
+            panelHeladera.TabIndex = 0;
             // 
             // dgvHeladera
             // 
@@ -60,24 +69,24 @@
             dgvHeladera.BackgroundColor = Color.White;
             dgvHeladera.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvHeladera.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 170, 161);
-            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvHeladera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 170, 161);
+            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvHeladera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvHeladera.ColumnHeadersHeight = 29;
             dgvHeladera.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(176, 205, 197);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvHeladera.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvHeladera.DefaultCellStyle = dataGridViewCellStyle2;
             dgvHeladera.Dock = DockStyle.Fill;
             dgvHeladera.EnableHeadersVisualStyles = false;
             dgvHeladera.GridColor = SystemColors.WindowText;
@@ -88,86 +97,180 @@
             dgvHeladera.RowHeadersVisible = false;
             dgvHeladera.RowHeadersWidth = 51;
             dgvHeladera.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle6.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(176, 205, 197);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
-            dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvHeladera.RowTemplate.Height = 29;
-            dgvHeladera.Size = new Size(870, 631);
+            dgvHeladera.Size = new Size(1200, 579);
             dgvHeladera.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ActiveCaption;
-            panel2.Controls.Add(btnEliminar);
-            panel2.Controls.Add(btnReponer);
-            panel2.Controls.Add(btnModificar);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(870, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(179, 631);
-            panel2.TabIndex = 1;
-            // 
-            // btnEliminar
-            // 
-            btnEliminar.IconChar = FontAwesome.Sharp.IconChar.SquareMinus;
-            btnEliminar.IconColor = Color.Black;
-            btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            btnEliminar.Location = new Point(63, 442);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(52, 51);
-            btnEliminar.TabIndex = 5;
-            btnEliminar.UseVisualStyleBackColor = true;
+            dgvHeladera.CellClick += dgvHeladera_CellClick;
             // 
             // btnReponer
             // 
-            btnReponer.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
-            btnReponer.IconColor = Color.Black;
-            btnReponer.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnReponer.Location = new Point(63, 124);
+            btnReponer.Location = new Point(129, 43);
             btnReponer.Name = "btnReponer";
-            btnReponer.Size = new Size(52, 47);
-            btnReponer.TabIndex = 4;
+            btnReponer.Size = new Size(76, 29);
+            btnReponer.TabIndex = 8;
+            btnReponer.Text = "Reponer";
             btnReponer.UseVisualStyleBackColor = true;
-            btnReponer.Click += btnReponer_Click;
+            btnReponer.Click += btnReponer_Click_1;
             // 
-            // btnModificar
+            // label1
             // 
-            btnModificar.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            btnModificar.IconColor = Color.Black;
-            btnModificar.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnModificar.Location = new Point(63, 275);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(52, 46);
-            btnModificar.TabIndex = 3;
-            btnModificar.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(987, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 20);
+            label1.TabIndex = 7;
+            label1.Text = "Tipo";
+            // 
+            // txtStock
+            // 
+            txtStock.Location = new Point(862, 43);
+            txtStock.Name = "txtStock";
+            txtStock.Size = new Size(108, 27);
+            txtStock.TabIndex = 6;
+            // 
+            // grbReponer
+            // 
+            grbReponer.Controls.Add(btnLimpiar);
+            grbReponer.Controls.Add(btnEliminar);
+            grbReponer.Controls.Add(btnAgregar);
+            grbReponer.Controls.Add(cbxTipo);
+            grbReponer.Controls.Add(btnReponer);
+            grbReponer.Controls.Add(txtStock);
+            grbReponer.Controls.Add(label4);
+            grbReponer.Controls.Add(txtPrecio);
+            grbReponer.Controls.Add(txtNombre);
+            grbReponer.Controls.Add(label1);
+            grbReponer.Controls.Add(label3);
+            grbReponer.Controls.Add(label2);
+            grbReponer.Dock = DockStyle.Fill;
+            grbReponer.Location = new Point(0, 579);
+            grbReponer.Name = "grbReponer";
+            grbReponer.Size = new Size(1200, 117);
+            grbReponer.TabIndex = 3;
+            grbReponer.TabStop = false;
+            grbReponer.Text = "Mantenimiento";
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(315, 43);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(76, 29);
+            btnLimpiar.TabIndex = 20;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(220, 43);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(76, 29);
+            btnEliminar.TabIndex = 19;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Location = new Point(34, 43);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(76, 29);
+            btnAgregar.TabIndex = 17;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // cbxTipo
+            // 
+            cbxTipo.FormattingEnabled = true;
+            cbxTipo.Location = new Point(987, 43);
+            cbxTipo.Name = "cbxTipo";
+            cbxTipo.Size = new Size(112, 28);
+            cbxTipo.TabIndex = 16;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(730, 20);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 20);
+            label4.TabIndex = 15;
+            label4.Text = "Precio";
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.Location = new Point(730, 43);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(108, 27);
+            txtPrecio.TabIndex = 10;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(601, 43);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(108, 27);
+            txtNombre.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(862, 20);
+            label3.Name = "label3";
+            label3.Size = new Size(45, 20);
+            label3.TabIndex = 14;
+            label3.Text = "Stock";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(601, 20);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 20);
+            label2.TabIndex = 13;
+            label2.Text = "Nombre";
             // 
             // Frm_Heladera
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1049, 631);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            ClientSize = new Size(1200, 696);
+            Controls.Add(grbReponer);
+            Controls.Add(panelHeladera);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Frm_Heladera";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Frm_Heladera";
             Load += Frm_Heladera_Load;
-            panel1.ResumeLayout(false);
+            panelHeladera.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHeladera).EndInit();
-            panel2.ResumeLayout(false);
+            grbReponer.ResumeLayout(false);
+            grbReponer.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
-        private Panel panel2;
+        private Panel panelHeladera;
         private DataGridView dgvHeladera;
-        private FontAwesome.Sharp.IconButton btnReponer;
-        private FontAwesome.Sharp.IconButton btnModificar;
-        private FontAwesome.Sharp.IconButton btnEliminar;
+
+        private Button btnReponer;
+        private Label label1;
+        private TextBox txtStock;
+        private GroupBox grbReponer;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private TextBox txtPrecio;
+        private TextBox txtNombre;
+        private Button btnEliminar;
+        private Button btnAgregar;
+        private ComboBox cbxTipo;
+        private Button btnLimpiar;
     }
 }

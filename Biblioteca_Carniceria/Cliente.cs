@@ -10,12 +10,12 @@ namespace Biblioteca_Carniceria
     public class Cliente : Usuario
     {
         // atributos
-        string nombre;
-        string apellido;
+        string _nombre;
+        string _apellido;
 
         // variables globales
-        int _indexCliente;
-        int _indexProducto;
+        //int _indexCliente;
+        //int _indexProducto;
         decimal _saldo;
         decimal _auxMonto;
 
@@ -23,32 +23,25 @@ namespace Biblioteca_Carniceria
         private bool _clienteCargado;
 
         // flag Carrito
-        private bool _stockMax;
-        private bool _productoCargado;
+        private bool _stockMax = false;
+        private bool _productoCargado = false;
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public int IndexCliente { get => _indexCliente; set => _indexCliente = value; }
-        public int IndexProducto { get => _indexProducto; set => _indexProducto = value; }
+        public string Nombre { get => _nombre; set => _nombre = value; }
+        public string Apellido { get => _apellido; set => _apellido = value; }
         public decimal Saldo { get => _saldo; set => _saldo = value; }
+
+        //public int IndexCliente { get => _indexCliente; set => _indexCliente = value; }
+        //public int IndexProducto { get => _indexProducto; set => _indexProducto = value; }
         public decimal AuxMonto { get => _auxMonto = Saldo; set => _auxMonto = value; }
 
-        /// <summary>
-        /// Lista harcodeada de clientes. El vendedor va a seleccionar uno de estos clientes.
-        /// </summary>
-        public List<Cliente> ListClientes;
-        public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
+        public List<Producto> ListCarrito = new List<Producto>(); // Lista carrito ( contiene los productos en el carrito)
 
         // constructores
         public Cliente ()
         {
-            ListClientes = new List<Cliente>();
-            ListCarrito = new List<Producto>();
             Nombre = "XXXXXX";
             Apellido = "XXXXXX";
             Saldo = 0;
-            _stockMax = false;
-            _productoCargado = false;
         }
 
         public Cliente(string nombre, string apellido) : this()

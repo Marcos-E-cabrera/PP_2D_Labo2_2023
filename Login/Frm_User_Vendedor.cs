@@ -1,4 +1,5 @@
 ﻿using Biblioteca_Carniceria;
+using Frm_Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,11 @@ namespace Login
     public partial class Frm_User_Vendedor : Form
     {
         private Vendedor vendedor;
+        private Heladera heladera;
         public Frm_User_Vendedor()
         {
             InitializeComponent();
-
+            heladera = new Heladera();
         }
 
         public Frm_User_Vendedor(Vendedor vendedor) : this()
@@ -45,13 +47,36 @@ namespace Login
         /// <param name="form">El formulario que se quiere agregar al panel.</param>
         public void addForm(Form form)
         {
+            while (panelMid.Controls.Count > 0)
+            {
+                panelMid.Controls.RemoveAt(index: 0);
+            }
+
             // Establecer el formulario como no principal
             form.TopLevel = false;
             form.Dock = DockStyle.Fill;
-
             // Agregar el formulario al panel
-            this.panel2.Controls.Add(form);
+            this.panelMid.Controls.Add(form);
             form.Show();
+        }
+
+        private void menu_AñadirCliente_Click(object sender, EventArgs e)
+        {
+            Frm_Venta frm_SeleccionCliente = new Frm_Venta();
+            pictureBox1.Visible = false;
+            addForm(frm_SeleccionCliente);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menu_Ventas_Click(object sender, EventArgs e)
+        {
+            Frm_Historial frm_Historial = new Frm_Historial();
+            pictureBox1.Visible = false;
+            addForm(frm_Historial);
         }
     }
 }

@@ -4,9 +4,6 @@
     <Compile Update="Frm_Carrito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Frm_Cliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Frm_Factura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -26,9 +23,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Frm_Pago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Frm_Stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Frm_Venta.cs">

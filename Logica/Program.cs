@@ -18,7 +18,7 @@ namespace Logica
             Historial historial = new Historial();
 
             Console.WriteLine("**************** SELECCION DE CLIENTE *******************");
-            cliente = vendedor.getCliente(3);
+            //cliente = vendedor.getCliente(3);
             vendedor.getMontoCliente(cliente);
             Console.WriteLine($"Cliente: {cliente.Nombre} {cliente.Apellido}, Saldo: {Vendedor.MontoCliene}");
 
@@ -38,7 +38,7 @@ namespace Logica
             //vendedor.CargarCarrito(producto);
 
             Console.WriteLine("[ COMPRAR ]");
-            carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente, true);
+            //carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente, true);
 
             Console.WriteLine("[ CARRITO ]: ");
             foreach (Producto p in vendedor.ListCarrito)
@@ -50,17 +50,17 @@ namespace Logica
             vendedor.LimpiarCarrito();
 
             Console.WriteLine($"\n[ FACTURA ]: {Factura.nFactura} ");
-            foreach (Factura p in carrito.ListaFactura)
-            {
-                Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
-            }
-            Console.WriteLine($"TOTAL: {carrito.Monto}");
+            //foreach (Factura p in carrito.ListaFactura)
+            //{
+            //    Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
+            //}
+            //Console.WriteLine($"TOTAL: {carrito.Monto}");
 
             Console.WriteLine("\n[ LIMPIAR FACTURA ]");
-            carrito.LimpiarFactura();
+            //carrito.LimpiarFactura();
 
             Console.WriteLine("\n**************** SELECCION DE CLIENTE *******************");
-            cliente2 = vendedor.getCliente(4);
+            //cliente2 = vendedor.getCliente(4);
             vendedor.getMontoCliente(cliente2);
             Console.WriteLine($"Cliente: {cliente2.Nombre} {cliente2.Apellido}, Saldo: {Vendedor.MontoCliene}");
 
@@ -74,7 +74,7 @@ namespace Logica
             //vendedor.CargarCarrito(producto);
 
             Console.WriteLine("[ COMPRAR ]");
-            carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente2, false);
+            //carrito.Comprar(vendedor.ListCarrito, Vendedor.MontoCliene, cliente2, false);
 
             Console.WriteLine("[ CARRITO ]: ");
             foreach (Producto p in vendedor.ListCarrito)
@@ -86,14 +86,14 @@ namespace Logica
             vendedor.LimpiarCarrito();
 
             Console.WriteLine($"\n[ FACTURA ]: {Factura.nFactura} ");
-            foreach (Factura p in carrito.ListaFactura)
-            {
-                Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
-            }
-            Console.WriteLine($"TOTAL: {carrito.Monto}");
+            //foreach (Factura p in carrito.ListaFactura)
+            //{
+            //    Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
+            //}
+            //Console.WriteLine($"TOTAL: {carrito.Monto}");
 
-            Console.WriteLine("\n[ LIMPIAR FACTURA ]");
-            carrito.LimpiarFactura();
+            //Console.WriteLine("\n[ LIMPIAR FACTURA ]");
+            //carrito.LimpiarFactura();
 
             Console.WriteLine("\n**************** SELECCION DE CLIENTE *******************");
             Cliente cliente3 = new Cliente("Marcos", "Cabrera", 10000);
@@ -110,7 +110,7 @@ namespace Logica
 
 
             Console.WriteLine("[ COMPRAR ]");
-            carrito.Comprar(cliente3.ListCarrito, cliente3.Saldo, cliente3, false);
+            //carrito.Comprar(cliente3.ListCarrito, cliente3.Saldo, cliente3, false);
 
             Console.WriteLine("[ CARRITO ]: ");
             foreach (Producto p in vendedor.ListCarrito)
@@ -122,14 +122,14 @@ namespace Logica
             vendedor.LimpiarCarrito();
 
             Console.WriteLine($"\n[ FACTURA ]: {Factura.nFactura} ");
-            foreach (Factura p in carrito.ListaFactura)
-            {
-                Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
-            }
-            Console.WriteLine($"TOTAL: {carrito.Monto}");
+            //foreach (Factura p in carrito.ListaFactura)
+            //{
+            //    Console.WriteLine($"{p.Nombre},{p.Cantidad},{p.PrecioUnitario},{p.Total}");
+            //}
+            //Console.WriteLine($"TOTAL: {carrito.Monto}");
 
-            Console.WriteLine("\n[ LIMPIAR FACTURA ]");
-            carrito.LimpiarFactura();
+            //Console.WriteLine("\n[ LIMPIAR FACTURA ]");
+            //carrito.LimpiarFactura();
 
             Console.WriteLine("\n[ HISTORIAL ]: ");
             foreach (Historial h in Vendedor.ListaHistorial)

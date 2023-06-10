@@ -16,27 +16,29 @@ namespace Biblioteca_Carniceria
         public static decimal MontoCliene;
 
         // flag saldo
-        bool _clienteCargado;
+        public static bool clienteCargado = false;
 
         // flag Carrito
-        bool _stockMax;
-        bool _productoCargado;
-
+        private bool _stockMax = false;
+        private bool _productoCargado = false;
+      
         /// <summary>
         /// Lista harcodeada de clientes. El vendedor va a seleccionar uno de estos clientes.
         /// </summary>
         public List<Cliente> ListClientes;
         public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
         public static List<Historial> ListaHistorial = new List<Historial>();
+        public static List<Producto> ListaProductos = new List<Producto>();
 
         public Vendedor()
         {
+            ListaProductos = Heladera.ListHeladera;
             ListClientes = new List<Cliente>();
             ListCarrito = new List<Producto>();
 
             GenerarClientes();
+
             MontoCliene = 0;
-            _clienteCargado = false;
             _stockMax = false;
             _productoCargado = false;
         }
@@ -81,7 +83,7 @@ namespace Biblioteca_Carniceria
         /// </summary>
         /// <param name="index"> index del cliente que se quiere obtener</param>
         /// <returns>Retorna el cliente obtenido del index</returns>
-        public Cliente getCliente(int index)
+        public void getCliente(int index ,out Cliente c)
         {
             Cliente cliente = new Cliente();
 
@@ -89,11 +91,12 @@ namespace Biblioteca_Carniceria
             {
                 cliente = ListClientes[index];
                 getMontoCliente(cliente);
-                _clienteCargado = true;
+                clienteCargado = true;
             }
-            
-            return cliente;
+
+            c = cliente;
         }
+
         #endregion
 
         #region Carga de Monto
@@ -109,9 +112,46 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
-        #region REPONER
+        #region MANTENIMIENTO    
 
-       
+        #region Agregar
+
+        public static int Agregar(string nombre, decimal precio, int stock, string tipo )
+        {
+            int rta = 1; // error[1] parametros mal ingresados
+            bool valido = true;
+
+            eTipo tipoAux = (eTipo)Enum.Parse(typeof(eTipo), tipo);
+            Producto producto = new Producto();
+            producto.Nombre = nombre;
+            producto.Precio = precio;
+            producto.Stock = stock;
+            producto.Tipo = tipoAux;
+
+
+            if (nombre != "" && precio > 0 && stock > 0)
+            {
+                foreach (Producto p in ListaProductos)
+                {
+                    if (producto.Nombre == p.Nombre)
+                    {
+                        rta = 2; // error [2] ya existe
+                        break;
+                    }
+                }
+
+                if (valido && rta != 2)
+                {
+                    ListaProductos.Add(new Producto(producto.Nombre, producto.Precio, producto.Stock, producto.Tipo));
+                    rta = 0;
+                }
+            }
+
+
+            return rta;
+        }
+
+        #endregion
 
         #region Reponer stock
         /// <summary>
@@ -155,14 +195,14 @@ namespace Biblioteca_Carniceria
         /// Valida la carga de un producto para ser cargado al carrito
         /// </summary>
         /// <param name="producto"></param>
-        /// <returns>retorna 0 (OK)< 1(Cliente no selecionado), 2(sin stock), 3(no alcanza el saldo), 4(Tope de producto)</returns>
+        /// <returns>retorna 0 (OK)< 1(Cliente no seleccionado), 2(sin stock), 3(no alcanza el saldo), 4(Tope de producto)</returns>
         public override int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
 
             int retorno = 1; // cliente no cargado
 
-            if (_clienteCargado)
+            if (clienteCargado)
             {
                 if (producto.Stock > 0) // pregunta si el produto tiene stock
                 {
@@ -199,8 +239,9 @@ namespace Biblioteca_Carniceria
                         // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
                         if (!_productoCargado && !_stockMax)
                         {
+
                             aux = producto;
-                            ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1, aux.Tipo));
+                            ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1 , aux.Tipo));
                             retorno = 0;
                         }
 
@@ -229,8 +270,6 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-
-
         #region Cargar factura al historial Historial
         public static void CargarHistorial(List<Factura> factura,string nombre, string apellido)
         {
@@ -238,7 +277,7 @@ namespace Biblioteca_Carniceria
 
             foreach (Factura f in factura)
             {
-                newHistorial.NombreProducto = f.Nombre.ToString();
+                newHistorial.NombreProducto = f.NombreProducto;
                 newHistorial.Cantidad = f.Cantidad;
                 newHistorial.Total = f.Total;
                 newHistorial.Nombre = nombre;
@@ -246,9 +285,9 @@ namespace Biblioteca_Carniceria
 
                 ListaHistorial.Add(new Historial(newHistorial.NombreProducto, newHistorial.Cantidad, newHistorial.Total, newHistorial.Nombre, newHistorial.Apellido));
             }
+
         }
         #endregion
-
 
         public void LimpiarCarrito()
         {

@@ -28,176 +28,344 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ibtnSalir = new FontAwesome.Sharp.IconButton();
-            this.ibtnSeleccion = new FontAwesome.Sharp.IconButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(83, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 38);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Lista de Clientes";
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            dgvClientes = new DataGridView();
+            grbClientes = new GroupBox();
+            gpbCarrito = new GroupBox();
+            dgvCarrito = new DataGridView();
+            btnSeleccionarCliente = new Button();
+            grbHeladera = new GroupBox();
+            dgvHeladera = new DataGridView();
+            btn_Comprar = new Button();
+            btn_Factura = new Button();
+            btnAgregar = new Button();
+            checkEfectivo = new CheckBox();
+            checkDebito = new CheckBox();
+            label1 = new Label();
+            txtDinero = new TextBox();
+            label2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
+            grbClientes.SuspendLayout();
+            gpbCarrito.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCarrito).BeginInit();
+            grbHeladera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHeladera).BeginInit();
+            SuspendLayout();
             // 
             // dgvClientes
             // 
-            this.dgvClientes.AllowUserToResizeColumns = false;
-            this.dgvClientes.AllowUserToResizeRows = false;
-            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
-            this.dgvClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvClientes.ColumnHeadersHeight = 29;
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvClientes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientes.EnableHeadersVisualStyles = false;
-            this.dgvClientes.GridColor = System.Drawing.SystemColors.WindowText;
-            this.dgvClientes.Location = new System.Drawing.Point(0, 0);
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.ReadOnly = true;
-            this.dgvClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvClientes.RowHeadersVisible = false;
-            this.dgvClientes.RowHeadersWidth = 51;
-            this.dgvClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvClientes.RowTemplate.Height = 29;
-            this.dgvClientes.Size = new System.Drawing.Size(402, 532);
-            this.dgvClientes.TabIndex = 9;
+            dgvClientes.AllowUserToResizeColumns = false;
+            dgvClientes.AllowUserToResizeRows = false;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.BackgroundColor = Color.White;
+            dgvClientes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(119, 170, 161);
+            dataGridViewCellStyle10.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvClientes.ColumnHeadersHeight = 29;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvClientes.DefaultCellStyle = dataGridViewCellStyle11;
+            dgvClientes.Dock = DockStyle.Fill;
+            dgvClientes.EnableHeadersVisualStyles = false;
+            dgvClientes.GridColor = SystemColors.WindowText;
+            dgvClientes.Location = new Point(3, 23);
+            dgvClientes.Name = "dgvClientes";
+            dgvClientes.ReadOnly = true;
+            dgvClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvClientes.RowHeadersVisible = false;
+            dgvClientes.RowHeadersWidth = 51;
+            dgvClientes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle12.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.WindowText;
+            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dgvClientes.RowTemplate.Height = 29;
+            dgvClientes.Size = new Size(477, 310);
+            dgvClientes.TabIndex = 9;
             // 
-            // panel1
+            // grbClientes
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(402, 42);
-            this.panel1.TabIndex = 10;
+            grbClientes.Controls.Add(dgvClientes);
+            grbClientes.Location = new Point(12, 12);
+            grbClientes.Name = "grbClientes";
+            grbClientes.Size = new Size(483, 336);
+            grbClientes.TabIndex = 13;
+            grbClientes.TabStop = false;
+            grbClientes.Text = "Clientes";
             // 
-            // panel2
+            // gpbCarrito
             // 
-            this.panel2.Controls.Add(this.ibtnSalir);
-            this.panel2.Controls.Add(this.ibtnSeleccion);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 574);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(402, 60);
-            this.panel2.TabIndex = 11;
+            gpbCarrito.Controls.Add(dgvCarrito);
+            gpbCarrito.Location = new Point(15, 401);
+            gpbCarrito.Name = "gpbCarrito";
+            gpbCarrito.Size = new Size(480, 221);
+            gpbCarrito.TabIndex = 14;
+            gpbCarrito.TabStop = false;
+            gpbCarrito.Text = "Carrito";
             // 
-            // ibtnSalir
+            // dgvCarrito
             // 
-            this.ibtnSalir.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnSalir.FlatAppearance.BorderSize = 0;
-            this.ibtnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ibtnSalir.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.ibtnSalir.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(246)))));
-            this.ibtnSalir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ibtnSalir.IconSize = 40;
-            this.ibtnSalir.Location = new System.Drawing.Point(351, 12);
-            this.ibtnSalir.Name = "ibtnSalir";
-            this.ibtnSalir.Size = new System.Drawing.Size(48, 36);
-            this.ibtnSalir.TabIndex = 18;
-            this.ibtnSalir.UseVisualStyleBackColor = true;
-            this.ibtnSalir.Click += new System.EventHandler(this.ibtnSalir_Click);
+            dgvCarrito.AllowUserToResizeColumns = false;
+            dgvCarrito.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCarrito.BackgroundColor = Color.White;
+            dgvCarrito.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCarrito.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = Color.FromArgb(119, 170, 161);
+            dataGridViewCellStyle13.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dgvCarrito.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dgvCarrito.ColumnHeadersHeight = 29;
+            dgvCarrito.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dgvCarrito.DefaultCellStyle = dataGridViewCellStyle14;
+            dgvCarrito.Dock = DockStyle.Fill;
+            dgvCarrito.EnableHeadersVisualStyles = false;
+            dgvCarrito.GridColor = SystemColors.WindowText;
+            dgvCarrito.Location = new Point(3, 23);
+            dgvCarrito.Name = "dgvCarrito";
+            dgvCarrito.ReadOnly = true;
+            dgvCarrito.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvCarrito.RowHeadersVisible = false;
+            dgvCarrito.RowHeadersWidth = 51;
+            dgvCarrito.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle15.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle15.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.WindowText;
+            dgvCarrito.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dgvCarrito.RowTemplate.Height = 29;
+            dgvCarrito.Size = new Size(474, 195);
+            dgvCarrito.TabIndex = 7;
             // 
-            // ibtnSeleccion
+            // btnSeleccionarCliente
             // 
-            this.ibtnSeleccion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ibtnSeleccion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnSeleccion.FlatAppearance.BorderSize = 0;
-            this.ibtnSeleccion.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ibtnSeleccion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnSeleccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(170)))), ((int)(((byte)(161)))));
-            this.ibtnSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ibtnSeleccion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ibtnSeleccion.ForeColor = System.Drawing.Color.White;
-            this.ibtnSeleccion.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.ibtnSeleccion.IconColor = System.Drawing.Color.White;
-            this.ibtnSeleccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ibtnSeleccion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibtnSeleccion.Location = new System.Drawing.Point(128, 12);
-            this.ibtnSeleccion.Name = "ibtnSeleccion";
-            this.ibtnSeleccion.Size = new System.Drawing.Size(132, 36);
-            this.ibtnSeleccion.TabIndex = 14;
-            this.ibtnSeleccion.Text = "Seleccion";
-            this.ibtnSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ibtnSeleccion.UseVisualStyleBackColor = true;
-            this.ibtnSeleccion.Click += new System.EventHandler(this.ibtnSeleccion_Click);
+            btnSeleccionarCliente.ForeColor = Color.Black;
+            btnSeleccionarCliente.Location = new Point(109, 354);
+            btnSeleccionarCliente.Name = "btnSeleccionarCliente";
+            btnSeleccionarCliente.Size = new Size(154, 29);
+            btnSeleccionarCliente.TabIndex = 23;
+            btnSeleccionarCliente.Text = "Seleccionar";
+            btnSeleccionarCliente.UseVisualStyleBackColor = true;
+            btnSeleccionarCliente.Click += btnSeleccionarCliente_Click;
             // 
-            // panel3
+            // grbHeladera
             // 
-            this.panel3.Controls.Add(this.dgvClientes);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 42);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(402, 532);
-            this.panel3.TabIndex = 12;
+            grbHeladera.Controls.Add(dgvHeladera);
+            grbHeladera.Location = new Point(515, 32);
+            grbHeladera.Name = "grbHeladera";
+            grbHeladera.Size = new Size(665, 590);
+            grbHeladera.TabIndex = 24;
+            grbHeladera.TabStop = false;
+            grbHeladera.Text = "Heladera";
             // 
-            // FrmVenta
+            // dgvHeladera
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(205)))), ((int)(((byte)(197)))));
-            this.ClientSize = new System.Drawing.Size(402, 634);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmVenta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.FrmVenta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            dgvHeladera.AllowUserToResizeColumns = false;
+            dgvHeladera.AllowUserToResizeRows = false;
+            dgvHeladera.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHeladera.BackgroundColor = Color.White;
+            dgvHeladera.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvHeladera.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = Color.FromArgb(119, 170, 161);
+            dataGridViewCellStyle16.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle16.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle16.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+            dgvHeladera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dgvHeladera.ColumnHeadersHeight = 29;
+            dgvHeladera.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle17.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
+            dgvHeladera.DefaultCellStyle = dataGridViewCellStyle17;
+            dgvHeladera.Dock = DockStyle.Fill;
+            dgvHeladera.EnableHeadersVisualStyles = false;
+            dgvHeladera.GridColor = SystemColors.WindowText;
+            dgvHeladera.Location = new Point(3, 23);
+            dgvHeladera.Name = "dgvHeladera";
+            dgvHeladera.ReadOnly = true;
+            dgvHeladera.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvHeladera.RowHeadersVisible = false;
+            dgvHeladera.RowHeadersWidth = 51;
+            dgvHeladera.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle18.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle18.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.WindowText;
+            dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dgvHeladera.RowTemplate.Height = 29;
+            dgvHeladera.Size = new Size(659, 564);
+            dgvHeladera.TabIndex = 8;
+            // 
+            // btn_Comprar
+            // 
+            btn_Comprar.ForeColor = Color.Black;
+            btn_Comprar.Location = new Point(18, 639);
+            btn_Comprar.Name = "btn_Comprar";
+            btn_Comprar.Size = new Size(108, 29);
+            btn_Comprar.TabIndex = 25;
+            btn_Comprar.Text = "Comprar";
+            btn_Comprar.UseVisualStyleBackColor = true;
+            btn_Comprar.Click += btn_Comprar_Click;
+            // 
+            // btn_Factura
+            // 
+            btn_Factura.ForeColor = Color.Black;
+            btn_Factura.Location = new Point(385, 639);
+            btn_Factura.Name = "btn_Factura";
+            btn_Factura.Size = new Size(107, 29);
+            btn_Factura.TabIndex = 26;
+            btn_Factura.Text = "Factura";
+            btn_Factura.UseVisualStyleBackColor = true;
+            btn_Factura.Click += btn_Factura_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.ForeColor = Color.Black;
+            btnAgregar.Location = new Point(783, 639);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(165, 29);
+            btnAgregar.TabIndex = 28;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // checkEfectivo
+            // 
+            checkEfectivo.AutoSize = true;
+            checkEfectivo.Location = new Point(148, 644);
+            checkEfectivo.Name = "checkEfectivo";
+            checkEfectivo.Size = new Size(84, 24);
+            checkEfectivo.TabIndex = 29;
+            checkEfectivo.Text = "Efectivo";
+            checkEfectivo.UseVisualStyleBackColor = true;
+            checkEfectivo.CheckedChanged += checkEfectivo_CheckedChanged;
+            // 
+            // checkDebito
+            // 
+            checkDebito.AutoSize = true;
+            checkDebito.Location = new Point(238, 644);
+            checkDebito.Name = "checkDebito";
+            checkDebito.Size = new Size(77, 24);
+            checkDebito.TabIndex = 30;
+            checkDebito.Text = "Debito";
+            checkDebito.UseVisualStyleBackColor = true;
+            checkDebito.CheckedChanged += checkDebito_CheckedChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(148, 622);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 20);
+            label1.TabIndex = 31;
+            label1.Text = "Forma de Pago";
+            // 
+            // txtDinero
+            // 
+            txtDinero.Location = new Point(1055, 7);
+            txtDinero.Name = "txtDinero";
+            txtDinero.Size = new Size(125, 27);
+            txtDinero.TabIndex = 9;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(995, 12);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 20);
+            label2.TabIndex = 32;
+            label2.Text = "Dinero";
+            // 
+            // Frm_Venta
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(1195, 680);
+            Controls.Add(label2);
+            Controls.Add(txtDinero);
+            Controls.Add(label1);
+            Controls.Add(checkDebito);
+            Controls.Add(checkEfectivo);
+            Controls.Add(btnAgregar);
+            Controls.Add(btn_Factura);
+            Controls.Add(btn_Comprar);
+            Controls.Add(grbHeladera);
+            Controls.Add(btnSeleccionarCliente);
+            Controls.Add(gpbCarrito);
+            Controls.Add(grbClientes);
+            ForeColor = Color.White;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Frm_Venta";
+            StartPosition = FormStartPosition.CenterScreen;
+            Load += FrmVenta_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
+            grbClientes.ResumeLayout(false);
+            gpbCarrito.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
+            grbHeladera.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvHeladera).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private Label label1;
         private DataGridView dgvClientes;
-        private Panel panel1;
-        private Panel panel2;
-        private FontAwesome.Sharp.IconButton ibtnSeleccion;
-        private Panel panel3;
-        private FontAwesome.Sharp.IconButton ibtnSalir;
+        private GroupBox grbClientes;
+        private GroupBox gpbCarrito;
+        private DataGridView dgvCarrito;
+        private Button btnSeleccionarCliente;
+        private GroupBox grbHeladera;
+        private Button btn_Comprar;
+        private Button btn_Factura;
+        private DataGridView dgvHeladera;
+        private Button btnAgregar;
+        private CheckBox checkEfectivo;
+        private CheckBox checkDebito;
+        private Label label1;
+        private TextBox txtDinero;
+        private Label label2;
     }
 }
