@@ -16,7 +16,6 @@ namespace Biblioteca_Carniceria
 
         public static List<Factura> ListaProductos = new List<Factura>();
 
-
         static public decimal Monto { get => _monto; set => _monto = value; }
 
         public Carrito() 
@@ -131,7 +130,7 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region FACTURA
+        #region CREAR FACTURA
         public static void CrearFactura(List<Producto> productos, string nombre, string apellido)
         {
             Factura newFactura = new Factura();

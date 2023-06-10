@@ -15,11 +15,11 @@ namespace Login
     public partial class Frm_User_Vendedor : Form
     {
         private Vendedor vendedor;
-        private Heladera heladera;
+        private Heladera heladera = new Heladera();
+
         public Frm_User_Vendedor()
         {
             InitializeComponent();
-            heladera = new Heladera();
         }
 
         public Frm_User_Vendedor(Vendedor vendedor) : this()
@@ -67,11 +67,11 @@ namespace Login
             addForm(frm_SeleccionCliente);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menu_Ventas_Click(object sender, EventArgs e)
         {
             Frm_Historial frm_Historial = new Frm_Historial();

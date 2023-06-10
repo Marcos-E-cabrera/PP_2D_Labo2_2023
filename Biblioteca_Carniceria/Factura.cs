@@ -108,6 +108,12 @@ namespace Biblioteca_Carniceria
             PlantillaFactura.Add($"Forma de pago: {formaPago}");
             PlantillaFactura.Add("╚══════════════════════════════════════════════════════╝");
 
+            foreach (string f in PlantillaFactura)
+            {
+                Historial.listFacturas.Add(f);
+            }
+            Historial.listFacturas.Add("\n");
+
             return PlantillaFactura;
         }
 

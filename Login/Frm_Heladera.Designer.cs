@@ -37,6 +37,8 @@
             label1 = new Label();
             txtStock = new TextBox();
             grbReponer = new GroupBox();
+            label5 = new Label();
+            cbxOrdenamiento = new ComboBox();
             btnLimpiar = new Button();
             btnEliminar = new Button();
             btnAgregar = new Button();
@@ -110,7 +112,7 @@
             // 
             // btnReponer
             // 
-            btnReponer.Location = new Point(129, 43);
+            btnReponer.Location = new Point(108, 42);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(76, 29);
             btnReponer.TabIndex = 8;
@@ -121,7 +123,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(987, 20);
+            label1.Location = new Point(1076, 21);
             label1.Name = "label1";
             label1.Size = new Size(39, 20);
             label1.TabIndex = 7;
@@ -129,13 +131,15 @@
             // 
             // txtStock
             // 
-            txtStock.Location = new Point(862, 43);
+            txtStock.Location = new Point(951, 44);
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(108, 27);
             txtStock.TabIndex = 6;
             // 
             // grbReponer
             // 
+            grbReponer.Controls.Add(label5);
+            grbReponer.Controls.Add(cbxOrdenamiento);
             grbReponer.Controls.Add(btnLimpiar);
             grbReponer.Controls.Add(btnEliminar);
             grbReponer.Controls.Add(btnAgregar);
@@ -156,9 +160,27 @@
             grbReponer.TabStop = false;
             grbReponer.Text = "Mantenimiento";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(491, 21);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 20);
+            label5.TabIndex = 22;
+            label5.Text = "Ordenar por:";
+            // 
+            // cbxOrdenamiento
+            // 
+            cbxOrdenamiento.FormattingEnabled = true;
+            cbxOrdenamiento.Location = new Point(490, 44);
+            cbxOrdenamiento.Name = "cbxOrdenamiento";
+            cbxOrdenamiento.Size = new Size(112, 28);
+            cbxOrdenamiento.TabIndex = 21;
+            cbxOrdenamiento.SelectedIndexChanged += cbxOrdenamiento_SelectedIndexChanged;
+            // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(315, 43);
+            btnLimpiar.Location = new Point(294, 42);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(76, 29);
             btnLimpiar.TabIndex = 20;
@@ -168,7 +190,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(220, 43);
+            btnEliminar.Location = new Point(199, 42);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(76, 29);
             btnEliminar.TabIndex = 19;
@@ -178,7 +200,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(34, 43);
+            btnAgregar.Location = new Point(13, 42);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(76, 29);
             btnAgregar.TabIndex = 17;
@@ -189,7 +211,7 @@
             // cbxTipo
             // 
             cbxTipo.FormattingEnabled = true;
-            cbxTipo.Location = new Point(987, 43);
+            cbxTipo.Location = new Point(1076, 44);
             cbxTipo.Name = "cbxTipo";
             cbxTipo.Size = new Size(112, 28);
             cbxTipo.TabIndex = 16;
@@ -197,7 +219,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(730, 20);
+            label4.Location = new Point(819, 21);
             label4.Name = "label4";
             label4.Size = new Size(50, 20);
             label4.TabIndex = 15;
@@ -205,14 +227,14 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(730, 43);
+            txtPrecio.Location = new Point(819, 44);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(108, 27);
             txtPrecio.TabIndex = 10;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(601, 43);
+            txtNombre.Location = new Point(690, 44);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(108, 27);
             txtNombre.TabIndex = 9;
@@ -220,7 +242,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(862, 20);
+            label3.Location = new Point(951, 21);
             label3.Name = "label3";
             label3.Size = new Size(45, 20);
             label3.TabIndex = 14;
@@ -229,7 +251,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(601, 20);
+            label2.Location = new Point(690, 21);
             label2.Name = "label2";
             label2.Size = new Size(64, 20);
             label2.TabIndex = 13;
@@ -272,5 +294,7 @@
         private Button btnAgregar;
         private ComboBox cbxTipo;
         private Button btnLimpiar;
+        private Label label5;
+        private ComboBox cbxOrdenamiento;
     }
 }

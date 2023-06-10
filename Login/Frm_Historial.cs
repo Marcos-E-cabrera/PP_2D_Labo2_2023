@@ -13,20 +13,16 @@ namespace Login
 {
     public partial class Frm_Historial : Form
     {
-        public List<string> listFacturas = new List<string>();
 
         public Frm_Historial()
         {
-            InitializeComponent();
-            Factura factura = new Factura();
-            listFacturas = factura.MostrarFactura();
-
+            InitializeComponent();        
         }
 
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
+            listHistorialFactura.DataSource = Historial.listFacturas;
             listHistorialFactura.Refresh();
-            listHistorialFactura.DataSource = listFacturas;
             MostrarHistroial();
         }
 

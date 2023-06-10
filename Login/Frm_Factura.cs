@@ -14,12 +14,11 @@ namespace Login
 {
     public partial class Frm_Factura : Form
     {
-        Factura factura;
+        public static Factura factura = new Factura();
 
         public Frm_Factura()
         {
             InitializeComponent();
-            factura = new Factura();
         }
 
         private void FrmFactura_Load(object sender, EventArgs e)

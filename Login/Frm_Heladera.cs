@@ -34,6 +34,12 @@ namespace Login
             cbxTipo.Items.Add("Cordero");
             cbxTipo.Items.Add("Pollo");
             cbxTipo.Items.Add("Procesado");
+
+            cbxOrdenamiento.Items.Add("Nombre");
+            cbxOrdenamiento.Items.Add("Precio");
+            cbxOrdenamiento.Items.Add("Stock");
+            cbxOrdenamiento.Items.Add("Detalle");
+
             cbxTipo.SelectedIndex = 0;
         }
 
@@ -182,6 +188,12 @@ namespace Login
             txtPrecio.Text = dgvHeladera[1, dgvHeladera.CurrentRow.Index].Value.ToString();
             txtStock.Text = dgvHeladera[2, dgvHeladera.CurrentRow.Index].Value.ToString();
             cbxTipo.Text = dgvHeladera[3, dgvHeladera.CurrentRow.Index].Value.ToString();
+        }
+
+        private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
+            MostrarHeladera();
         }
     }
 }

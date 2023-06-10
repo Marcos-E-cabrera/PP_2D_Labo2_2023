@@ -252,20 +252,14 @@ namespace Biblioteca_Carniceria
                     else
                     {
                         retorno = 3;
-                        Console.WriteLine("El saldo no es suficiente para comprar el producto");
                     }
                 }
                 else
                 {
                     retorno = 2;
-                    Console.WriteLine("No hay stock en ese producto");
                 }
             }
-            else
-            {
-                Console.WriteLine("Cliente no seleccionado");
-            }
-
+            
             return retorno;
         }
         #endregion

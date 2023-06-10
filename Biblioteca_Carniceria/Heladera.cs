@@ -160,7 +160,27 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
+
+        public static void OrdenarHeladera ( int option )
+        {
+            switch (option)
+            {
+                case 0:
+                    ListHeladera = ListHeladera.OrderBy(h => h.Nombre).ToList();
+                    break;
+                case 1:
+                    ListHeladera = ListHeladera.OrderBy(h => h.Precio).ToList();
+                    break;
+                case 2:
+                    ListHeladera = ListHeladera.OrderBy(h => h.Stock).ToList();
+                    break;
+                case 3:
+                    ListHeladera = ListHeladera.OrderBy(h => h.Tipo).ToList();
+                    break;
+            }
+        }
     }
+
 
 
 

@@ -39,6 +39,11 @@ namespace Frm_Vendedor
             ControlBox = false;
             MostrarClientes();
 
+            cbxOrdenamiento.Items.Add("Nombre");
+            cbxOrdenamiento.Items.Add("Precio");
+            cbxOrdenamiento.Items.Add("Stock");
+            cbxOrdenamiento.Items.Add("Detalle");
+
             MostrarHeladera();
         }
 
@@ -151,7 +156,7 @@ namespace Frm_Vendedor
                 if (_efectivo)
                 {
                     validacionCompra(0);
-                }        
+                }
             }
             else
             {
@@ -373,5 +378,10 @@ namespace Frm_Vendedor
         }
         #endregion
 
+        private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
+            MostrarHeladera();
+        }
     }
 }

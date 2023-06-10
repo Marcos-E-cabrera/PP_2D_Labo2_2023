@@ -8,6 +8,8 @@ namespace Biblioteca_Carniceria
 {
     public class Historial : Factura
     {
+        public static List<string> listFacturas = new List<string>();
+
         // Nombre Cliente
         string _nombre;
         string _apellido;

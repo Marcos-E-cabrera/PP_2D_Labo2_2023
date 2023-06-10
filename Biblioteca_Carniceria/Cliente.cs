@@ -116,37 +116,17 @@ namespace Biblioteca_Carniceria
                 else
                 {
                     retorno = 2;
-                    Console.WriteLine("El saldo no es suficiente para comprar el producto");
                 }
             }
             else
             {
                 retorno = 1;
-                Console.WriteLine("No hay stock en ese producto");
             }
 
             return retorno;
         }
         #endregion
 
-
-        #region selecionar producto
-        /// <summary>
-        /// Obtiene un producto de la lista productos y lo devuelve.
-        /// </summary>
-        /// <param name="index"> index del producto que se quiere obtener</param>
-        /// <returns>Retorna el producto obtenido del index</returns>
-        public Producto getProducto(int index)
-        {
-            Producto producto = new Producto();
-            if (index < Heladera.ListHeladera.Count && index >= 0)
-            {
-                producto = Heladera.ListHeladera[index];
-            }
-
-            return producto;
-        }
-        #endregion
 
 
         public override string ObtenerUsuario()
