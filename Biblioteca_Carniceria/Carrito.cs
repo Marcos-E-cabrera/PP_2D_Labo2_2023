@@ -8,6 +8,7 @@ namespace Biblioteca_Carniceria
 {
     public  class Carrito
     {
+        #region CAMPOS
         static bool _carritoVacio = false;
         static bool _compraEfectuada = false;
         static bool _validarFactura = false ;
@@ -15,14 +16,29 @@ namespace Biblioteca_Carniceria
         public static int Pago;
 
         public static List<Factura> ListaProductos = new List<Factura>();
+        #endregion
 
+        #region PROPIEDADES
         static public decimal Monto { get => _monto; set => _monto = value; }
+        #endregion
 
+        #region CONSTRUCTOR
         public Carrito() 
         {
         }
+        #endregion
 
-        #region COMPRAR
+        #region COMPRA
+        /// <summary>
+        /// Comprar la lista de productos pasada como parametro y tambien se le pasara la forma de pago 
+        /// </summary>
+        /// <param name="Carrito"></param>
+        /// <param name="saldo"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="auxSaldo"></param>
+        /// <param name="formaPago"></param>
+        /// <returns> ERROR: [1](Carrito vacio), [2](error de compra),[3](Saldo no suficiente) - OK: [0](TODO BIEN) </returns>
         public static int Comprar(List<Producto> Carrito, out decimal saldo, string nombre, string apellido, decimal auxSaldo ,int formaPago)
         {
             saldo = 0;
@@ -61,7 +77,7 @@ namespace Biblioteca_Carniceria
                         else
                         {
                             LimpiarFactura();
-                            retorno = 4; // saldo no suficiente
+                            retorno = 3; // saldo no suficiente
                         }
                     }
                     else
@@ -131,6 +147,12 @@ namespace Biblioteca_Carniceria
         #endregion
 
         #region CREAR FACTURA
+        /// <summary>
+        /// le paso a factura los productos que se compro y los cargo a la lista productos
+        /// </summary>
+        /// <param name="productos"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
         public static void CrearFactura(List<Producto> productos, string nombre, string apellido)
         {
             Factura newFactura = new Factura();

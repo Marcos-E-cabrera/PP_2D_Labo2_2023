@@ -10,8 +10,11 @@ namespace Biblioteca_Carniceria
     // Base de datos de heladera
     public class Heladera : Producto
     {
+        #region LISTA
         public static List<Producto> ListHeladera = new List<Producto>();
+        #endregion
 
+        #region CONSTRUCTOR
 
         public Heladera()
         {
@@ -78,14 +81,14 @@ namespace Biblioteca_Carniceria
             ListHeladera.Add(new Producto("Salchichas", 150, 15, eTipo.Procesado));
             #endregion
         }
+        #endregion
 
-
-        #region Genera una ListHeladera limpia para el cliente
+        #region HELADERA CLIENTE
         /// <summary>
         /// Filtra los productos que estan sin stock (0) y los elimina de la lista
         /// </summary>
         /// <returns> Retorna la lista de heladera filtrada </returns>
-        public List<Producto> HeladeraCliente()
+        public static List<Producto> HeladeraCliente()
         {
             List<Producto> ListHeladera_cliente = new List<Producto>();
 
@@ -101,36 +104,32 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Ordena la Heladera
+        #region ORDENAMIENTO DE HELADERA
         /// <summary>
         /// Ordeno la lista por el criterio pasado.
         /// </summary>
-        /// <param name="Criterio"></param>
-        /// <param name="l"></param>
-        /// <returns></returns>
-        public List<Producto> OrdenaarHeladera(int Criterio, List<Producto> l)
+        /// <param name="criterio"></param>
+        public static void OrdenarHeladera(int criterio)
         {
-            switch (Criterio)
+            switch (criterio)
             {
                 case 0:
-                    l = l.OrderBy(p => p.Nombre).ToList();
+                    ListHeladera = ListHeladera.OrderBy(h => h.Nombre).ToList();
                     break;
                 case 1:
-                    l = l.OrderBy(p => p.Precio).ToList();
+                    ListHeladera = ListHeladera.OrderBy(h => h.Precio).ToList();
                     break;
-
                 case 2:
-                    l = l.OrderBy(p => p.Stock).ToList();
+                    ListHeladera = ListHeladera.OrderBy(h => h.Stock).ToList();
                     break;
                 case 3:
-                    l = l.OrderBy(p => p.Tipo).ToList();
+                    ListHeladera = ListHeladera.OrderBy(h => h.Tipo).ToList();
                     break;
             }
-            return l;
         }
         #endregion
 
-        #region selecionar producto
+        #region OBTENER PRODUCTO
         /// <summary>
         /// Obtiene un producto de la lista productos y lo devuelve.
         /// </summary>
@@ -147,7 +146,7 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Actualizar heladera
+        #region ACTUALIZAR HELADERA
         /// <summary>
         /// Actualiza la lista de la heladera principal
         /// </summary>
@@ -160,25 +159,6 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
-
-        public static void OrdenarHeladera ( int option )
-        {
-            switch (option)
-            {
-                case 0:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Nombre).ToList();
-                    break;
-                case 1:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Precio).ToList();
-                    break;
-                case 2:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Stock).ToList();
-                    break;
-                case 3:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Tipo).ToList();
-                    break;
-            }
-        }
     }
 
 

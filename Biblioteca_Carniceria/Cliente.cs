@@ -9,13 +9,10 @@ namespace Biblioteca_Carniceria
 {
     public class Cliente : Usuario
     {
-        // atributos
+        #region CAMPOS
         string _nombre;
         string _apellido;
 
-        // variables globales
-        //int _indexCliente;
-        //int _indexProducto;
         decimal _saldo;
         decimal _auxMonto;
 
@@ -25,18 +22,20 @@ namespace Biblioteca_Carniceria
         // flag Carrito
         private bool _stockMax = false;
         private bool _productoCargado = false;
+        
+        public List<Producto> ListCarrito = new List<Producto>(); // Lista carrito ( contiene los productos en el carrito)
+        
+        #endregion
 
+        #region PROPIEDADES
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Apellido { get => _apellido; set => _apellido = value; }
         public decimal Saldo { get => _saldo; set => _saldo = value; }
 
-        //public int IndexCliente { get => _indexCliente; set => _indexCliente = value; }
-        //public int IndexProducto { get => _indexProducto; set => _indexProducto = value; }
         public decimal AuxMonto { get => _auxMonto = Saldo; set => _auxMonto = value; }
+        #endregion
 
-        public List<Producto> ListCarrito = new List<Producto>(); // Lista carrito ( contiene los productos en el carrito)
-
-        // constructores
+        #region CONSTRUCTORES
         public Cliente ()
         {
             Nombre = "XXXXXX";
@@ -54,20 +53,20 @@ namespace Biblioteca_Carniceria
         {
             Saldo = saldo;
         }
+        #endregion
 
-        #region VENTA
-
+        #region METODOS CARRITO
 
         /// <summary>
-        /// Valida la carga de un producto para ser cargado al carrito
+        /// EL usuario ingresara un producto como parametro y lo cargara a una lista carrito para poder comprar estos productos
         /// </summary>
         /// <param name="producto"></param>
-        /// <returns>retorna 0 (OK), 1(sin stock), 2(no alcanza el saldo), 3(Tope de producto)</returns>
+        /// <returns> ERROR: [1](Sin stock), [2](Saldo no suficiente), [3](Tope de producto) - OK: [0](TODO BIEN) </returns>
         public override int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
 
-            int retorno = 1; // cliente no cargado
+            int retorno = 1; // SIN STOCK
 
             if (producto.Stock > 0) // pregunta si el produto tiene stock
             {
@@ -118,23 +117,20 @@ namespace Biblioteca_Carniceria
                     retorno = 2;
                 }
             }
-            else
-            {
-                retorno = 1;
-            }
 
             return retorno;
         }
         #endregion
 
-
-
+        #region TIPO DE USUARIO
+        /// <summary>
+        /// El usuario obtendra el tipo de usuario que es
+        /// </summary>
+        /// <returns>Tipo Cliente</returns>
         public override string ObtenerUsuario()
         {
             return "Cliente";
         }
-
-
-
+        #endregion
     }
 }

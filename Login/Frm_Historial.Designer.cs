@@ -54,6 +54,7 @@
             // 
             // gbHistorialVenta
             // 
+            gbHistorialVenta.BackColor = Color.LightGreen;
             gbHistorialVenta.Controls.Add(dgvHistorialVenta);
             gbHistorialVenta.Dock = DockStyle.Fill;
             gbHistorialVenta.Location = new Point(470, 0);
@@ -111,6 +112,7 @@
             // 
             // gbHistorialFactura
             // 
+            gbHistorialFactura.BackColor = Color.LightGreen;
             gbHistorialFactura.Controls.Add(listHistorialFactura);
             gbHistorialFactura.Dock = DockStyle.Left;
             gbHistorialFactura.Location = new Point(0, 0);

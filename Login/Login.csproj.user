@@ -7,9 +7,6 @@
     <Compile Update="Frm_Heladera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Frm_HeladeraCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Frm_Historial.cs">
       <SubType>Form</SubType>
     </Compile>

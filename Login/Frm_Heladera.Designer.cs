@@ -138,6 +138,7 @@
             // 
             // grbReponer
             // 
+            grbReponer.BackColor = Color.LightGreen;
             grbReponer.Controls.Add(label5);
             grbReponer.Controls.Add(cbxOrdenamiento);
             grbReponer.Controls.Add(btnLimpiar);

@@ -46,7 +46,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(lblUser);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 722);
@@ -96,6 +96,7 @@
             // 
             // menuStrip2
             // 
+            menuStrip2.BackColor = Color.LightGreen;
             menuStrip2.Dock = DockStyle.Fill;
             menuStrip2.ImageScalingSize = new Size(20, 20);
             menuStrip2.Items.AddRange(new ToolStripItem[] { menu_Heladera, menu_AñadirCliente, menu_Ventas });

@@ -20,7 +20,6 @@ C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Properties.Resources.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_Factura.resources
-C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_HeladeraCliente.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_Historial.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_User_Vendedor.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Login.resources

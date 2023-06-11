@@ -189,7 +189,7 @@
             grbHeladera.Controls.Add(dgvHeladera);
             grbHeladera.Location = new Point(515, 32);
             grbHeladera.Name = "grbHeladera";
-            grbHeladera.Size = new Size(665, 590);
+            grbHeladera.Size = new Size(639, 590);
             grbHeladera.TabIndex = 24;
             grbHeladera.TabStop = false;
             grbHeladera.Text = "Heladera";
@@ -237,7 +237,7 @@
             dataGridViewCellStyle9.SelectionForeColor = SystemColors.WindowText;
             dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dgvHeladera.RowTemplate.Height = 29;
-            dgvHeladera.Size = new Size(659, 564);
+            dgvHeladera.Size = new Size(633, 564);
             dgvHeladera.TabIndex = 8;
             // 
             // btn_Comprar
@@ -306,7 +306,7 @@
             // 
             // txtDinero
             // 
-            txtDinero.Location = new Point(1055, 7);
+            txtDinero.Location = new Point(1004, 11);
             txtDinero.Name = "txtDinero";
             txtDinero.Size = new Size(125, 27);
             txtDinero.TabIndex = 9;
@@ -314,7 +314,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(995, 12);
+            label2.Location = new Point(944, 14);
             label2.Name = "label2";
             label2.Size = new Size(54, 20);
             label2.TabIndex = 32;
@@ -323,7 +323,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(1055, 625);
+            label5.Location = new Point(1031, 621);
             label5.Name = "label5";
             label5.Size = new Size(93, 20);
             label5.TabIndex = 34;
@@ -332,7 +332,7 @@
             // cbxOrdenamiento
             // 
             cbxOrdenamiento.FormattingEnabled = true;
-            cbxOrdenamiento.Location = new Point(1054, 648);
+            cbxOrdenamiento.Location = new Point(1030, 644);
             cbxOrdenamiento.Name = "cbxOrdenamiento";
             cbxOrdenamiento.Size = new Size(112, 28);
             cbxOrdenamiento.TabIndex = 33;
@@ -342,8 +342,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(1195, 680);
+            BackColor = Color.LightGreen;
+            ClientSize = new Size(1173, 680);
             Controls.Add(label5);
             Controls.Add(cbxOrdenamiento);
             Controls.Add(label2);

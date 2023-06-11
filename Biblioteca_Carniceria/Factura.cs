@@ -8,12 +8,16 @@ namespace Biblioteca_Carniceria
 {
     public class Factura : Carrito
     {
+        #region CAMPOS
+
+        #region LISTA
         // LISTA DE DATOS
         public static List<string> PlantillaFactura = new List<string>();
         public static List<string> cliente = new List<string>();
+        #endregion
 
         // DATOS VENDEDOR
-         private DateTime fechaHoraActual = DateTime.Now;
+        private DateTime fechaHoraActual = DateTime.Now;
         
         private string fecha;
         private string hora;
@@ -30,7 +34,9 @@ namespace Biblioteca_Carniceria
         decimal _aux_Debito;
         public static decimal MontoFinal;
 
+        #endregion
 
+        #region PROPIEDADES
         public string Fecha { get => fecha; set => fecha = value; }
         public string Hora { get => hora; set => hora = value; }
         
@@ -40,9 +46,9 @@ namespace Biblioteca_Carniceria
         public decimal PrecioUnitario { get => _precioUnitario; set => _precioUnitario = value; }
         public decimal Aux_Debito { get => _aux_Debito; set => _aux_Debito = value; }
         public decimal Total { get => _total; set => _total = value; }
+        #endregion
 
-        
-
+        #region CONSTRUCTORES
         public Factura()
         {
             Fecha = fechaHoraActual.ToString("dd/MM/yyyy");
@@ -67,7 +73,13 @@ namespace Biblioteca_Carniceria
             NombreProducto = producto;
             PrecioUnitario = precioUnitario;
         }
+        #endregion
 
+        #region CREACION DE PLANTILLA DE FACTURA
+        /// <summary>
+        /// SE creara una factura con los datos del cliente, compra y orma de pago
+        /// </summary>
+        /// <returns>retornara una lista de string que retornara la factura completa</returns>
         public List<string> MostrarFactura()
         {
             decimal totalFinal = 0;
@@ -116,6 +128,6 @@ namespace Biblioteca_Carniceria
 
             return PlantillaFactura;
         }
-
+        #endregion
     }
 }

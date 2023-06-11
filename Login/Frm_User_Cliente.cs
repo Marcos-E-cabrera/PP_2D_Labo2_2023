@@ -13,12 +13,15 @@ namespace Login
 {
     public partial class Frm_User_Cliente : Form
     {
+        #region CAMPOS
         private Vendedor vendedor;
         private Cliente cliente;
         bool _efectivo = false;
         bool _debito = false;
         bool _factura = false;
+        #endregion
 
+        #region CONSTRUCTORES
         public Frm_User_Cliente()
         {
             InitializeComponent();
@@ -40,68 +43,7 @@ namespace Login
             MostrarHeladera();
             MostrarCarrito();
         }
-
-        #region MOSTRAR
-        /// <summary>
-        /// Muestra los clientes de la listaClientes en el DataGridView
-        /// </summary>
-
-
-        private void MostrarHeladera()
-        {
-            dgvHeladera.Refresh();
-            dgvHeladera.DataSource = Heladera.ListHeladera;
-
-        }
-
-        private void MostrarCarrito()
-        {
-            dgvCarrito.AutoGenerateColumns = false;
-            dgvCarrito.Columns.Clear(); // Limpiar las columnas existentes en caso de que haya alguna
-
-            // Agrega las columnas directamente al DataGridView utilizando la inicialización de objetos
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                HeaderText = "Nombre",
-                DataPropertyName = "Nombre" // Asegúrate de utilizar la propiedad correcta para el nombre de la columna
-            });
-
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                HeaderText = "Precio",
-                DataPropertyName = "Precio" // Asegúrate de utilizar la propiedad correcta para el precio de la columna
-            });
-
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                HeaderText = "Cantidad",
-                DataPropertyName = "Stock" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
-            });
-
-            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
-            {
-                HeaderText = "Tipo",
-                DataPropertyName = "Tipo" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
-            });
-
-            // Establecer el origen de datos solo si hay elementos en el carrito
-            if (vendedor.ListCarrito.Count > 0)
-            {
-                dgvCarrito.DataSource = vendedor.ListCarrito;
-            }
-            else
-            {
-                dgvCarrito.DataSource = null; // Si no hay elementos en el carrito, establecer el origen de datos a null para limpiar el DataGridView
-            }
-        }
-
         #endregion
-
-        private void Frm_User_Cliente_Load(object sender, EventArgs e)
-        {
-            lblUser.Text = $"Tipo: {cliente.ObtenerUsuario()} || Usuario: {cliente.Nombre} {cliente.Apellido}";
-        }
-
 
         #region AGREGAR
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -243,11 +185,74 @@ namespace Login
         }
         #endregion
 
+        #region METODOS MOSTRAR
+        /// <summary>
+        /// Muestra los clientes de la listaClientes en el DataGridView
+        /// </summary>
+
+        private void MostrarHeladera()
+        {
+            dgvHeladera.Refresh();
+            dgvHeladera.DataSource = Heladera.HeladeraCliente();
+        }
+
+        private void MostrarCarrito()
+        {
+            dgvCarrito.AutoGenerateColumns = false;
+            dgvCarrito.Columns.Clear(); // Limpiar las columnas existentes en caso de que haya alguna
+
+            // Agrega las columnas directamente al DataGridView utilizando la inicialización de objetos
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Nombre",
+                DataPropertyName = "Nombre" // Asegúrate de utilizar la propiedad correcta para el nombre de la columna
+            });
+
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Precio",
+                DataPropertyName = "Precio" // Asegúrate de utilizar la propiedad correcta para el precio de la columna
+            });
+
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Cantidad",
+                DataPropertyName = "Stock" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+            });
+
+            dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                HeaderText = "Tipo",
+                DataPropertyName = "Tipo" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+            });
+
+            // Establecer el origen de datos solo si hay elementos en el carrito
+            if (vendedor.ListCarrito.Count > 0)
+            {
+                dgvCarrito.DataSource = vendedor.ListCarrito;
+            }
+            else
+            {
+                dgvCarrito.DataSource = null; // Si no hay elementos en el carrito, establecer el origen de datos a null para limpiar el DataGridView
+            }
+        }
+
+        #endregion
+
+        #region TIPO USUARIO
+        private void Frm_User_Cliente_Load(object sender, EventArgs e)
+        {
+            lblUser.Text = $"Tipo: {cliente.ObtenerUsuario()} || Usuario: {cliente.Nombre} {cliente.Apellido}";
+        }
+        #endregion
+
+        #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }
+        #endregion
 
         #region METODOS DGV
         public int DGV_GetFilaHeladera()

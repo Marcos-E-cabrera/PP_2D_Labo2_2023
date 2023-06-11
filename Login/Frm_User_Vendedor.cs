@@ -14,9 +14,11 @@ namespace Login
 {
     public partial class Frm_User_Vendedor : Form
     {
+        #region CAMPO
         private Vendedor vendedor;
-        private Heladera heladera = new Heladera();
+        #endregion
 
+        #region CONSTRUCTORES
         public Frm_User_Vendedor()
         {
             InitializeComponent();
@@ -26,13 +28,16 @@ namespace Login
         {
             this.vendedor = vendedor;
         }
+        #endregion
 
+        #region TIPO DE USUARIO
         private void Frm_User_Vendedor_Load(object sender, EventArgs e)
         {
             lblUser.Text = $"Tipo: {vendedor.ObtenerUsuario()} || Usuario: {vendedor.Nombre} {vendedor.Apellido}";
         }
+        #endregion
 
-
+        #region MENU
         private void menu_Heladera_Click(object sender, EventArgs e)
         {
             Frm_Heladera frm_Heladera = new Frm_Heladera();
@@ -78,5 +83,6 @@ namespace Login
             pictureBox1.Visible = false;
             addForm(frm_Historial);
         }
+        #endregion
     }
 }

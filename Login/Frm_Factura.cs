@@ -14,13 +14,18 @@ namespace Login
 {
     public partial class Frm_Factura : Form
     {
+        #region CAMPOS
         public static Factura factura = new Factura();
+        #endregion
 
+        #region CONSTRUCTOR
         public Frm_Factura()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region LOAD
         private void FrmFactura_Load(object sender, EventArgs e)
         {
 
@@ -30,6 +35,7 @@ namespace Login
             list_Factura.DataSource = factura.MostrarFactura();
             Factura.PlantillaFactura.Clear();
         }
+        #endregion
 
 
 

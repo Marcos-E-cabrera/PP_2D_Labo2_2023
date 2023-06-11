@@ -12,42 +12,43 @@ namespace Biblioteca_Carniceria
 {
     public class Vendedor : Usuario
     {
-        // variables globales
+        #region CAMPOS
         public static decimal MontoCliene;
-
-        // flag saldo
         public static bool clienteCargado = false;
 
-        // flag Carrito
         private bool _stockMax = false;
         private bool _productoCargado = false;
-      
-        /// <summary>
-        /// Lista harcodeada de clientes. El vendedor va a seleccionar uno de estos clientes.
-        /// </summary>
-        public List<Cliente> ListClientes;
-        public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
-        public static List<Historial> ListaHistorial = new List<Historial>();
-        public static List<Producto> ListaProductos = new List<Producto>();
 
+        #region LISTAS
+
+        public List<Cliente> ListClientes; // Lista de Clientes
+        public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
+
+        public static List<Historial> ListaHistorial = new List<Historial>(); // Lista de Historial de ventas
+        public static List<Producto> ListaProductos = new List<Producto>(); // lista de Productos 
+        #endregion
+
+        #endregion
+
+        #region CONSTRUCTOR
         public Vendedor()
         {
             ListaProductos = Heladera.ListHeladera;
             ListClientes = new List<Cliente>();
             ListCarrito = new List<Producto>();
-
-            GenerarClientes();
-
             MontoCliene = 0;
             _stockMax = false;
             _productoCargado = false;
+
+            GenerarClientes();
         }
+        #endregion
 
         #region SELECCION DE CLIENTE
 
-        #region Generar Cliente
+        #region GENERACION DE CLIENTES
         /// <summary>
-        /// Genera una lista de clientes
+        /// Genera una lista de clientes ( NOMBRE, APELLIDO, SALDO)
         /// </summary>
         private void GenerarClientes()
         {
@@ -77,31 +78,9 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Seleccionar Cliente
+        #region OBTENER MONTO
         /// <summary>
-        /// Obtiene un cliente de la lista clintes y lo devuelve.
-        /// </summary>
-        /// <param name="index"> index del cliente que se quiere obtener</param>
-        /// <returns>Retorna el cliente obtenido del index</returns>
-        public void getCliente(int index ,out Cliente c)
-        {
-            Cliente cliente = new Cliente();
-
-            if (index < ListClientes.Count && index >= 0)
-            {
-                cliente = ListClientes[index];
-                getMontoCliente(cliente);
-                clienteCargado = true;
-            }
-
-            c = cliente;
-        }
-
-        #endregion
-
-        #region Carga de Monto
-        /// <summary>
-        /// Carga el dinero del cliente en la variable estatica MontoCliente
+        /// Carga el dinero del cliente seleccionado en la variable estatica MontoCliente
         /// </summary>
         /// <param name="cliente"></param>
         public void getMontoCliente(Cliente cliente)
@@ -112,10 +91,17 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
-        #region MANTENIMIENTO    
+        #region MANTENIMIENTO  HELADERA 
 
-        #region Agregar
-
+        #region AGREGAR PRODUCTO
+        /// <summary>
+        /// Se le ingresa como parametro un nombre, precio, stock y tipo(enum)  y lo agrega a la lista de productos.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="precio"></param>
+        /// <param name="stock"></param>
+        /// <param name="tipo"></param>
+        /// <returns> ERROR: [1](Parametros mal ingresados), [2](ya existe) - OK: [0](TODO BIEN) </returns>
         public static int Agregar(string nombre, decimal precio, int stock, string tipo )
         {
             int rta = 1; // error[1] parametros mal ingresados
@@ -153,13 +139,13 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
-        #region Reponer stock
+        #region REPONER PRODUCTO
         /// <summary>
-        /// Valida la cantidad del stock y determina si es valido o no
+        /// Se le ingresa un producto y la cantidad a reponer, si es valida lo reponer y si no devuelve un error
         /// </summary>
         /// <param name="producto"></param>
         /// <param name="cantidad"></param>
-        /// <returns> si hay error devuelve 1 ( es menor a 0 o menor al stock original)); 2 ( es una letra ) y 0 (si esta ok)</returns>
+        /// <returns> ERROR: [1](es menor a 0 o menor al stock original), [2]( es una letra ) - OK: [0](TODO BIEN) </returns>
         public static int Reponer(Producto producto, string cantidad)
         {
             int retorno;
@@ -188,14 +174,15 @@ namespace Biblioteca_Carniceria
 
         #endregion
 
-        #region VENTA
+        #region METODOS CARRITO
 
+        #region CARGA DE PRODUCTO
 
         /// <summary>
-        /// Valida la carga de un producto para ser cargado al carrito
+        /// EL usuario ingresara un producto como parametro y lo cargara a una lista carrito para poder comprar estos productos
         /// </summary>
         /// <param name="producto"></param>
-        /// <returns>retorna 0 (OK)< 1(Cliente no seleccionado), 2(sin stock), 3(no alcanza el saldo), 4(Tope de producto)</returns>
+        /// <returns> ERROR: [1]Cliente no seleccionado), [2](Sin stock), [3](Saldo no suficiente), [4](Tope de producto) - OK: [0](TODO BIEN) </returns>
         public override int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
@@ -264,7 +251,13 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
-        #region Cargar factura al historial Historial
+        #region CARGAR HISTORIAL
+        /// <summary>
+        /// Recibe la factura y el nombre del cliente y lo guarda en la lista historial para mantener un control de ventas
+        /// </summary>
+        /// <param name="factura"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
         public static void CargarHistorial(List<Factura> factura,string nombre, string apellido)
         {
             Historial newHistorial = new Historial();
@@ -283,17 +276,28 @@ namespace Biblioteca_Carniceria
         }
         #endregion
 
+        #region LIMPIAR CARRITO
+        /// <summary>
+        /// Liempia el carrito
+        /// </summary>
         public void LimpiarCarrito()
         {
             ListCarrito.Clear();
         }
+        #endregion
 
+        #endregion
 
+        #region TIPO DE USUARIO
+        /// <summary>
+        /// El usuario obtendra el tipo de usuario que es
+        /// </summary>
+        /// <returns>Tipo Vendedor</returns>
         public override string ObtenerUsuario()
         {
             return "Vendedor";
         }
-
+        #endregion
     }
 }
 

@@ -268,7 +268,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(lblUser);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 701);
@@ -289,6 +289,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1181, 720);
             Controls.Add(panel1);
             Controls.Add(label5);

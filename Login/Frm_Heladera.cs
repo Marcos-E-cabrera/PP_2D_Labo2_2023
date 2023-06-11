@@ -17,16 +17,22 @@ namespace Login
 {
     public partial class Frm_Heladera : Form
     {
+        #region CAMPOS
         private Vendedor vendedor;
         private Producto producto;
+        #endregion
 
+        #region CONSTRUCTOR
         public Frm_Heladera()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region LOAD
         private void Frm_Heladera_Load(object sender, EventArgs e)
         {
+
             MostrarHeladera();
             cbxTipo.Items.Add("Vacuno");
             cbxTipo.Items.Add("Ternero");
@@ -42,8 +48,9 @@ namespace Login
 
             cbxTipo.SelectedIndex = 0;
         }
+        #endregion
 
-
+        #region MOSTRAR
         private void MostrarHeladera()
         {
             dgvHeladera.Refresh();
@@ -53,28 +60,7 @@ namespace Login
             dgvHeladera.Columns[2].HeaderText = "Stock";
             dgvHeladera.Columns[3].HeaderText = "Tipo de Carne";
         }
-
-        private void btnReponer_Click_1(object sender, EventArgs e)
-        {
-            Producto producto = new Producto();
-
-            int index;
-            index = DGV_GetFila();
-            DGV_GetProducto(index, out producto);
-
-            switch (Vendedor.Reponer(producto, txtStock.Text))
-            {
-                case 0:
-                    DGV_ActualizarDatos(Heladera.CargarHeladera(index, producto));
-                    break;
-                case 1:
-                    MensajeDeError("El stock no puede ser menor a 0 y no puede bajar el stock.", "Error [ 1 ]");
-                    break;
-                case 2:
-                    MensajeDeError("El stock debe ser un número entero/ cantidad no Ingresada.", "Error [ 2 ]");
-                    break;
-            }
-        }
+        #endregion
 
         #region METODOS DGV
         /// <summary>
@@ -141,7 +127,7 @@ namespace Login
 
         #endregion
 
-
+        #region AGREGAR
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
@@ -165,8 +151,33 @@ namespace Login
 
             }
         }
+        #endregion
 
+        #region REPONER
+        private void btnReponer_Click_1(object sender, EventArgs e)
+        {
+            Producto producto = new Producto();
 
+            int index;
+            index = DGV_GetFila();
+            DGV_GetProducto(index, out producto);
+
+            switch (Vendedor.Reponer(producto, txtStock.Text))
+            {
+                case 0:
+                    DGV_ActualizarDatos(Heladera.CargarHeladera(index, producto));
+                    break;
+                case 1:
+                    MensajeDeError("El stock no puede ser menor a 0 y no puede bajar el stock.", "Error [ 1 ]");
+                    break;
+                case 2:
+                    MensajeDeError("El stock debe ser un número entero/ cantidad no Ingresada.", "Error [ 2 ]");
+                    break;
+            }
+        }
+        #endregion
+
+        #region ELIMINAR
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int index = DGV_GetFila();
@@ -174,14 +185,6 @@ namespace Login
             dgvHeladera.DataSource = null;
             dgvHeladera.DataSource = Vendedor.ListaProductos;
         }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            txtNombre.Clear();
-            txtPrecio.Clear();
-            txtStock.Clear();
-        }
-
         private void dgvHeladera_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txtNombre.Text = dgvHeladera[0, dgvHeladera.CurrentRow.Index].Value.ToString();
@@ -189,11 +192,23 @@ namespace Login
             txtStock.Text = dgvHeladera[2, dgvHeladera.CurrentRow.Index].Value.ToString();
             cbxTipo.Text = dgvHeladera[3, dgvHeladera.CurrentRow.Index].Value.ToString();
         }
+        #endregion
 
+        #region LIMPIAR
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
+        }
+        #endregion
+
+        #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }
+        #endregion
     }
 }

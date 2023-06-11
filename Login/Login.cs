@@ -8,6 +8,7 @@ namespace Login
     public partial class Login : Form
     {
         private bool hide;
+        private Heladera heladera = new Heladera();
 
         #region FRM LOGIN CONSTRUTOR
         public Login()

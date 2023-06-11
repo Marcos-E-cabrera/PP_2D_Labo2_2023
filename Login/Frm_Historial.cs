@@ -13,19 +13,23 @@ namespace Login
 {
     public partial class Frm_Historial : Form
     {
-
+        #region CONSTRUCTOR
         public Frm_Historial()
         {
-            InitializeComponent();        
+            InitializeComponent();
         }
+        #endregion
 
+        #region LOAD
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
             listHistorialFactura.DataSource = Historial.listFacturas;
             listHistorialFactura.Refresh();
             MostrarHistroial();
         }
+        #endregion
 
+        #region MOSTRAR
         private void MostrarHistroial()
         {
             dgvHistorialVenta.AutoGenerateColumns = false;
@@ -61,5 +65,6 @@ namespace Login
 
             dgvHistorialVenta.DataSource = Vendedor.ListaHistorial;
         }
+        #endregion
     }
 }

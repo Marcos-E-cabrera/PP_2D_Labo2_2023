@@ -15,6 +15,7 @@ namespace Frm_Vendedor
 {
     public partial class Frm_Venta : Form
     {
+        #region CAMPOS
         private Vendedor vendedor;
         private Cliente cliente;
 
@@ -24,14 +25,18 @@ namespace Frm_Vendedor
         bool _factura = false;
 
         private static List<int> auxIndex = new List<int>();
+        #endregion
 
+        #region CONSTRUCTOR
         public Frm_Venta()
         {
             InitializeComponent();
             vendedor = new Vendedor();
             cliente = new Cliente();
         }
+        #endregion
 
+        #region LOAD
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.MinimizeBox = false;
@@ -46,6 +51,7 @@ namespace Frm_Vendedor
 
             MostrarHeladera();
         }
+        #endregion
 
         #region SELECCION DE CLIENTE
         private void btnSeleccionarCliente_Click(object sender, EventArgs e)
@@ -225,36 +231,19 @@ namespace Frm_Vendedor
 
         #endregion
 
-        #region METODOS DGV
-        public int DGV_GetFilaHeladera()
+        #region FACTURA
+        private void btn_Factura_Click(object sender, EventArgs e)
         {
-            return dgvHeladera.CurrentRow.Index;
-        }
-
-        /// <summary>
-        /// Obtengo la FILA del DataGridView que se encuentra el cursor
-        /// </summary>
-        /// <returns></returns>
-        public int DGV_GetFila()
-        {
-            return dgvClientes.CurrentRow.Index;
-        }
-
-        /// <summary>
-        /// Obtengo el objeto Producto del indice dado del DataGridView.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="p"></param>
-        /// <returns>Devuelve un obj Producto con los datos del DataGridView </returns>
-        public Cliente DGV_GetCliente(int index)
-        {
-            Cliente c = new Cliente();
-
-            c.Nombre = dgvClientes[0, index].Value.ToString();
-            c.Apellido = dgvClientes[1, index].Value.ToString();
-            c.Saldo = Convert.ToDecimal(dgvClientes[2, index].Value);
-
-            return c;
+            if (_factura)
+            {
+                Frm_Factura factura = new Frm_Factura();
+                factura.ShowDialog();
+                _factura = false;
+            }
+            else
+            {
+                MensajeError("Primero Hacer una Comprar", "Error Compra no Efectuada");
+            }
         }
         #endregion
 
@@ -362,26 +351,45 @@ namespace Frm_Vendedor
         }
         #endregion
 
-        #region FACTURA
-        private void btn_Factura_Click(object sender, EventArgs e)
+        #region METODOS DGV
+        public int DGV_GetFilaHeladera()
         {
-            if (_factura)
-            {
-                Frm_Factura factura = new Frm_Factura();
-                factura.ShowDialog();
-                _factura = false;
-            }
-            else
-            {
-                MensajeError("Primero Hacer una Comprar", "Error Compra no Efectuada");
-            }
+            return dgvHeladera.CurrentRow.Index;
+        }
+
+        /// <summary>
+        /// Obtengo la FILA del DataGridView que se encuentra el cursor
+        /// </summary>
+        /// <returns></returns>
+        public int DGV_GetFila()
+        {
+            return dgvClientes.CurrentRow.Index;
+        }
+
+        /// <summary>
+        /// Obtengo el objeto Producto del indice dado del DataGridView.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="p"></param>
+        /// <returns>Devuelve un obj Producto con los datos del DataGridView </returns>
+        public Cliente DGV_GetCliente(int index)
+        {
+            Cliente c = new Cliente();
+
+            c.Nombre = dgvClientes[0, index].Value.ToString();
+            c.Apellido = dgvClientes[1, index].Value.ToString();
+            c.Saldo = Convert.ToDecimal(dgvClientes[2, index].Value);
+
+            return c;
         }
         #endregion
 
+        #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }
+        #endregion
     }
 }
