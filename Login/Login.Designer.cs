@@ -34,6 +34,7 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            btn_SingUp = new Button();
             ibtnCliente = new FontAwesome.Sharp.IconButton();
             ibtnVendedor = new FontAwesome.Sharp.IconButton();
             panel9 = new Panel();
@@ -94,7 +95,7 @@
             btnIngresar.FlatAppearance.BorderColor = Color.FromArgb(252, 252, 246);
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnIngresar.Location = new Point(149, 287);
+            btnIngresar.Location = new Point(29, 311);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(127, 43);
             btnIngresar.TabIndex = 8;
@@ -124,6 +125,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btn_SingUp);
             panel2.Controls.Add(ibtnCliente);
             panel2.Controls.Add(ibtnVendedor);
             panel2.Controls.Add(panel9);
@@ -137,6 +139,18 @@
             panel2.TabIndex = 13;
             panel2.Tag = "";
             // 
+            // btn_SingUp
+            // 
+            btn_SingUp.FlatAppearance.BorderColor = Color.FromArgb(252, 252, 246);
+            btn_SingUp.FlatStyle = FlatStyle.Flat;
+            btn_SingUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_SingUp.Location = new Point(271, 311);
+            btn_SingUp.Name = "btn_SingUp";
+            btn_SingUp.Size = new Size(127, 43);
+            btn_SingUp.TabIndex = 21;
+            btn_SingUp.Text = "Sing Up";
+            btn_SingUp.UseVisualStyleBackColor = true;
+            // 
             // ibtnCliente
             // 
             ibtnCliente.FlatAppearance.BorderColor = Color.FromArgb(119, 170, 161);
@@ -147,9 +161,9 @@
             ibtnCliente.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             ibtnCliente.IconColor = Color.White;
             ibtnCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnCliente.Location = new Point(59, 4);
+            ibtnCliente.Location = new Point(216, 21);
             ibtnCliente.Name = "ibtnCliente";
-            ibtnCliente.Size = new Size(48, 44);
+            ibtnCliente.Size = new Size(48, 48);
             ibtnCliente.TabIndex = 20;
             ibtnCliente.UseVisualStyleBackColor = true;
             ibtnCliente.Click += ibtnCliente_Click;
@@ -162,11 +176,11 @@
             ibtnVendedor.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 205, 197);
             ibtnVendedor.FlatStyle = FlatStyle.Flat;
             ibtnVendedor.IconChar = FontAwesome.Sharp.IconChar.UserTie;
-            ibtnVendedor.IconColor = Color.White;
+            ibtnVendedor.IconColor = Color.Snow;
             ibtnVendedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnVendedor.Location = new Point(3, 4);
+            ibtnVendedor.Location = new Point(160, 21);
             ibtnVendedor.Name = "ibtnVendedor";
-            ibtnVendedor.Size = new Size(50, 42);
+            ibtnVendedor.Size = new Size(50, 46);
             ibtnVendedor.TabIndex = 19;
             ibtnVendedor.UseVisualStyleBackColor = true;
             ibtnVendedor.Click += ibtnVendedor_Click;
@@ -390,5 +404,6 @@
         private Label label1;
         private FontAwesome.Sharp.IconButton ibtnCliente;
         private FontAwesome.Sharp.IconButton ibtnVendedor;
+        private Button btn_SingUp;
     }
 }

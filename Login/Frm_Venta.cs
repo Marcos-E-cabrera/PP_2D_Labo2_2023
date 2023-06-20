@@ -103,19 +103,18 @@ namespace Frm_Vendedor
                     auxIndex.Add(index);
                 }
             }
-            txtDinero.Text = $" $ {Vendedor.MontoCliene}";
+            lb_Dinero.Text = $" $ {Vendedor.MontoCliene}";
         }
         #endregion
 
         #region AGREGAR
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Heladera heladera = new Heladera();
             Producto producto = new Producto();
 
             int index = DGV_GetFilaHeladera();
 
-            heladera.getProducto(index, out producto);
+            Heladera.getProducto(index, out producto);
 
             switch (vendedor.CargarCarrito(producto))
             {
@@ -182,7 +181,7 @@ namespace Frm_Vendedor
                     _factura = true;
                     dgvHeladera.Refresh();
 
-                    txtDinero.Text = $" $ {Vendedor.MontoCliene}";
+                    lb_Dinero.Text = $" $ {Vendedor.MontoCliene}";
 
                     MensajeOK("Compra exitosa!!", "Compra de Productos");
                     vendedor.ListCarrito.Clear();

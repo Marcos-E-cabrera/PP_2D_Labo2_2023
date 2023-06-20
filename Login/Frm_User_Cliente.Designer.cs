@@ -37,7 +37,6 @@
             label5 = new Label();
             cbxOrdenamiento = new ComboBox();
             label2 = new Label();
-            txtDinero = new TextBox();
             label1 = new Label();
             checkDebito = new CheckBox();
             checkEfectivo = new CheckBox();
@@ -47,9 +46,11 @@
             grbHeladera = new GroupBox();
             dgvHeladera = new DataGridView();
             gpbCarrito = new GroupBox();
+            lb_Vacio = new Label();
             dgvCarrito = new DataGridView();
             panel1 = new Panel();
             lblUser = new Label();
+            lb_Dinero = new Label();
             grbHeladera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHeladera).BeginInit();
             gpbCarrito.SuspendLayout();
@@ -78,18 +79,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(515, 622);
+            label2.Location = new Point(515, 626);
             label2.Name = "label2";
-            label2.Size = new Size(54, 20);
+            label2.Size = new Size(57, 20);
             label2.TabIndex = 46;
-            label2.Text = "Dinero";
-            // 
-            // txtDinero
-            // 
-            txtDinero.Location = new Point(575, 617);
-            txtDinero.Name = "txtDinero";
-            txtDinero.Size = new Size(125, 27);
-            txtDinero.TabIndex = 35;
+            label2.Text = "Dinero:";
             // 
             // label1
             // 
@@ -213,6 +207,7 @@
             // 
             // gpbCarrito
             // 
+            gpbCarrito.Controls.Add(lb_Vacio);
             gpbCarrito.Controls.Add(dgvCarrito);
             gpbCarrito.Location = new Point(9, 12);
             gpbCarrito.Name = "gpbCarrito";
@@ -220,6 +215,17 @@
             gpbCarrito.TabIndex = 37;
             gpbCarrito.TabStop = false;
             gpbCarrito.Text = "Carrito";
+            // 
+            // lb_Vacio
+            // 
+            lb_Vacio.AutoSize = true;
+            lb_Vacio.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_Vacio.Location = new Point(149, 238);
+            lb_Vacio.Name = "lb_Vacio";
+            lb_Vacio.Size = new Size(190, 31);
+            lb_Vacio.TabIndex = 50;
+            lb_Vacio.Text = "Carrito esta vacio";
+            lb_Vacio.Visible = false;
             // 
             // dgvCarrito
             // 
@@ -285,17 +291,26 @@
             lblUser.Size = new Size(0, 20);
             lblUser.TabIndex = 0;
             // 
+            // lb_Dinero
+            // 
+            lb_Dinero.AutoSize = true;
+            lb_Dinero.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_Dinero.Location = new Point(575, 622);
+            lb_Dinero.Name = "lb_Dinero";
+            lb_Dinero.Size = new Size(0, 31);
+            lb_Dinero.TabIndex = 1;
+            // 
             // Frm_User_Cliente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1181, 720);
+            Controls.Add(lb_Dinero);
             Controls.Add(panel1);
             Controls.Add(label5);
             Controls.Add(cbxOrdenamiento);
             Controls.Add(label2);
-            Controls.Add(txtDinero);
             Controls.Add(label1);
             Controls.Add(checkDebito);
             Controls.Add(checkEfectivo);
@@ -311,6 +326,7 @@
             grbHeladera.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHeladera).EndInit();
             gpbCarrito.ResumeLayout(false);
+            gpbCarrito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -323,7 +339,6 @@
         private Label label5;
         private ComboBox cbxOrdenamiento;
         private Label label2;
-        private TextBox txtDinero;
         private Label label1;
         private CheckBox checkDebito;
         private CheckBox checkEfectivo;
@@ -336,5 +351,7 @@
         private DataGridView dgvCarrito;
         private Panel panel1;
         private Label lblUser;
+        private Label lb_Dinero;
+        private Label lb_Vacio;
     }
 }

@@ -26,3 +26,4 @@ C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_Heladera.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Frm_Vendedor.Frm_Venta.resources
 C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_User_Cliente.resources
+C:\Users\cabre\OneDrive\Escritorio\repo_1cuatri\PP_2D_Labo2_2023\Login\obj\Debug\net6.0-windows\Login.Frm_Dinero.resources

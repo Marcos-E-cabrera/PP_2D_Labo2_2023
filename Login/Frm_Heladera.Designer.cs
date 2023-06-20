@@ -60,7 +60,7 @@
             panelHeladera.Dock = DockStyle.Top;
             panelHeladera.Location = new Point(0, 0);
             panelHeladera.Name = "panelHeladera";
-            panelHeladera.Size = new Size(1200, 579);
+            panelHeladera.Size = new Size(1164, 579);
             panelHeladera.TabIndex = 0;
             // 
             // dgvHeladera
@@ -106,7 +106,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
             dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvHeladera.RowTemplate.Height = 29;
-            dgvHeladera.Size = new Size(1200, 579);
+            dgvHeladera.Size = new Size(1164, 579);
             dgvHeladera.TabIndex = 7;
             dgvHeladera.CellClick += dgvHeladera_CellClick;
             // 
@@ -123,7 +123,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(1076, 21);
+            label1.Location = new Point(1040, 20);
             label1.Name = "label1";
             label1.Size = new Size(39, 20);
             label1.TabIndex = 7;
@@ -131,7 +131,7 @@
             // 
             // txtStock
             // 
-            txtStock.Location = new Point(951, 44);
+            txtStock.Location = new Point(915, 43);
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(108, 27);
             txtStock.TabIndex = 6;
@@ -156,7 +156,7 @@
             grbReponer.Dock = DockStyle.Fill;
             grbReponer.Location = new Point(0, 579);
             grbReponer.Name = "grbReponer";
-            grbReponer.Size = new Size(1200, 117);
+            grbReponer.Size = new Size(1164, 117);
             grbReponer.TabIndex = 3;
             grbReponer.TabStop = false;
             grbReponer.Text = "Mantenimiento";
@@ -164,7 +164,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(491, 21);
+            label5.Location = new Point(516, 19);
             label5.Name = "label5";
             label5.Size = new Size(93, 20);
             label5.TabIndex = 22;
@@ -173,7 +173,7 @@
             // cbxOrdenamiento
             // 
             cbxOrdenamiento.FormattingEnabled = true;
-            cbxOrdenamiento.Location = new Point(490, 44);
+            cbxOrdenamiento.Location = new Point(515, 42);
             cbxOrdenamiento.Name = "cbxOrdenamiento";
             cbxOrdenamiento.Size = new Size(112, 28);
             cbxOrdenamiento.TabIndex = 21;
@@ -212,7 +212,7 @@
             // cbxTipo
             // 
             cbxTipo.FormattingEnabled = true;
-            cbxTipo.Location = new Point(1076, 44);
+            cbxTipo.Location = new Point(1040, 43);
             cbxTipo.Name = "cbxTipo";
             cbxTipo.Size = new Size(112, 28);
             cbxTipo.TabIndex = 16;
@@ -220,7 +220,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(819, 21);
+            label4.Location = new Point(783, 20);
             label4.Name = "label4";
             label4.Size = new Size(50, 20);
             label4.TabIndex = 15;
@@ -228,14 +228,14 @@
             // 
             // txtPrecio
             // 
-            txtPrecio.Location = new Point(819, 44);
+            txtPrecio.Location = new Point(783, 43);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(108, 27);
             txtPrecio.TabIndex = 10;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(690, 44);
+            txtNombre.Location = new Point(654, 43);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(108, 27);
             txtNombre.TabIndex = 9;
@@ -243,7 +243,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(951, 21);
+            label3.Location = new Point(915, 20);
             label3.Name = "label3";
             label3.Size = new Size(45, 20);
             label3.TabIndex = 14;
@@ -252,7 +252,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(690, 21);
+            label2.Location = new Point(654, 20);
             label2.Name = "label2";
             label2.Size = new Size(64, 20);
             label2.TabIndex = 13;
@@ -262,7 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 696);
+            ClientSize = new Size(1164, 696);
             Controls.Add(grbReponer);
             Controls.Add(panelHeladera);
             FormBorderStyle = FormBorderStyle.None;

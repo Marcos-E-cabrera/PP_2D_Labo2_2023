@@ -91,13 +91,12 @@ namespace Biblioteca_Carniceria
         public static List<Producto> HeladeraCliente()
         {
             List<Producto> ListHeladera_cliente = new List<Producto>();
+            ListHeladera_cliente.Clear();
 
             foreach (Producto producto in ListHeladera)
             {
                 if (producto.Stock != 0)
-                {
                     ListHeladera_cliente.Add(producto);
-                }
             }
 
             return ListHeladera_cliente;
@@ -111,19 +110,30 @@ namespace Biblioteca_Carniceria
         /// <param name="criterio"></param>
         public static void OrdenarHeladera(int criterio)
         {
+            List<Producto> list = new List<Producto>();
+            list.Clear();
             switch (criterio)
             {
                 case 0:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Nombre).ToList();
+
+                    list = ListHeladera.OrderBy(h => h.Nombre).ToList();
+                    ListHeladera.Clear();
+                    ListHeladera.AddRange(list);
                     break;
                 case 1:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Precio).ToList();
+                    list = ListHeladera.OrderBy(h => h.Precio).ToList();
+                    ListHeladera.Clear();
+                    ListHeladera.AddRange(list);
                     break;
                 case 2:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Stock).ToList();
+                    list = ListHeladera.OrderBy(h => h.Stock).ToList();
+                    ListHeladera.Clear();
+                    ListHeladera.AddRange(list);
                     break;
                 case 3:
-                    ListHeladera = ListHeladera.OrderBy(h => h.Tipo).ToList();
+                    list = ListHeladera.OrderBy(h => h.Tipo).ToList();
+                    ListHeladera.Clear();
+                    ListHeladera.AddRange(list);
                     break;
             }
         }
@@ -135,13 +145,36 @@ namespace Biblioteca_Carniceria
         /// </summary>
         /// <param name="index"> index del producto que se quiere obtener</param>
         /// <returns>Retorna el producto obtenido del index</returns>
-        public void getProducto(int index, out Producto aux)
+        public static void getProducto(int index, out Producto aux)
         {
             Producto producto = new Producto();
             if (index < Heladera.ListHeladera.Count && index >= 0)
             {
                 producto = Heladera.ListHeladera[index];
             }
+            aux = producto;
+        }
+
+        public static void getProductoHeladeraCliente(int index, out Producto aux)
+        {
+            List<Producto> ListHeladera_cliente = new List<Producto>();
+            ListHeladera_cliente.Clear();
+
+            Producto producto = new Producto();
+
+            foreach (Producto p in Heladera.ListHeladera)
+            {
+                if (p.Stock != 0)
+                {
+                    ListHeladera_cliente.Add(p);
+                }
+            }
+
+            if (index < ListHeladera_cliente.Count && index >= 0)
+            {
+                producto = ListHeladera_cliente[index];
+            }
+
             aux = producto;
         }
         #endregion

@@ -2,17 +2,19 @@ using Biblioteca_Carniceria;
 using FontAwesome.Sharp;
 using Frm_Vendedor;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Login
 {
     public partial class Login : Form
     {
         private bool hide;
-        private Heladera heladera = new Heladera();
+        Heladera _heladera;
 
         #region FRM LOGIN CONSTRUTOR
         public Login()
         {
+            _heladera = new Heladera();
             InitializeComponent();
             hide = true;
         }
@@ -52,10 +54,12 @@ namespace Login
                         Cliente cliente = new Cliente();
                         cliente.Nombre = "Zoro";
                         cliente.Apellido = "Roronoa";
-                        cliente.Saldo = 20000;
+                        cliente.Saldo = 0;
 
                         Frm_User_Cliente userCliente = new Frm_User_Cliente(cliente);
                         userCliente.Show(this);
+
+
                     }
                     else
                     {

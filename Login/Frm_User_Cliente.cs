@@ -14,11 +14,12 @@ namespace Login
     public partial class Frm_User_Cliente : Form
     {
         #region CAMPOS
-        private Vendedor vendedor;
-        private Cliente cliente;
+        Vendedor _vendedor;
+        Cliente _cliente;
         bool _efectivo = false;
         bool _debito = false;
         bool _factura = false;
+        bool _facturaCreada = true;
         #endregion
 
         #region CONSTRUCTORES
@@ -29,12 +30,20 @@ namespace Login
 
         public Frm_User_Cliente(Cliente cliente) : this()
         {
-            this.cliente = cliente;
+            this._cliente = cliente;
+            _vendedor = new Vendedor();
 
-            vendedor = new Vendedor();
-            vendedor.getMontoCliente(cliente);
+
+            Frm_Dinero frm_Dinero = new Frm_Dinero();
+            if (frm_Dinero.ShowDialog(this) == DialogResult.OK)
+            {
+                cliente.Saldo = frm_Dinero.dinero;
+            }
+
+
+            _vendedor.getMontoCliente(cliente);
             Vendedor.clienteCargado = true;
-            txtDinero.Text = cliente.Saldo.ToString();
+            lb_Dinero.Text = cliente.Saldo.ToString();
             cbxOrdenamiento.Items.Add("Nombre");
             cbxOrdenamiento.Items.Add("Precio");
             cbxOrdenamiento.Items.Add("Stock");
@@ -48,32 +57,38 @@ namespace Login
         #region AGREGAR
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Heladera heladera = new Heladera();
             Producto producto = new Producto();
 
-            int index = DGV_GetFilaHeladera();
-
-            heladera.getProducto(index, out producto);
-
-            switch (vendedor.CargarCarrito(producto))
+            if (_facturaCreada)
             {
-                case 0:
-                    MensajeOK("Producto cargado con exito!!", "Producto Cargado");
-                    MostrarCarrito();
+                int index = DGV_GetFilaHeladera();
 
-                    break;
-                case 1:
-                    MensajeError("Cliente no ingresado", "Error - [1]");
-                    break;
-                case 2:
-                    MensajeError("Sin STOCK del producto", "Error - [2]");
-                    break;
-                case 3:
-                    MensajeError("Saldo no Suficiente", "Error - [3]");
-                    break;
-                case 4:
-                    MensajeError("STOCK alcanzado", "Error - [4]");
-                    break;
+                Heladera.getProductoHeladeraCliente(index, out producto);
+
+                switch (_vendedor.CargarCarrito(producto))
+                {
+                    case 0:
+                        MensajeOK("Producto cargado con exito!!", "Producto Cargado");
+                        MostrarCarrito();
+
+                        break;
+                    case 1:
+                        MensajeError("Cliente no ingresado", "Error - [1]");
+                        break;
+                    case 2:
+                        MensajeError("Sin STOCK del producto", "Error - [2]");
+                        break;
+                    case 3:
+                        MensajeError("Saldo no Suficiente", "Error - [3]");
+                        break;
+                    case 4:
+                        MensajeError("STOCK alcanzado", "Error - [4]");
+                        break;
+                }
+            }
+            else
+            {
+                MensajeError("Seleccione Factura, Por Favor.", "Error Factura no entregada");
             }
         }
         #endregion
@@ -81,30 +96,37 @@ namespace Login
         #region COMPRAR
         private void btn_Comprar_Click(object sender, EventArgs e)
         {
-            if (_debito && !_efectivo)
+            if (_facturaCreada)
             {
-                DialogResult aux;
-                aux = MessageBox.Show("Con debito Tendras un 5% de recargo", "Aviso", MessageBoxButtons.YesNo);
-                if (aux == DialogResult.Yes)
+                if (_debito && !_efectivo)
                 {
-                    validacionCompra(1);
+                    DialogResult aux;
+                    aux = MessageBox.Show("Con debito Tendras un 5% de recargo", "Aviso", MessageBoxButtons.YesNo);
+                    if (aux == DialogResult.Yes)
+                    {
+                        validacionCompra(1);
+                    }
+                    else
+                    {
+                        MensajeError("Se cancelo el recargo de 5%", "Cancelar Recargo");
+                        validacionCompra(0);
+                    }
+                }
+                else if (!_debito && _efectivo)
+                {
+                    if (_efectivo)
+                    {
+                        validacionCompra(0);
+                    }
                 }
                 else
                 {
-                    MensajeError("Se cancelo el recargo de 5%", "Cancelar Recargo");
-                    validacionCompra(0);
-                }
-            }
-            else if (!_debito && _efectivo)
-            {
-                if (_efectivo)
-                {
-                    validacionCompra(0);
+                    MensajeError("Seleccione forma de Pago.", "Error Forma de Pago");
                 }
             }
             else
             {
-                MensajeError("Seleccione forma de Pago.", "Error Forma de Pago");
+                MensajeError("Seleccione Factura, Por Favor.", "Error Factura no entregada");
             }
         }
 
@@ -112,7 +134,7 @@ namespace Login
         private void validacionCompra(int formaDePago)
         {
             int rta;
-            rta = Carrito.Comprar(vendedor.ListCarrito, out Vendedor.MontoCliene, cliente.Nombre, cliente.Apellido, cliente.Saldo, formaDePago);
+            rta = Carrito.Comprar(_vendedor.ListCarrito, out Vendedor.MontoCliene, _cliente.Nombre, _cliente.Apellido, _cliente.Saldo, formaDePago);
 
             switch (rta)
             {
@@ -120,11 +142,12 @@ namespace Login
                     _factura = true;
                     dgvHeladera.Refresh();
 
-                    txtDinero.Text = $" $ {Vendedor.MontoCliene}";
+                    lb_Dinero.Text = $" $ {Vendedor.MontoCliene}";
 
                     MensajeOK("Compra exitosa!!", "Compra de Productos");
-                    vendedor.ListCarrito.Clear();
+                    _vendedor.ListCarrito.Clear();
                     MostrarCarrito();
+                    _facturaCreada = false;
                     break;
                 case 1:
                     MensajeError("Carrito Vacio", "Error - [1]");
@@ -177,6 +200,7 @@ namespace Login
                 Frm_Factura factura = new Frm_Factura();
                 factura.ShowDialog();
                 _factura = false;
+                _facturaCreada = true;
             }
             else
             {
@@ -227,13 +251,17 @@ namespace Login
             });
 
             // Establecer el origen de datos solo si hay elementos en el carrito
-            if (vendedor.ListCarrito.Count > 0)
+            if (_vendedor.ListCarrito.Count > 0)
             {
-                dgvCarrito.DataSource = vendedor.ListCarrito;
+                dgvCarrito.Visible = true;
+                lb_Vacio.Visible = false;
+                dgvCarrito.DataSource = _vendedor.ListCarrito;
             }
             else
             {
                 dgvCarrito.DataSource = null; // Si no hay elementos en el carrito, establecer el origen de datos a null para limpiar el DataGridView
+                dgvCarrito.Visible = false;
+                lb_Vacio.Visible = true;
             }
         }
 
@@ -242,13 +270,14 @@ namespace Login
         #region TIPO USUARIO
         private void Frm_User_Cliente_Load(object sender, EventArgs e)
         {
-            lblUser.Text = $"Tipo: {cliente.ObtenerUsuario()} || Usuario: {cliente.Nombre} {cliente.Apellido}";
+            lblUser.Text = $"Tipo: {_cliente.ObtenerUsuario()} || Usuario: {_cliente.Nombre} {_cliente.Apellido}";
         }
         #endregion
 
         #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dgvHeladera.Refresh();
             Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }

@@ -37,8 +37,6 @@ namespace Biblioteca_Carniceria
             ListClientes = new List<Cliente>();
             ListCarrito = new List<Producto>();
             MontoCliene = 0;
-            _stockMax = false;
-            _productoCargado = false;
 
             GenerarClientes();
         }
