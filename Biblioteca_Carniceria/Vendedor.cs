@@ -10,36 +10,43 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_Carniceria
 {
-    public class Vendedor : Usuario
+    public class Vendedor : Usuario, ICarrito
     {
-        #region CAMPOS
-        public static decimal MontoCliene;
+        public static float MontoCliene;
         public static bool clienteCargado = false;
-
         private bool _stockMax = false;
         private bool _productoCargado = false;
 
-        #region LISTAS
 
-        public List<Cliente> ListClientes; // Lista de Clientes
+        public static List<Cliente> ListClientes = new List<Cliente>(); // Lista de Clientes
         public List<Producto> ListCarrito; // Lista carrito ( contiene los productos en el carrito)
 
         public static List<Historial> ListaHistorial = new List<Historial>(); // Lista de Historial de ventas
         public static List<Producto> ListaProductos = new List<Producto>(); // lista de Productos 
-        #endregion
 
-        #endregion
+        private ConexionSql conexionSql;
 
         #region CONSTRUCTOR
+
         public Vendedor()
         {
-            ListaProductos = Heladera.ListHeladera;
-            ListClientes = new List<Cliente>();
-            ListCarrito = new List<Producto>();
-            MontoCliene = 0;
+            conexionSql = new ConexionSql();
 
+            ListaProductos = Heladera.ListHeladera;
+            ListCarrito = new List<Producto>();
+
+            MontoCliene = 0;
             GenerarClientes();
         }
+
+        public Vendedor(string nombre, string apellido, string email, string password)
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Email = email;
+            Password= password;
+        }
+
         #endregion
 
         #region SELECCION DE CLIENTE
@@ -74,6 +81,9 @@ namespace Biblioteca_Carniceria
             ListClientes.Add(new Cliente("Alvinia", "Vian", 731));
             ListClientes.Add(new Cliente("Leonie", "Jaskowicz", 11462));
         }
+
+
+
         #endregion
 
         #region OBTENER MONTO
@@ -100,14 +110,14 @@ namespace Biblioteca_Carniceria
         /// <param name="stock"></param>
         /// <param name="tipo"></param>
         /// <returns> ERROR: [1](Parametros mal ingresados), [2](ya existe) - OK: [0](TODO BIEN) </returns>
-        public static int Agregar(string nombre, decimal precio, int stock, string tipo )
+        public static int Agregar(string nombre, float precio, int stock, string tipo )
         {
             int rta = 1; // error[1] parametros mal ingresados
             bool valido = true;
 
             eTipo tipoAux = (eTipo)Enum.Parse(typeof(eTipo), tipo);
             Producto producto = new Producto();
-            producto.Nombre = nombre;
+            producto.Corte = nombre;
             producto.Precio = precio;
             producto.Stock = stock;
             producto.Tipo = tipoAux;
@@ -117,7 +127,7 @@ namespace Biblioteca_Carniceria
             {
                 foreach (Producto p in ListaProductos)
                 {
-                    if (producto.Nombre == p.Nombre)
+                    if (producto.Corte == p.Corte)
                     {
                         rta = 2; // error [2] ya existe
                         break;
@@ -126,7 +136,7 @@ namespace Biblioteca_Carniceria
 
                 if (valido && rta != 2)
                 {
-                    ListaProductos.Add(new Producto(producto.Nombre, producto.Precio, producto.Stock, producto.Tipo));
+                    ListaProductos.Add(new Producto(producto.Corte, producto.Precio, producto.Stock, (int)producto.Tipo));
                     rta = 0;
                 }
             }
@@ -181,7 +191,7 @@ namespace Biblioteca_Carniceria
         /// </summary>
         /// <param name="producto"></param>
         /// <returns> ERROR: [1]Cliente no seleccionado), [2](Sin stock), [3](Saldo no suficiente), [4](Tope de producto) - OK: [0](TODO BIEN) </returns>
-        public override int CargarCarrito(Producto producto)
+        public int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
 
@@ -226,7 +236,7 @@ namespace Biblioteca_Carniceria
                         {
 
                             aux = producto;
-                            ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1 , aux.Tipo));
+                            ListCarrito.Add(new Producto(aux.Corte, aux.Precio, 1 , (int)aux.Tipo));
                             retorno = 0;
                         }
 
@@ -295,6 +305,8 @@ namespace Biblioteca_Carniceria
         {
             return "Vendedor";
         }
+
+
         #endregion
     }
 }

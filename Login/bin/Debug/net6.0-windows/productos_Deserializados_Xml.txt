@@ -1,0 +1,47 @@
+Asado,1000,0,Vacuno
+Vacio,1000,10,Vacuno
+Bife De Chorizo,700,10,Vacuno
+Entraña,800,10,Vacuno
+Matambre,600,10,Vacuno
+Cuadril,900,10,Ternero
+Lomo Vetado,1200,10,Ternero
+Colita De Cuadril,988,10,Ternero
+Tapa De Asado,600,10,Vacuno
+Marucha,556,10,Ternero
+Falda,875,10,Ternero
+RoastBeef,654,10,Ternero
+Cadera,700,10,Ternero
+Cadera De Ternera,500,10,Ternero
+Callos,267,10,Ternero
+Chuletón De Vaca,2000,10,Vacuno
+Contra,1000,10,Ternero
+Entrecot De Ternera Rosada,1000,10,Ternero
+Etrecot De Ternera Blanca,3000,10,Ternero
+Lengua,1300,10,Ternero
+Morcillo De Ternera Blanca,1023,10,Ternero
+Osobuco,1000,10,Ternero
+Picaña De Vaca,1000,15,Vacuno
+Redondo De Ternera Rosada,1000,18,Vacuno
+Roti De Ternera Blanca,1000,17,Vacuno
+Solomillo De Ternera Rosada,1000,25,Vacuno
+Solomillo De Vaca,1000,28,Vacuno
+Tapa De Ternera Rosada,1000,13,Vacuno
+Perdiz De Ternera,1000,10,Ternero
+Chuleta De Cerdo,1000,8,Cerdo
+Costilla Adobada,1000,10,Cerdo
+Ibéricos,1000,12,Cerdo
+Lomo Adobado,1000,10,Cerdo
+Picadillo,1000,5,Cerdo
+Solomillo De Cerdo,1000,12,Cerdo
+Tira De Costilla De Cerdo,1000,10,Cerdo
+Chuletillas,3000,14,Cordero
+Chuletillas De Recental,1000,14,Cordero
+Delantero,1000,10,Cordero
+Manitas,1000,17,Cordero
+Pierna,1000,18,Cordero
+Pechuga,1000,35,Pollo
+Muslos,1000,25,Pollo
+Alas,1000,20,Pollo
+Pollo Entero,1000,22,Pollo
+Hamburguesas,200,21,Procesado
+Salchichas,150,15,Procesado

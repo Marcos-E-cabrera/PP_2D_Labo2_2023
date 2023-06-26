@@ -66,7 +66,7 @@ namespace Frm_Vendedor
 
                 cliente.Nombre = dgvClientes[0, index].Value.ToString();
                 cliente.Apellido = dgvClientes[1, index].Value.ToString();
-                cliente.Saldo = Convert.ToDecimal(dgvClientes[2, index].Value);
+                cliente.Saldo = (float)Convert.ToDecimal(dgvClientes[2, index].Value);
 
                 vendedor.getMontoCliente(cliente);
 
@@ -83,7 +83,7 @@ namespace Frm_Vendedor
                     index = DGV_GetFila();
                     cliente.Nombre = dgvClientes[0, index].Value.ToString();
                     cliente.Apellido = dgvClientes[1, index].Value.ToString();
-                    cliente.Saldo = Convert.ToDecimal(dgvClientes[2, index].Value);
+                    cliente.Saldo = (float)Convert.ToDecimal(dgvClientes[2, index].Value);
 
 
                     foreach (int item in auxIndex)
@@ -274,7 +274,7 @@ namespace Frm_Vendedor
                 }
             );
 
-            dgvClientes.DataSource = vendedor.ListClientes;
+            dgvClientes.DataSource = Vendedor.ListClientes;
         }
 
         private void MostrarHeladera()
@@ -288,31 +288,25 @@ namespace Frm_Vendedor
         private void MostrarCarrito()
         {
             dgvCarrito.AutoGenerateColumns = false;
-            dgvCarrito.Columns.Clear(); // Limpiar las columnas existentes en caso de que haya alguna
-
-            // Agrega las columnas directamente al DataGridView utilizando la inicialización de objetos
+            dgvCarrito.Columns.Clear();
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Nombre",
-                DataPropertyName = "Nombre" // Asegúrate de utilizar la propiedad correcta para el nombre de la columna
+                HeaderText = "Corte", DataPropertyName = "Corte"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Precio",
-                DataPropertyName = "Precio" // Asegúrate de utilizar la propiedad correcta para el precio de la columna
+                HeaderText = "Precio", DataPropertyName = "Precio" 
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Cantidad",
-                DataPropertyName = "Stock" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+                HeaderText = "Cantidad", DataPropertyName = "Stock" 
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Tipo",
-                DataPropertyName = "Tipo" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+                HeaderText = "Tipo", DataPropertyName = "Tipo" 
             });
 
             // Establecer el origen de datos solo si hay elementos en el carrito
@@ -377,7 +371,7 @@ namespace Frm_Vendedor
 
             c.Nombre = dgvClientes[0, index].Value.ToString();
             c.Apellido = dgvClientes[1, index].Value.ToString();
-            c.Saldo = Convert.ToDecimal(dgvClientes[2, index].Value);
+            c.Saldo = (float)Convert.ToDecimal(dgvClientes[2, index].Value);
 
             return c;
         }

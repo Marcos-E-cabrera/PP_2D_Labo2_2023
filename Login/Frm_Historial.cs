@@ -26,6 +26,7 @@ namespace Login
             listHistorialFactura.DataSource = Historial.listFacturas;
             listHistorialFactura.Refresh();
             MostrarHistroial();
+            Archivos.CrearArchivo_Historial(Historial.listFacturas);
         }
         #endregion
 
@@ -64,6 +65,7 @@ namespace Login
             );
 
             dgvHistorialVenta.DataSource = Vendedor.ListaHistorial;
+            Archivos.CrearArchivo_HistorialCliente(Vendedor.ListaHistorial);
         }
         #endregion
     }

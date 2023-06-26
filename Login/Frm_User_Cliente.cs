@@ -15,7 +15,7 @@ namespace Login
     {
         #region CAMPOS
         Vendedor _vendedor;
-        Cliente _cliente;
+        public Cliente cliente;
         bool _efectivo = false;
         bool _debito = false;
         bool _factura = false;
@@ -30,7 +30,7 @@ namespace Login
 
         public Frm_User_Cliente(Cliente cliente) : this()
         {
-            this._cliente = cliente;
+            this.cliente = cliente;
             _vendedor = new Vendedor();
 
 
@@ -65,7 +65,7 @@ namespace Login
 
                 Heladera.getProductoHeladeraCliente(index, out producto);
 
-                switch (_vendedor.CargarCarrito(producto))
+                switch (cliente.CargarCarrito(producto))
                 {
                     case 0:
                         MensajeOK("Producto cargado con exito!!", "Producto Cargado");
@@ -73,16 +73,13 @@ namespace Login
 
                         break;
                     case 1:
-                        MensajeError("Cliente no ingresado", "Error - [1]");
+                        MensajeError("Sin STOCK del producto", "Error - [1]");
                         break;
                     case 2:
-                        MensajeError("Sin STOCK del producto", "Error - [2]");
+                        MensajeError("Saldo no Suficiente", "Error - [2]");
                         break;
                     case 3:
-                        MensajeError("Saldo no Suficiente", "Error - [3]");
-                        break;
-                    case 4:
-                        MensajeError("STOCK alcanzado", "Error - [4]");
+                        MensajeError("STOCK alcanzado", "Error - [3]");
                         break;
                 }
             }
@@ -134,7 +131,7 @@ namespace Login
         private void validacionCompra(int formaDePago)
         {
             int rta;
-            rta = Carrito.Comprar(_vendedor.ListCarrito, out Vendedor.MontoCliene, _cliente.Nombre, _cliente.Apellido, _cliente.Saldo, formaDePago);
+            rta = Carrito.Comprar_Cliente(cliente.ListCarrito, ref cliente, formaDePago);
 
             switch (rta)
             {
@@ -142,10 +139,10 @@ namespace Login
                     _factura = true;
                     dgvHeladera.Refresh();
 
-                    lb_Dinero.Text = $" $ {Vendedor.MontoCliene}";
+                    lb_Dinero.Text = $" $ {cliente.Saldo}";
 
                     MensajeOK("Compra exitosa!!", "Compra de Productos");
-                    _vendedor.ListCarrito.Clear();
+                    cliente.ListCarrito.Clear();
                     MostrarCarrito();
                     _facturaCreada = false;
                     break;
@@ -223,39 +220,39 @@ namespace Login
         private void MostrarCarrito()
         {
             dgvCarrito.AutoGenerateColumns = false;
-            dgvCarrito.Columns.Clear(); // Limpiar las columnas existentes en caso de que haya alguna
-
-            // Agrega las columnas directamente al DataGridView utilizando la inicialización de objetos
+            dgvCarrito.Columns.Clear();
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Nombre",
-                DataPropertyName = "Nombre" // Asegúrate de utilizar la propiedad correcta para el nombre de la columna
+                HeaderText = "Corte",
+                DataPropertyName = "Corte"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "Precio",
-                DataPropertyName = "Precio" // Asegúrate de utilizar la propiedad correcta para el precio de la columna
+                DataPropertyName = "Precio"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "Cantidad",
-                DataPropertyName = "Stock" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+                DataPropertyName = "Stock"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
                 HeaderText = "Tipo",
-                DataPropertyName = "Tipo" // Asegúrate de utilizar la propiedad correcta para la cantidad de la columna
+                DataPropertyName = "Tipo"
             });
 
+
+
             // Establecer el origen de datos solo si hay elementos en el carrito
-            if (_vendedor.ListCarrito.Count > 0)
+            if (cliente.ListCarrito.Count > 0)
             {
                 dgvCarrito.Visible = true;
                 lb_Vacio.Visible = false;
-                dgvCarrito.DataSource = _vendedor.ListCarrito;
+                dgvCarrito.DataSource = cliente.ListCarrito;
             }
             else
             {
@@ -270,7 +267,7 @@ namespace Login
         #region TIPO USUARIO
         private void Frm_User_Cliente_Load(object sender, EventArgs e)
         {
-            lblUser.Text = $"Tipo: {_cliente.ObtenerUsuario()} || Usuario: {_cliente.Nombre} {_cliente.Apellido}";
+            lblUser.Text = $"Tipo: {cliente.ObtenerUsuario()} || Usuario: {cliente.Nombre} {cliente.Apellido}";
         }
         #endregion
 

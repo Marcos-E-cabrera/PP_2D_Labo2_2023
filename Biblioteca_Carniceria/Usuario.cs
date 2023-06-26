@@ -8,11 +8,18 @@ namespace Biblioteca_Carniceria
 {
     public abstract class Usuario
     {
+        static int _id = 0;
         string? _nombre;
         string? _apellido;
+        string? _email;
+        string? _password;
 
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public string Apellido { get => _apellido; set => _apellido = value; }
+        public string? Nombre { get => _nombre; set => _nombre = value; }
+        public string? Apellido { get => _apellido; set => _apellido = value; }
+        public string? Email { get => _email; set => _email = value; }
+        public string? Password { get => _password; set => _password = value; }
+        public static int Id { get => _id; set => _id = value; }
+
 
         #region METODOS ABSTRACT
         /// <summary>
@@ -21,12 +28,7 @@ namespace Biblioteca_Carniceria
         /// <returns>retorno el tipo de usuario</returns>
         public abstract string ObtenerUsuario();
 
-        /// <summary>
-        /// EL usuario tendra un metodo que le permitira cargar productos al carrito
-        /// </summary>
-        /// <param name="producto"></param>
-        /// <returns> Retornara un valor dependiendo si esta OK o NO</returns>
-        public abstract int CargarCarrito(Producto producto);
+        
         #endregion
     }
 }

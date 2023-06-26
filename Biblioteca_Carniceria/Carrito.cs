@@ -39,7 +39,7 @@ namespace Biblioteca_Carniceria
         /// <param name="auxSaldo"></param>
         /// <param name="formaPago"></param>
         /// <returns> ERROR: [1](Carrito vacio), [2](error de compra),[3](Saldo no suficiente) - OK: [0](TODO BIEN) </returns>
-        public static int Comprar(List<Producto> Carrito, out decimal saldo, string nombre, string apellido, decimal auxSaldo ,int formaPago)
+        public static int Comprar(List<Producto> Carrito, out float saldo, string nombre, string apellido, float auxSaldo ,int formaPago)
         {
             saldo = 0;
 
@@ -60,9 +60,9 @@ namespace Biblioteca_Carniceria
                         Monto = CargarMontoFinal();
                         
                         // el total apagar tiene que ser igual o menor al saldo del cliente
-                        if (Monto <= cliente.Saldo) 
+                        if (Monto <= (decimal)cliente.Saldo) 
                         {
-                            cliente.Saldo = cliente.Saldo - Monto;
+                            cliente.Saldo = cliente.Saldo - (float)Monto;
                             saldo = cliente.Saldo;
 
                             Factura.nFactura++;
@@ -89,9 +89,9 @@ namespace Biblioteca_Carniceria
                         Monto = RecargoDebito(CargarMontoFinal());
                             
                         // le paso la cantidad a pagar al carrito
-                        if (Monto <= cliente.Saldo)
+                        if (Monto <= (decimal)cliente.Saldo)
                         {
-                            cliente.Saldo = cliente.Saldo - Monto;
+                            cliente.Saldo = cliente.Saldo - (float)Monto;
                             saldo = cliente.Saldo;
                             Factura.nFactura++;
                             // Guardo la factura del cliente
@@ -121,13 +121,101 @@ namespace Biblioteca_Carniceria
             {
                 foreach (Producto aux in Heladera.ListHeladera)
                 {
-                    if ( p.Nombre ==aux.Nombre )
+                    if ( p.Corte ==aux.Corte )
                     {
-                        aux.Stock--;
+                        aux.Stock -= p.Stock;
                     }
                 }
             }
            
+            _compraEfectuada = false;
+            return retorno;
+        }
+
+        public static int Comprar_Cliente(List<Producto> Carrito, ref Cliente cliente, int formaPago)
+        {
+            int retorno = 1; // carrito esta vacio
+            if (Carrito.Count != 0)
+            {
+                // si no se compro y el carrito esta lleno se peudo comprar
+                if (_compraEfectuada == false && _carritoVacio == false)
+                {
+                    // si es ok, pagara con efectivo y no lo paga con devito                  
+                    if (formaPago == 0)
+                    {
+                        Pago = 0;
+
+                        // cargo los productos comprados a la factura
+                        CrearFactura(Carrito, cliente.Nombre, cliente.Apellido);
+                        Monto = CargarMontoFinal();
+
+                        // el total apagar tiene que ser igual o menor al saldo del cliente
+                        if (Monto <= (decimal)cliente.Saldo)
+                        {
+                            cliente.Saldo = cliente.Saldo - (float)Monto;
+
+                            Factura.nFactura++;
+
+                            // Guardo la factura del cliente
+                            Vendedor.CargarHistorial(ListaProductos, cliente.Nombre, cliente.Apellido);
+
+                            _validarFactura = true;
+                            _compraEfectuada = true;
+                            retorno = 0; // compra exitosa
+                        }
+                        else
+                        {
+                            LimpiarFactura();
+                            retorno = 3; // saldo no suficiente
+                        }
+                    }
+                    else
+                    {
+                        Pago = 1;
+
+                        // cargo los productos comprados a la factura
+                        CrearFactura(Carrito, cliente.Nombre, cliente.Apellido);
+                        Monto = RecargoDebito(CargarMontoFinal());
+
+                        // le paso la cantidad a pagar al carrito
+                        if (Monto <= (decimal)cliente.Saldo)
+                        {
+                            cliente.Saldo = cliente.Saldo - (float)Monto;
+                            Factura.nFactura++;
+                            // Guardo la factura del cliente
+                            Vendedor.CargarHistorial(ListaProductos, cliente.Nombre, cliente.Apellido);
+
+                            _validarFactura = true;
+                            _compraEfectuada = true;
+                            retorno = 0;
+                        }
+                        else
+                        {
+                            retorno = 3; // saldo no suficiente
+                        }
+                    }
+                }
+                else
+                {
+                    retorno = 2; // error de compra
+                }
+            }
+            else
+            {
+                _carritoVacio = true;
+            }
+
+            foreach (Producto p in Carrito)
+            {
+                foreach (Producto aux in Heladera.ListHeladera)
+                {
+                    if (p.Corte == aux.Corte)
+                    {
+                        aux.Stock -= p.Stock;
+                    }
+                }
+            }
+
             _compraEfectuada = false;
             return retorno;
         }
@@ -161,10 +249,10 @@ namespace Biblioteca_Carniceria
 
             foreach (Producto p in productos)
             {
-                newFactura.NombreProducto = p.Nombre;
+                newFactura.NombreProducto = p.Corte;
                 newFactura.Cantidad = p.Stock;
                 newFactura.PrecioUnitario = p.Precio;
-                newFactura.Total = p.Stock * p.Precio;
+                newFactura.Total = (decimal)(p.Stock * p.Precio);
 
                 ListaProductos.Add(new Factura(newFactura.NombreProducto,newFactura.Cantidad,newFactura.PrecioUnitario,newFactura.Total));
             }

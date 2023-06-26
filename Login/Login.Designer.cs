@@ -34,19 +34,24 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            grb_SingUp = new GroupBox();
+            panel12 = new Panel();
+            panel11 = new Panel();
+            txtNombre_SingUp = new TextBox();
+            txtEmail_SingUp = new TextBox();
+            panel14 = new Panel();
+            txtPassword_SingUp = new TextBox();
+            txtApellido_SingUp = new TextBox();
+            panel19 = new Panel();
             btn_SingUp = new Button();
             ibtnCliente = new FontAwesome.Sharp.IconButton();
             ibtnVendedor = new FontAwesome.Sharp.IconButton();
             panel9 = new Panel();
-            panel10 = new Panel();
-            label2 = new Label();
             panel5 = new Panel();
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             ibtnHide = new FontAwesome.Sharp.IconButton();
             panel6 = new Panel();
             panel7 = new Panel();
-            panel8 = new Panel();
-            label1 = new Label();
             panel3 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             panel4 = new Panel();
@@ -54,12 +59,11 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            grb_SingUp.SuspendLayout();
             panel9.SuspendLayout();
-            panel10.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             panel7.SuspendLayout();
-            panel8.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             SuspendLayout();
@@ -73,7 +77,7 @@
             txtUsuario.ForeColor = Color.FromArgb(252, 252, 246);
             txtUsuario.Location = new Point(43, 13);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.PlaceholderText = "Username";
+            txtUsuario.PlaceholderText = "Username / Email";
             txtUsuario.Size = new Size(308, 27);
             txtUsuario.TabIndex = 4;
             // 
@@ -125,6 +129,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(grb_SingUp);
             panel2.Controls.Add(btn_SingUp);
             panel2.Controls.Add(ibtnCliente);
             panel2.Controls.Add(ibtnVendedor);
@@ -135,9 +140,113 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(345, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(423, 379);
+            panel2.Size = new Size(427, 379);
             panel2.TabIndex = 13;
             panel2.Tag = "";
+            // 
+            // grb_SingUp
+            // 
+            grb_SingUp.Controls.Add(panel12);
+            grb_SingUp.Controls.Add(panel11);
+            grb_SingUp.Controls.Add(txtNombre_SingUp);
+            grb_SingUp.Controls.Add(txtEmail_SingUp);
+            grb_SingUp.Controls.Add(panel14);
+            grb_SingUp.Controls.Add(txtPassword_SingUp);
+            grb_SingUp.Controls.Add(txtApellido_SingUp);
+            grb_SingUp.Controls.Add(panel19);
+            grb_SingUp.Location = new Point(29, 72);
+            grb_SingUp.Name = "grb_SingUp";
+            grb_SingUp.Size = new Size(369, 218);
+            grb_SingUp.TabIndex = 22;
+            grb_SingUp.TabStop = false;
+            // 
+            // panel12
+            // 
+            panel12.Anchor = AnchorStyles.None;
+            panel12.BackColor = Color.FromArgb(252, 252, 246);
+            panel12.Location = new Point(9, 59);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(160, 1);
+            panel12.TabIndex = 15;
+            // 
+            // panel11
+            // 
+            panel11.Anchor = AnchorStyles.None;
+            panel11.BackColor = Color.FromArgb(252, 252, 246);
+            panel11.Location = new Point(183, 59);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(160, 1);
+            panel11.TabIndex = 14;
+            // 
+            // txtNombre_SingUp
+            // 
+            txtNombre_SingUp.Anchor = AnchorStyles.None;
+            txtNombre_SingUp.BackColor = Color.FromArgb(119, 170, 161);
+            txtNombre_SingUp.BorderStyle = BorderStyle.None;
+            txtNombre_SingUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNombre_SingUp.ForeColor = Color.FromArgb(252, 252, 246);
+            txtNombre_SingUp.Location = new Point(9, 27);
+            txtNombre_SingUp.Name = "txtNombre_SingUp";
+            txtNombre_SingUp.PlaceholderText = "Nombre";
+            txtNombre_SingUp.Size = new Size(160, 27);
+            txtNombre_SingUp.TabIndex = 19;
+            // 
+            // txtEmail_SingUp
+            // 
+            txtEmail_SingUp.Anchor = AnchorStyles.None;
+            txtEmail_SingUp.BackColor = Color.FromArgb(119, 170, 161);
+            txtEmail_SingUp.BorderStyle = BorderStyle.None;
+            txtEmail_SingUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail_SingUp.ForeColor = Color.FromArgb(252, 252, 246);
+            txtEmail_SingUp.Location = new Point(9, 82);
+            txtEmail_SingUp.Name = "txtEmail_SingUp";
+            txtEmail_SingUp.PlaceholderText = "Email";
+            txtEmail_SingUp.Size = new Size(334, 27);
+            txtEmail_SingUp.TabIndex = 4;
+            // 
+            // panel14
+            // 
+            panel14.Anchor = AnchorStyles.None;
+            panel14.BackColor = Color.FromArgb(252, 252, 246);
+            panel14.Location = new Point(9, 111);
+            panel14.Name = "panel14";
+            panel14.Size = new Size(334, 1);
+            panel14.TabIndex = 13;
+            // 
+            // txtPassword_SingUp
+            // 
+            txtPassword_SingUp.Anchor = AnchorStyles.None;
+            txtPassword_SingUp.BackColor = Color.FromArgb(119, 170, 161);
+            txtPassword_SingUp.BorderStyle = BorderStyle.None;
+            txtPassword_SingUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPassword_SingUp.ForeColor = Color.FromArgb(252, 252, 246);
+            txtPassword_SingUp.Location = new Point(9, 136);
+            txtPassword_SingUp.Name = "txtPassword_SingUp";
+            txtPassword_SingUp.PlaceholderText = "Password";
+            txtPassword_SingUp.Size = new Size(334, 27);
+            txtPassword_SingUp.TabIndex = 4;
+            // 
+            // txtApellido_SingUp
+            // 
+            txtApellido_SingUp.Anchor = AnchorStyles.None;
+            txtApellido_SingUp.BackColor = Color.FromArgb(119, 170, 161);
+            txtApellido_SingUp.BorderStyle = BorderStyle.None;
+            txtApellido_SingUp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtApellido_SingUp.ForeColor = Color.FromArgb(252, 252, 246);
+            txtApellido_SingUp.Location = new Point(187, 27);
+            txtApellido_SingUp.Name = "txtApellido_SingUp";
+            txtApellido_SingUp.PlaceholderText = "Apellido";
+            txtApellido_SingUp.Size = new Size(156, 27);
+            txtApellido_SingUp.TabIndex = 18;
+            // 
+            // panel19
+            // 
+            panel19.Anchor = AnchorStyles.None;
+            panel19.BackColor = Color.FromArgb(252, 252, 246);
+            panel19.Location = new Point(9, 169);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(334, 1);
+            panel19.TabIndex = 13;
             // 
             // btn_SingUp
             // 
@@ -150,6 +259,7 @@
             btn_SingUp.TabIndex = 21;
             btn_SingUp.Text = "Sing Up";
             btn_SingUp.UseVisualStyleBackColor = true;
+            btn_SingUp.Click += btn_SingUp_Click;
             // 
             // ibtnCliente
             // 
@@ -161,7 +271,7 @@
             ibtnCliente.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
             ibtnCliente.IconColor = Color.White;
             ibtnCliente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnCliente.Location = new Point(216, 21);
+            ibtnCliente.Location = new Point(85, 1);
             ibtnCliente.Name = "ibtnCliente";
             ibtnCliente.Size = new Size(48, 48);
             ibtnCliente.TabIndex = 20;
@@ -178,43 +288,20 @@
             ibtnVendedor.IconChar = FontAwesome.Sharp.IconChar.UserTie;
             ibtnVendedor.IconColor = Color.Snow;
             ibtnVendedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ibtnVendedor.Location = new Point(160, 21);
+            ibtnVendedor.Location = new Point(29, 3);
             ibtnVendedor.Name = "ibtnVendedor";
-            ibtnVendedor.Size = new Size(50, 46);
+            ibtnVendedor.Size = new Size(50, 43);
             ibtnVendedor.TabIndex = 19;
             ibtnVendedor.UseVisualStyleBackColor = true;
             ibtnVendedor.Click += ibtnVendedor_Click;
             // 
             // panel9
             // 
-            panel9.Controls.Add(panel10);
             panel9.Controls.Add(panel5);
             panel9.Location = new Point(29, 182);
             panel9.Name = "panel9";
             panel9.Size = new Size(369, 88);
             panel9.TabIndex = 18;
-            // 
-            // panel10
-            // 
-            panel10.Controls.Add(label2);
-            panel10.Dock = DockStyle.Top;
-            panel10.Location = new Point(0, 56);
-            panel10.Name = "panel10";
-            panel10.Size = new Size(369, 23);
-            panel10.TabIndex = 15;
-            panel10.Visible = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Left;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.IndianRed;
-            label2.Location = new Point(0, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(131, 20);
-            label2.TabIndex = 15;
-            label2.Text = " Invalid Password";
             // 
             // panel5
             // 
@@ -269,34 +356,11 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(panel8);
             panel7.Controls.Add(panel3);
             panel7.Location = new Point(29, 88);
             panel7.Name = "panel7";
             panel7.Size = new Size(369, 88);
             panel7.TabIndex = 17;
-            // 
-            // panel8
-            // 
-            panel8.Controls.Add(label1);
-            panel8.Dock = DockStyle.Top;
-            panel8.Location = new Point(0, 56);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(369, 24);
-            panel8.TabIndex = 13;
-            panel8.Visible = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Left;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.IndianRed;
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(142, 20);
-            label1.TabIndex = 14;
-            label1.Text = " Invalid User Name";
             // 
             // panel3
             // 
@@ -353,7 +417,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(119, 170, 161);
-            ClientSize = new Size(773, 389);
+            ClientSize = new Size(777, 389);
             Controls.Add(panel2);
             Controls.Add(panel1);
             ForeColor = Color.White;
@@ -366,15 +430,13 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
+            grb_SingUp.ResumeLayout(false);
+            grb_SingUp.PerformLayout();
             panel9.ResumeLayout(false);
-            panel10.ResumeLayout(false);
-            panel10.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             panel7.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
@@ -397,13 +459,18 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Panel panel9;
-        private Panel panel10;
-        private Label label2;
         private Panel panel7;
-        private Panel panel8;
-        private Label label1;
         private FontAwesome.Sharp.IconButton ibtnCliente;
         private FontAwesome.Sharp.IconButton ibtnVendedor;
         private Button btn_SingUp;
+        private Panel panel19;
+        private TextBox txtPassword_SingUp;
+        private Panel panel14;
+        private TextBox txtEmail_SingUp;
+        private TextBox txtApellido_SingUp;
+        private GroupBox grb_SingUp;
+        private TextBox txtNombre_SingUp;
+        private Panel panel12;
+        private Panel panel11;
     }
 }

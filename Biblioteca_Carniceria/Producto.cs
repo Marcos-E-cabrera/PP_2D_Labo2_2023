@@ -8,53 +8,47 @@ namespace Biblioteca_Carniceria
 {
     public class Producto
     {
-        #region CAMPOS
-        string _nombre;
-        decimal _Precio;
-        int _Stock;
-        eTipo _tipo;
-        #endregion
+        private string _corte;
+        private float _Precio;
+        private int _Stock;
+        private eTipo _tipo;
 
-        #region PROPIEDADES
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public decimal Precio { get => _Precio; set => _Precio = value; }
+        public string Corte { get => _corte; set => _corte = value; }
+        public float Precio { get => _Precio; set => _Precio = value; }
         public int Stock { get => _Stock; set => _Stock = value; }
         public eTipo Tipo { get => _tipo; set => _tipo = value; }
-        #endregion
+        
 
-        #region CONSTRUCTORES
         public Producto()
         {
-            Nombre = "xxxxxxx";
+            Corte = string.Empty;
             Precio = 0;
             Stock = 0;
             Tipo = 0;
         }
 
-        public Producto(string nombre, decimal precio, int stock) : this()
+        public Producto(string nombre, float precio, int stock) : this()
         {
-            Nombre = nombre;
+            Corte = nombre;
             Precio = precio;
             Stock = stock;
         }
 
-        public Producto(string nombre, decimal precio, int stock, eTipo tipo) : this( nombre, precio,stock)
+        public Producto(string nombre, float precio, int stock, int tipo) : this( nombre, precio,stock)
         {
-            Tipo = tipo;
+            Tipo = (eTipo)tipo;
         }
-        #endregion
 
-        #region METODOS 
+
         public static bool operator == ( Producto a, Producto b) 
         {
-            return a.Nombre.Equals(b.Nombre);
+            return a.Corte.Equals(b.Corte);
         }
 
         public static bool operator != ( Producto a, Producto b ) 
         { 
            return !(a == b);
         }
-        #endregion
 
     }
 }

@@ -7,51 +7,56 @@ using System.Threading.Tasks;
 // LOGIN -> Cliente
 namespace Biblioteca_Carniceria
 {
-    public class Cliente : Usuario
+    public class Cliente : Usuario, ICarrito
     {
         #region CAMPOS
-        string _nombre;
-        string _apellido;
-
-        decimal _saldo;
-        decimal _auxMonto;
+        float _saldo;
+        public static float auxMonto;
 
         // flag saldo
-        private bool _clienteCargado;
+        bool _clienteCargado;
 
         // flag Carrito
-        private bool _stockMax = false;
-        private bool _productoCargado = false;
+        bool _stockMax = false;
+        bool _productoCargado = false;
         
         public List<Producto> ListCarrito = new List<Producto>(); // Lista carrito ( contiene los productos en el carrito)
         
         #endregion
 
         #region PROPIEDADES
-        public string Nombre { get => _nombre; set => _nombre = value; }
-        public string Apellido { get => _apellido; set => _apellido = value; }
-        public decimal Saldo { get => _saldo; set => _saldo = value; }
-
-        public decimal AuxMonto { get => _auxMonto = Saldo; set => _auxMonto = value; }
+        
+        public float Saldo { get => _saldo; set => _saldo = value; }
         #endregion
 
         #region CONSTRUCTORES
         public Cliente ()
         {
-            Nombre = "XXXXXX";
-            Apellido = "XXXXXX";
-            Saldo = 0;
+            Usuario.Id ++;
+            this.Nombre = string.Empty;
+            this.Apellido = string.Empty;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            this.Saldo = 0;
         }
 
-        public Cliente(string nombre, string apellido) : this()
+        public Cliente(string nombre, string apellido)
         {
-            Nombre = nombre;
-            Apellido = apellido;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
         }
 
-        public Cliente(string nombre, string apellido, decimal saldo) : this (nombre,apellido)
+        public Cliente(string nombre, string apellido, float saldo) : this (nombre,apellido)
         {
             Saldo = saldo;
+        }
+
+
+        public Cliente(string nombre, string apellido, float saldo, string email, string password ) : this ( nombre,apellido,saldo)
+        {
+            this.Email = email;
+            this.Password = password;
         }
         #endregion
 
@@ -62,7 +67,7 @@ namespace Biblioteca_Carniceria
         /// </summary>
         /// <param name="producto"></param>
         /// <returns> ERROR: [1](Sin stock), [2](Saldo no suficiente), [3](Tope de producto) - OK: [0](TODO BIEN) </returns>
-        public override int CargarCarrito(Producto producto)
+        public int CargarCarrito(Producto producto)
         {
             Producto aux = new Producto();
 
@@ -73,10 +78,11 @@ namespace Biblioteca_Carniceria
                 // el saldo tiene q ser mayor a 0 y mayor al precio del producto
                 if (Saldo > 0 && producto.Precio <= Saldo)
                 {
+                    auxMonto = Saldo;
                     foreach (Producto producto_Carrito in ListCarrito)
                     {
                         // al saldo le voy restando eel precio del producto
-                        AuxMonto -= producto.Precio;   // Actualizar el saldo
+                        auxMonto -= producto.Precio;   // Actualizar el saldo
 
                         // SI el producto_Carrito = al producto seleccionado se acumula
                         if (producto_Carrito == producto) // sobrecarga de operadores
@@ -104,7 +110,7 @@ namespace Biblioteca_Carniceria
                     if (!_productoCargado && !_stockMax)
                     {
                         aux = producto;
-                        ListCarrito.Add(new Producto(aux.Nombre, aux.Precio, 1, aux.Tipo));
+                        ListCarrito.Add(new Producto(aux.Corte, aux.Precio, 1, (int)aux.Tipo));
                         retorno = 0;
                     }
 

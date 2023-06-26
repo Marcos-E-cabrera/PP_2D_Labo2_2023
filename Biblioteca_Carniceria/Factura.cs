@@ -27,7 +27,7 @@ namespace Biblioteca_Carniceria
         // DATOS PRODUCTOS
         string _producto;
         int _cantidad;
-        decimal _precioUnitario;
+        float _precioUnitario;
         decimal _total;
 
         // DATOS TOTAL COMPRA
@@ -43,7 +43,7 @@ namespace Biblioteca_Carniceria
     
         public string NombreProducto { get => _producto; set => _producto = value; }
         public int Cantidad { get => _cantidad; set => _cantidad = value; }
-        public decimal PrecioUnitario { get => _precioUnitario; set => _precioUnitario = value; }
+        public float PrecioUnitario { get => _precioUnitario; set => _precioUnitario = value; }
         public decimal Aux_Debito { get => _aux_Debito; set => _aux_Debito = value; }
         public decimal Total { get => _total; set => _total = value; }
         #endregion
@@ -68,7 +68,7 @@ namespace Biblioteca_Carniceria
             Total = total;
         }
 
-        public Factura ( string producto, int cantidad, decimal precioUnitario, decimal total) :this(cantidad,total)
+        public Factura ( string producto, int cantidad, float precioUnitario, decimal total) :this(cantidad,total)
         {
             NombreProducto = producto;
             PrecioUnitario = precioUnitario;

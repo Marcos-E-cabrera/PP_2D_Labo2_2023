@@ -32,6 +32,10 @@ namespace Login
         #region LOAD
         private void Frm_Heladera_Load(object sender, EventArgs e)
         {
+            XML.Serializacion();
+            Archivos.CrearArchivo_xml(XML.Deserializacion());
+            JSON.Serializacion();
+            Archivos.CrearArchivo_json(JSON.Deserializacion());
 
             MostrarHeladera();
             cbxTipo.Items.Add("Vacuno");
@@ -82,7 +86,7 @@ namespace Login
         {
             Producto p = new Producto();
 
-            p.Nombre = dgvHeladera[0, index].Value.ToString();
+            p.Corte = dgvHeladera[0, index].Value.ToString();
             p.Precio = Convert.ToInt32(dgvHeladera[1, index].Value);
             p.Stock = Convert.ToInt32(dgvHeladera[2, index].Value);
             p.Tipo = (eTipo)Convert.ToInt32(dgvHeladera[3, index].Value);
@@ -131,7 +135,7 @@ namespace Login
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string nombre = txtNombre.Text;
-            decimal precio = decimal.Parse(txtPrecio.Text);
+            float precio = float.Parse(txtPrecio.Text);
             int stock = int.Parse(txtStock.Text);
             string tipo = cbxTipo.Text;
 
