@@ -119,7 +119,7 @@ namespace Biblioteca_Carniceria
 
             foreach ( Producto p in Carrito)
             {
-                foreach (Producto aux in Heladera.ListHeladera)
+                foreach (Producto aux in CN_Heladera.ListHeladera)
                 {
                     if ( p.Corte ==aux.Corte )
                     {
@@ -207,7 +207,7 @@ namespace Biblioteca_Carniceria
 
             foreach (Producto p in Carrito)
             {
-                foreach (Producto aux in Heladera.ListHeladera)
+                foreach (Producto aux in CN_Heladera.ListHeladera)
                 {
                     if (p.Corte == aux.Corte)
                     {

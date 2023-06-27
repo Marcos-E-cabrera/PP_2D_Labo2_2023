@@ -1,0 +1,19 @@
+╔══════════════════════════════════════════════════════╗
+Carnicería LA CABRERA
+CIUT: 20-28294141-5
+Domicilio: Av. Bartolomé Mitre 750, Buenos Aires, Avellaneda
+Teléfono: (011) 5555-5555
+Fecha: 26/06/2023  Hora: 20:05:14
+Número de factura: 1
+Datos cliente: Zenia Ferrotti
+╔══════════════════════════════════════════════════════╗
+|     Descripción     |   Cantidad  |     Precio Unit    |    Total
+
+|     Vacio     |   1,00 KG   |   1000,00   |   1000,00
+
+╔══════════════════════════════════════════════════════╗
+Total Final: $1000,00
+Forma de pago: efectivo
+╚══════════════════════════════════════════════════════╝
+
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,15 +25,11 @@ namespace Biblioteca_Carniceria
         public static List<Historial> ListaHistorial = new List<Historial>(); // Lista de Historial de ventas
         public static List<Producto> ListaProductos = new List<Producto>(); // lista de Productos 
 
-        private ConexionSql conexionSql;
-
         #region CONSTRUCTOR
 
         public Vendedor()
         {
-            conexionSql = new ConexionSql();
-
-            ListaProductos = Heladera.ListHeladera;
+            ListaProductos = CN_Heladera.ListHeladera;
             ListCarrito = new List<Producto>();
 
             MontoCliene = 0;
@@ -100,52 +97,6 @@ namespace Biblioteca_Carniceria
         #endregion
 
         #region MANTENIMIENTO  HELADERA 
-
-        #region AGREGAR PRODUCTO
-        /// <summary>
-        /// Se le ingresa como parametro un nombre, precio, stock y tipo(enum)  y lo agrega a la lista de productos.
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="precio"></param>
-        /// <param name="stock"></param>
-        /// <param name="tipo"></param>
-        /// <returns> ERROR: [1](Parametros mal ingresados), [2](ya existe) - OK: [0](TODO BIEN) </returns>
-        public static int Agregar(string nombre, float precio, int stock, string tipo )
-        {
-            int rta = 1; // error[1] parametros mal ingresados
-            bool valido = true;
-
-            eTipo tipoAux = (eTipo)Enum.Parse(typeof(eTipo), tipo);
-            Producto producto = new Producto();
-            producto.Corte = nombre;
-            producto.Precio = precio;
-            producto.Stock = stock;
-            producto.Tipo = tipoAux;
-
-
-            if (nombre != "" && precio > 0 && stock > 0)
-            {
-                foreach (Producto p in ListaProductos)
-                {
-                    if (producto.Corte == p.Corte)
-                    {
-                        rta = 2; // error [2] ya existe
-                        break;
-                    }
-                }
-
-                if (valido && rta != 2)
-                {
-                    ListaProductos.Add(new Producto(producto.Corte, producto.Precio, producto.Stock, (int)producto.Tipo));
-                    rta = 0;
-                }
-            }
-
-
-            return rta;
-        }
-
-        #endregion
 
         #region REPONER PRODUCTO
         /// <summary>
@@ -308,6 +259,13 @@ namespace Biblioteca_Carniceria
 
 
         #endregion
-    }
+
+        #region CUD
+
+
+
+        #endregion
+
+        }
 }
 

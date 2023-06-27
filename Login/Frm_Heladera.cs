@@ -20,24 +20,27 @@ namespace Login
         #region CAMPOS
         private Vendedor vendedor;
         private Producto producto;
+        private CN_Heladera cn_Heladera = new CN_Heladera();
         #endregion
 
         #region CONSTRUCTOR
         public Frm_Heladera()
         {
             InitializeComponent();
+            cn_Heladera.stockEnCero += LlamarProveedores;
         }
         #endregion
 
         #region LOAD
         private void Frm_Heladera_Load(object sender, EventArgs e)
         {
+            MostrarProductos();
+
             XML.Serializacion();
             Archivos.CrearArchivo_xml(XML.Deserializacion());
             JSON.Serializacion();
             Archivos.CrearArchivo_json(JSON.Deserializacion());
 
-            MostrarHeladera();
             cbxTipo.Items.Add("Vacuno");
             cbxTipo.Items.Add("Ternero");
             cbxTipo.Items.Add("Cerdo");
@@ -55,14 +58,10 @@ namespace Login
         #endregion
 
         #region MOSTRAR
-        private void MostrarHeladera()
+        public void MostrarProductos()
         {
             dgvHeladera.Refresh();
-            dgvHeladera.DataSource = Heladera.ListHeladera;
-            dgvHeladera.Columns[0].HeaderText = "Producto";
-            dgvHeladera.Columns[1].HeaderText = "Precio x Kilo";
-            dgvHeladera.Columns[2].HeaderText = "Stock";
-            dgvHeladera.Columns[3].HeaderText = "Tipo de Carne";
+            dgvHeladera.DataSource = CN_Heladera.ListHeladera;
         }
         #endregion
 
@@ -92,6 +91,17 @@ namespace Login
             p.Tipo = (eTipo)Convert.ToInt32(dgvHeladera[3, index].Value);
 
             aux = p;
+        }
+
+        public int DGV_GetID(int index)
+        {
+            Producto p = new Producto();
+            int id;
+
+            p.Id = Convert.ToInt32(dgvHeladera[4, index].Value);
+            id = p.Id;
+
+            return id;
         }
 
         /// <summary>
@@ -129,32 +139,54 @@ namespace Login
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
+        private void dgvHeladera_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombre.Text = dgvHeladera[0, dgvHeladera.CurrentRow.Index].Value.ToString();
+            txtPrecio.Text = dgvHeladera[1, dgvHeladera.CurrentRow.Index].Value.ToString();
+            txtStock.Text = dgvHeladera[2, dgvHeladera.CurrentRow.Index].Value.ToString();
+            cbxTipo.Text = dgvHeladera[3, dgvHeladera.CurrentRow.Index].Value.ToString();
+        }
         #endregion
 
-        #region AGREGAR
+        #region CRUD
+
+        #region CREATED
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string nombre = txtNombre.Text;
-            float precio = float.Parse(txtPrecio.Text);
-            int stock = int.Parse(txtStock.Text);
-            string tipo = cbxTipo.Text;
-
-
-            switch (Vendedor.Agregar(nombre, precio, stock, tipo))
+            try
             {
-                case 0:
-                    dgvHeladera.DataSource = null;
-                    dgvHeladera.DataSource = Vendedor.ListaProductos;
-                    break;
-                case 1:
-                    MensajeDeError("Parametros mal ingresados", "Error [ 1 ]");
-                    break;
-                case 2:
-                    MensajeDeError("Producto ya existente.", "Error [ 2 ]");
-                    break;
-
+                eTipo tipoAux = (eTipo)Enum.Parse(typeof(eTipo), cbxTipo.Text);
+                CD_Productos.Created(txtNombre.Text, float.Parse(txtPrecio.Text), int.Parse(txtStock.Text), tipoAux.ToString());
+                MensajeDeOK("Se cargo el Producto correctamente", "CREATED PRODUCTO");
+                MostrarProductos();
+            }
+            catch (Exception ex)
+            {
+                MensajeDeError("No se cargo el producto", "ERROR CREATED");
             }
         }
+        #endregion
+
+        #region ELIMINAR
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = DGV_GetFila();
+                int id = DGV_GetID(index);
+                CD_Productos.Delate(id);
+
+                MensajeDeOK("Se Elimino el Producto correctamente", "DELETE PRODUCTO");
+                MostrarProductos();
+            }
+            catch (Exception ex)
+            {
+                MensajeDeError("No se Elimino el producto", "ERROR DELETE");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region REPONER
@@ -169,7 +201,7 @@ namespace Login
             switch (Vendedor.Reponer(producto, txtStock.Text))
             {
                 case 0:
-                    DGV_ActualizarDatos(Heladera.CargarHeladera(index, producto));
+                    DGV_ActualizarDatos(CN_Heladera.CargarHeladera(index, producto));
                     break;
                 case 1:
                     MensajeDeError("El stock no puede ser menor a 0 y no puede bajar el stock.", "Error [ 1 ]");
@@ -178,23 +210,6 @@ namespace Login
                     MensajeDeError("El stock debe ser un número entero/ cantidad no Ingresada.", "Error [ 2 ]");
                     break;
             }
-        }
-        #endregion
-
-        #region ELIMINAR
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int index = DGV_GetFila();
-            Vendedor.ListaProductos.RemoveAt(index);
-            dgvHeladera.DataSource = null;
-            dgvHeladera.DataSource = Vendedor.ListaProductos;
-        }
-        private void dgvHeladera_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtNombre.Text = dgvHeladera[0, dgvHeladera.CurrentRow.Index].Value.ToString();
-            txtPrecio.Text = dgvHeladera[1, dgvHeladera.CurrentRow.Index].Value.ToString();
-            txtStock.Text = dgvHeladera[2, dgvHeladera.CurrentRow.Index].Value.ToString();
-            cbxTipo.Text = dgvHeladera[3, dgvHeladera.CurrentRow.Index].Value.ToString();
         }
         #endregion
 
@@ -210,9 +225,40 @@ namespace Login
         #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
-            MostrarHeladera();
+            CN_Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
+            MostrarProductos();
         }
         #endregion
+
+        private void btn_Proveedores_Click(object sender, EventArgs e)
+        {
+            if ( CN_Heladera.ListHeladera.Exists(X => X.Stock == 0))
+            {
+                Producto producto = CN_Heladera.ListHeladera.Find(X => X.Stock == 0);
+
+                cn_Heladera.CheckearHeladera(producto.Id, DatoCorrecto, DatoIncorrecto);
+                MostrarProductos();
+            }
+            else
+            {
+                MensajeDeOK("No hace falta llamar Proveedores", "Falsa Alarma");
+            }
+
+        }
+
+        public void DatoCorrecto()
+        {
+            MessageBox.Show("PRODUCTO REPUESTO");
+        }
+
+        public void DatoIncorrecto(string mensaje)
+        {
+            MessageBox.Show(mensaje);
+        }
+
+        public void LlamarProveedores()
+        {
+            MessageBox.Show("LLamando proveedores");
+        }
     }
 }

@@ -2,283 +2,316 @@
   {
     "Corte": "Asado",
     "Precio": 1000,
-    "Stock": 0,
-    "Tipo": 0
+    "Stock": 17,
+    "Tipo": 0,
+    "Id": 1
   },
   {
     "Corte": "Vacio",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 2
   },
   {
     "Corte": "Bife De Chorizo",
     "Precio": 700,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 3
   },
   {
     "Corte": "Entra\u00F1a",
     "Precio": 800,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 4
   },
   {
     "Corte": "Matambre",
     "Precio": 600,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 5
   },
   {
     "Corte": "Cuadril",
     "Precio": 900,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 6
   },
   {
     "Corte": "Lomo Vetado",
     "Precio": 1200,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 7
   },
   {
     "Corte": "Colita De Cuadril",
     "Precio": 988,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 8
   },
   {
     "Corte": "Tapa De Asado",
     "Precio": 600,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 9
   },
   {
     "Corte": "Marucha",
     "Precio": 556,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 10
   },
   {
     "Corte": "Falda",
     "Precio": 875,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 11
   },
   {
     "Corte": "RoastBeef",
     "Precio": 654,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 12
   },
   {
     "Corte": "Cadera",
     "Precio": 700,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 13
   },
   {
     "Corte": "Cadera De Ternera",
     "Precio": 500,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 14
   },
   {
     "Corte": "Callos",
     "Precio": 267,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 15
   },
   {
     "Corte": "Chulet\u00F3n De Vaca",
     "Precio": 2000,
     "Stock": 10,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 16
   },
   {
     "Corte": "Contra",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 1
-  },
-  {
-    "Corte": "Entrecot De Ternera Rosada",
-    "Precio": 1000,
-    "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 17
   },
   {
     "Corte": "Etrecot De Ternera Blanca",
     "Precio": 3000,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 19
   },
   {
     "Corte": "Lengua",
     "Precio": 1300,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 20
   },
   {
     "Corte": "Morcillo De Ternera Blanca",
     "Precio": 1023,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 21
   },
   {
     "Corte": "Osobuco",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 22
   },
   {
     "Corte": "Pica\u00F1a De Vaca",
     "Precio": 1000,
     "Stock": 15,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 23
   },
   {
     "Corte": "Redondo De Ternera Rosada",
     "Precio": 1000,
     "Stock": 18,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 24
   },
   {
     "Corte": "Roti De Ternera Blanca",
     "Precio": 1000,
     "Stock": 17,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 25
   },
   {
     "Corte": "Solomillo De Ternera Rosada",
     "Precio": 1000,
     "Stock": 25,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 26
   },
   {
     "Corte": "Solomillo De Vaca",
     "Precio": 1000,
     "Stock": 28,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 27
   },
   {
     "Corte": "Tapa De Ternera Rosada",
     "Precio": 1000,
     "Stock": 13,
-    "Tipo": 0
+    "Tipo": 0,
+    "Id": 28
   },
   {
     "Corte": "Perdiz De Ternera",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 1
+    "Tipo": 1,
+    "Id": 29
   },
   {
     "Corte": "Chuleta De Cerdo",
     "Precio": 1000,
     "Stock": 8,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 30
   },
   {
     "Corte": "Costilla Adobada",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 31
   },
   {
     "Corte": "Ib\u00E9ricos",
     "Precio": 1000,
     "Stock": 12,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 32
   },
   {
     "Corte": "Lomo Adobado",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 33
   },
   {
     "Corte": "Picadillo",
     "Precio": 1000,
     "Stock": 5,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 34
   },
   {
     "Corte": "Solomillo De Cerdo",
     "Precio": 1000,
     "Stock": 12,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 35
   },
   {
     "Corte": "Tira De Costilla De Cerdo",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 2
+    "Tipo": 2,
+    "Id": 36
   },
   {
     "Corte": "Chuletillas",
     "Precio": 3000,
     "Stock": 14,
-    "Tipo": 3
+    "Tipo": 3,
+    "Id": 37
   },
   {
     "Corte": "Chuletillas De Recental",
     "Precio": 1000,
     "Stock": 14,
-    "Tipo": 3
+    "Tipo": 3,
+    "Id": 38
   },
   {
     "Corte": "Delantero",
     "Precio": 1000,
     "Stock": 10,
-    "Tipo": 3
+    "Tipo": 3,
+    "Id": 39
   },
   {
     "Corte": "Manitas",
     "Precio": 1000,
     "Stock": 17,
-    "Tipo": 3
+    "Tipo": 3,
+    "Id": 40
   },
   {
     "Corte": "Pierna",
     "Precio": 1000,
     "Stock": 18,
-    "Tipo": 3
+    "Tipo": 3,
+    "Id": 41
   },
   {
     "Corte": "Pechuga",
     "Precio": 1000,
     "Stock": 35,
-    "Tipo": 4
+    "Tipo": 4,
+    "Id": 42
   },
   {
     "Corte": "Muslos",
     "Precio": 1000,
     "Stock": 25,
-    "Tipo": 4
+    "Tipo": 4,
+    "Id": 43
   },
   {
     "Corte": "Alas",
     "Precio": 1000,
     "Stock": 20,
-    "Tipo": 4
+    "Tipo": 4,
+    "Id": 44
   },
   {
     "Corte": "Pollo Entero",
     "Precio": 1000,
     "Stock": 22,
-    "Tipo": 4
+    "Tipo": 4,
+    "Id": 45
   },
   {
     "Corte": "Hamburguesas",
     "Precio": 200,
     "Stock": 21,
-    "Tipo": 5
-  },
-  {
-    "Corte": "Salchichas",
-    "Precio": 150,
-    "Stock": 15,
-    "Tipo": 5
+    "Tipo": 5,
+    "Id": 46
   }
 ]

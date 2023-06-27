@@ -49,6 +49,7 @@ namespace Frm_Vendedor
             cbxOrdenamiento.Items.Add("Stock");
             cbxOrdenamiento.Items.Add("Detalle");
 
+            MostrarCarrito();
             MostrarHeladera();
         }
         #endregion
@@ -114,7 +115,7 @@ namespace Frm_Vendedor
 
             int index = DGV_GetFilaHeladera();
 
-            Heladera.getProducto(index, out producto);
+            CN_Heladera.getProducto(index, out producto);
 
             switch (vendedor.CargarCarrito(producto))
             {
@@ -274,13 +275,14 @@ namespace Frm_Vendedor
                 }
             );
 
+
             dgvClientes.DataSource = Vendedor.ListClientes;
         }
 
         private void MostrarHeladera()
         {
             dgvHeladera.Refresh();
-            dgvHeladera.DataSource = Heladera.ListHeladera;
+            dgvHeladera.DataSource = CN_Heladera.ListHeladera;
 
         }
 
@@ -291,32 +293,40 @@ namespace Frm_Vendedor
             dgvCarrito.Columns.Clear();
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Corte", DataPropertyName = "Corte"
+                HeaderText = "Corte",
+                DataPropertyName = "Corte"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Precio", DataPropertyName = "Precio" 
+                HeaderText = "Precio",
+                DataPropertyName = "Precio"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Cantidad", DataPropertyName = "Stock" 
+                HeaderText = "Cantidad",
+                DataPropertyName = "Stock"
             });
 
             dgvCarrito.Columns.Add(new DataGridViewTextBoxColumn()
             {
-                HeaderText = "Tipo", DataPropertyName = "Tipo" 
+                HeaderText = "Tipo",
+                DataPropertyName = "Tipo"
             });
 
             // Establecer el origen de datos solo si hay elementos en el carrito
             if (vendedor.ListCarrito.Count > 0)
             {
+                dgvCarrito.Visible = true;
+                lb_Vacio.Visible = false;
                 dgvCarrito.DataSource = vendedor.ListCarrito;
             }
             else
             {
                 dgvCarrito.DataSource = null; // Si no hay elementos en el carrito, establecer el origen de datos a null para limpiar el DataGridView
+                dgvCarrito.Visible = false;
+                lb_Vacio.Visible = true;
             }
         }
 
@@ -380,7 +390,7 @@ namespace Frm_Vendedor
         #region ORDENAMIENTO
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
+            CN_Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }
         #endregion

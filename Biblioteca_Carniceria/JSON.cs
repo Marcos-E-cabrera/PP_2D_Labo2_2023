@@ -15,7 +15,7 @@ namespace Biblioteca_Carniceria
             JsonSerializerOptions opciones = new JsonSerializerOptions();
             opciones.WriteIndented = true;
 
-            string jsonString = JsonSerializer.Serialize(Heladera.ListHeladera, opciones);
+            string jsonString = JsonSerializer.Serialize(CN_Heladera.ListHeladera, opciones);
 
             using (StreamWriter file = new StreamWriter("productos.json"))
             {

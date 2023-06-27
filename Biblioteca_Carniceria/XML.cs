@@ -16,7 +16,7 @@ namespace Biblioteca_Carniceria
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Producto>));
 
-                xmlSerializer.Serialize(streamWriter, Heladera.ListHeladera);
+                xmlSerializer.Serialize(streamWriter, CN_Heladera.ListHeladera);
             }
         }
 

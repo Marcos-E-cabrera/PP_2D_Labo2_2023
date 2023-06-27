@@ -13,8 +13,7 @@ namespace Login
     {
         private bool vision;
         private bool _SingUp = false;
-        public Heladera _heladera;
-        private ConexionSql conexionSql;
+        public CN_Heladera _heladera;
 
         private static List<Cliente> usuarios_Clientes = new List<Cliente>();  
         
@@ -28,105 +27,12 @@ namespace Login
         public Login()
         {
             InitializeComponent();
-            Read_Clientes();
+            usuarios_Clientes = CD_Cliente.CreacionListaUsuario();
 
-            _heladera = new Heladera();            
+            _heladera = new CN_Heladera();            
             grb_SingUp.Visible = false;
             vision = true;
         }
-        #endregion
-
-        #region CRUD
-        // READ
-        private static void Read_Clientes()
-        {
-            try
-            {
-                ConexionSql.command.CommandText = "SELECT * FROM Usuario_Cliente";
-                ConexionSql.connection.Open();
-                ConexionSql.reader = ConexionSql.command.ExecuteReader();
-
-                while (ConexionSql.reader.Read())
-                {
-                    usuarios_Clientes.Add(new Cliente(ConexionSql.reader["Nombre"].ToString(),
-                                                 ConexionSql.reader["Apellido"].ToString(), 0,
-                                                 ConexionSql.reader["Email"].ToString(),
-                                                 ConexionSql.reader["Password"].ToString()));
-
-                }
-
-            }
-            catch (Exception)
-            {
-                throw new Exception("Error de conexión a la base de datos");
-            }
-            finally
-            {
-                ConexionSql.connection.Close();
-                ConexionSql.reader.Close();
-            }
-
-        }
-
-        // CREATED
-        private static void Create_Cliente(string nombre, string apellido, string email, string password)
-        {
-            try
-            {
-
-                ConexionSql.command.CommandText = "INSERT INTO Usuario_Cliente " +
-                                        "VALUES (@nombre, @apellido, @email, @password)";
-
-                // Configurar los parámetros del comando
-                ConexionSql.command.Parameters.AddWithValue("@nombre", nombre);
-                ConexionSql.command.Parameters.AddWithValue("@apellido", apellido);
-                ConexionSql.command.Parameters.AddWithValue("@email", email);
-                ConexionSql.command.Parameters.AddWithValue("@password", password);
-
-                ConexionSql.connection.Open();
-
-                // Ejecutar el comando SQL
-                ConexionSql.command.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error de conexión a la base de datos: " + ex.Message);
-            }
-            finally
-            {
-                ConexionSql.connection.Close();
-            }
-        }
-
-        private static void Read_ultimoUsuario()
-        {
-            try
-            {
-                ConexionSql.command.CommandText = "SELECT TOP 1 * FROM Usuario_Cliente ORDER BY id DESC";
-                ConexionSql.connection.Open();
-                ConexionSql.reader = ConexionSql.command.ExecuteReader();
-
-                while (ConexionSql.reader.Read())
-                {
-                    usuarios_Clientes.Add(new Cliente(ConexionSql.reader["Nombre"].ToString(),
-                                                 ConexionSql.reader["Apellido"].ToString(), 0,
-                                                 ConexionSql.reader["Email"].ToString(),
-                                                 ConexionSql.reader["Password"].ToString()));
-
-                }
-            }
-            catch (Exception)
-            {
-                throw new Exception("Error de conexión a la base de datos");
-            }
-            finally
-            {
-                ConexionSql.connection.Close();
-                ConexionSql.reader.Close();
-            }
-        }
-
         #endregion
 
         #region INGRESAR
@@ -295,8 +201,8 @@ namespace Login
                 switch (errores)
                 {
                     case 0:
-                        Create_Cliente(txtNombre_SingUp.Text, txtApellido_SingUp.Text, txtEmail_SingUp.Text, txtPassword_SingUp.Text);
-                        Read_ultimoUsuario();
+                        CD_Cliente.Created(txtNombre_SingUp.Text, txtApellido_SingUp.Text, txtEmail_SingUp.Text, txtPassword_SingUp.Text);
+                        CD_Cliente.Read();
                         grb_SingUp.Visible = false;
                         break;
                     case 1:

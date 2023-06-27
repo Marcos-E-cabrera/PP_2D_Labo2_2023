@@ -63,7 +63,7 @@ namespace Login
             {
                 int index = DGV_GetFilaHeladera();
 
-                Heladera.getProductoHeladeraCliente(index, out producto);
+                CN_Heladera.getProductoHeladeraCliente(index, out producto);
 
                 switch (cliente.CargarCarrito(producto))
                 {
@@ -214,7 +214,7 @@ namespace Login
         private void MostrarHeladera()
         {
             dgvHeladera.Refresh();
-            dgvHeladera.DataSource = Heladera.HeladeraCliente();
+            dgvHeladera.DataSource = CN_Heladera.HeladeraCliente();
         }
 
         private void MostrarCarrito()
@@ -275,7 +275,7 @@ namespace Login
         private void cbxOrdenamiento_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvHeladera.Refresh();
-            Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
+            CN_Heladera.OrdenarHeladera(cbxOrdenamiento.SelectedIndex);
             MostrarHeladera();
         }
         #endregion

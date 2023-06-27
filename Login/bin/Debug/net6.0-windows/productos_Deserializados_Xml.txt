@@ -1,4 +1,4 @@
-Asado,1000,0,Vacuno
+Asado,1000,17,Vacuno
 Vacio,1000,10,Vacuno
 Bife De Chorizo,700,10,Vacuno
 Entraña,800,10,Vacuno
@@ -15,7 +15,6 @@ Cadera De Ternera,500,10,Ternero
 Callos,267,10,Ternero
 Chuletón De Vaca,2000,10,Vacuno
 Contra,1000,10,Ternero
-Entrecot De Ternera Rosada,1000,10,Ternero
 Etrecot De Ternera Blanca,3000,10,Ternero
 Lengua,1300,10,Ternero
 Morcillo De Ternera Blanca,1023,10,Ternero
@@ -44,4 +43,3 @@ Muslos,1000,25,Pollo
 Alas,1000,20,Pollo
 Pollo Entero,1000,22,Pollo
 Hamburguesas,200,21,Procesado
-Salchichas,150,15,Procesado

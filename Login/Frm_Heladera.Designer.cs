@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panelHeladera = new Panel();
             dgvHeladera = new DataGridView();
             btnReponer = new Button();
@@ -48,6 +48,7 @@
             txtNombre = new TextBox();
             label3 = new Label();
             label2 = new Label();
+            btn_Proveedores = new Button();
             panelHeladera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHeladera).BeginInit();
             grbReponer.SuspendLayout();
@@ -71,24 +72,24 @@
             dgvHeladera.BackgroundColor = Color.White;
             dgvHeladera.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvHeladera.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 170, 161);
-            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvHeladera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 170, 161);
+            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvHeladera.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvHeladera.ColumnHeadersHeight = 29;
             dgvHeladera.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(176, 205, 197);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvHeladera.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvHeladera.DefaultCellStyle = dataGridViewCellStyle5;
             dgvHeladera.Dock = DockStyle.Fill;
             dgvHeladera.EnableHeadersVisualStyles = false;
             dgvHeladera.GridColor = SystemColors.WindowText;
@@ -99,12 +100,12 @@
             dgvHeladera.RowHeadersVisible = false;
             dgvHeladera.RowHeadersWidth = 51;
             dgvHeladera.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(176, 205, 197);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
-            dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle6.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(176, 205, 197);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
+            dgvHeladera.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvHeladera.RowTemplate.Height = 29;
             dgvHeladera.Size = new Size(1164, 579);
             dgvHeladera.TabIndex = 7;
@@ -139,6 +140,7 @@
             // grbReponer
             // 
             grbReponer.BackColor = Color.LightGreen;
+            grbReponer.Controls.Add(btn_Proveedores);
             grbReponer.Controls.Add(label5);
             grbReponer.Controls.Add(cbxOrdenamiento);
             grbReponer.Controls.Add(btnLimpiar);
@@ -258,6 +260,16 @@
             label2.TabIndex = 13;
             label2.Text = "Nombre";
             // 
+            // btn_Proveedores
+            // 
+            btn_Proveedores.Location = new Point(390, 43);
+            btn_Proveedores.Name = "btn_Proveedores";
+            btn_Proveedores.Size = new Size(94, 29);
+            btn_Proveedores.TabIndex = 23;
+            btn_Proveedores.Text = "Proveedores";
+            btn_Proveedores.UseVisualStyleBackColor = true;
+            btn_Proveedores.Click += btn_Proveedores_Click;
+            // 
             // Frm_Heladera
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -297,5 +309,6 @@
         private Button btnLimpiar;
         private Label label5;
         private ComboBox cbxOrdenamiento;
+        private Button btn_Proveedores;
     }
 }

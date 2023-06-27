@@ -44,6 +44,7 @@
             btnSeleccionarCliente = new Button();
             grbHeladera = new GroupBox();
             dgvHeladera = new DataGridView();
+            label3 = new Label();
             btn_Comprar = new Button();
             btn_Factura = new Button();
             btnAgregar = new Button();
@@ -52,9 +53,9 @@
             label1 = new Label();
             label5 = new Label();
             cbxOrdenamiento = new ComboBox();
-            label3 = new Label();
             lb_Dinero = new Label();
             label4 = new Label();
+            lb_Vacio = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             grbClientes.SuspendLayout();
             gpbCarrito.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // gpbCarrito
             // 
+            gpbCarrito.Controls.Add(lb_Vacio);
             gpbCarrito.Controls.Add(dgvCarrito);
             gpbCarrito.Location = new Point(15, 401);
             gpbCarrito.Name = "gpbCarrito";
@@ -242,6 +244,15 @@
             dgvHeladera.Size = new Size(633, 564);
             dgvHeladera.TabIndex = 8;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(366, -18);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 20);
+            label3.TabIndex = 48;
+            label3.Text = "Dinero:";
+            // 
             // btn_Comprar
             // 
             btn_Comprar.ForeColor = Color.Black;
@@ -324,15 +335,6 @@
             cbxOrdenamiento.TabIndex = 33;
             cbxOrdenamiento.SelectedIndexChanged += cbxOrdenamiento_SelectedIndexChanged;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(366, -18);
-            label3.Name = "label3";
-            label3.Size = new Size(57, 20);
-            label3.TabIndex = 48;
-            label3.Text = "Dinero:";
-            // 
             // lb_Dinero
             // 
             lb_Dinero.AutoSize = true;
@@ -350,6 +352,17 @@
             label4.Size = new Size(57, 20);
             label4.TabIndex = 48;
             label4.Text = "Dinero:";
+            // 
+            // lb_Vacio
+            // 
+            lb_Vacio.AutoSize = true;
+            lb_Vacio.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_Vacio.Location = new Point(133, 112);
+            lb_Vacio.Name = "lb_Vacio";
+            lb_Vacio.Size = new Size(190, 31);
+            lb_Vacio.TabIndex = 51;
+            lb_Vacio.Text = "Carrito esta vacio";
+            lb_Vacio.Visible = false;
             // 
             // Frm_Venta
             // 
@@ -379,6 +392,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
             grbClientes.ResumeLayout(false);
             gpbCarrito.ResumeLayout(false);
+            gpbCarrito.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCarrito).EndInit();
             grbHeladera.ResumeLayout(false);
             grbHeladera.PerformLayout();
@@ -406,5 +420,6 @@
         private Label label3;
         private Label lb_Dinero;
         private Label label4;
+        private Label lb_Vacio;
     }
 }
