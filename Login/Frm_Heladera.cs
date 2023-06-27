@@ -230,14 +230,15 @@ namespace Login
         }
         #endregion
 
-        private void btn_Proveedores_Click(object sender, EventArgs e)
+        private async void btn_Proveedores_Click(object sender, EventArgs e)
         {
-            if ( CN_Heladera.ListHeladera.Exists(X => X.Stock == 0))
+            if (CN_Heladera.ListHeladera.Exists(X => X.Stock == 0))
             {
                 Producto producto = CN_Heladera.ListHeladera.Find(X => X.Stock == 0);
 
                 cn_Heladera.CheckearHeladera(producto.Id, DatoCorrecto, DatoIncorrecto);
                 MostrarProductos();
+                this.label6.Text = await CN_Heladera.TraerRegistrosAsync();
             }
             else
             {

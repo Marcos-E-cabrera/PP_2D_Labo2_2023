@@ -3,7 +3,7 @@
   <Producto>
     <Corte>Asado</Corte>
     <Precio>1000</Precio>
-    <Stock>17</Stock>
+    <Stock>0</Stock>
     <Tipo>Vacuno</Tipo>
     <Id>1</Id>
   </Producto>

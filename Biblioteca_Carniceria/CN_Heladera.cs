@@ -22,6 +22,22 @@ namespace Biblioteca_Carniceria
             ListHeladera = CD_Productos.CreacionListaProductos();
         }
 
+        public static async Task<string> TraerRegistrosAsync()
+        {
+            string proveedor = await Task.Run(() =>
+            {
+                Thread.Sleep(1000); //SIMULO QUE EL PROVVEDOR ESTA VINIENDO
+                return "PROVEDOR TRAJO MERCADERIA";
+            });
+
+            if (proveedor.Length < 0)
+            {
+                throw new MiExcepciones("ERROR");
+            }
+
+            return proveedor;
+        }
+
         public void CheckearHeladera(int id,
             Action correcto,
             Action<string> incorrecto)
