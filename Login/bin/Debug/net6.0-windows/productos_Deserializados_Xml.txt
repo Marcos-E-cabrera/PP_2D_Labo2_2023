@@ -1,4 +1,4 @@
-Asado,1000,0,Vacuno
+Asado,1000,17,Vacuno
 Vacio,1000,10,Vacuno
 Bife De Chorizo,700,10,Vacuno
 Entraña,800,10,Vacuno
@@ -43,3 +43,4 @@ Muslos,1000,25,Pollo
 Alas,1000,20,Pollo
 Pollo Entero,1000,22,Pollo
 Hamburguesas,200,21,Procesado
+Lengua,1300,10,Cerdo

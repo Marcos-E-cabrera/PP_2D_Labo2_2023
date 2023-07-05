@@ -2,7 +2,7 @@
   {
     "Corte": "Asado",
     "Precio": 1000,
-    "Stock": 0,
+    "Stock": 17,
     "Tipo": 0,
     "Id": 1
   },
@@ -313,5 +313,12 @@
     "Stock": 21,
     "Tipo": 5,
     "Id": 46
+  },
+  {
+    "Corte": "Lengua",
+    "Precio": 1300,
+    "Stock": 10,
+    "Tipo": 2,
+    "Id": 68
   }
 ]
