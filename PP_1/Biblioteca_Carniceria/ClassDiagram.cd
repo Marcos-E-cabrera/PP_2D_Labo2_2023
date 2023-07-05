@@ -10,10 +10,9 @@
   <Class Name="Biblioteca_Carniceria.Vendedor">
     <Position X="2.75" Y="5" Width="2" />
     <TypeIdentifier>
-      <HashCode>QAQAAAAIAAAEAEAAAQAACAAIMQAIAAAAAAAAAACAABA=</HashCode>
+      <HashCode>QAQAAAAYAAAEAEAAAQAACAAIMQAIAAAAAAAAAACAABA=</HashCode>
       <FileName>Vendedor.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Biblioteca_Carniceria.Usuario">
     <Position X="1.75" Y="0.5" Width="1.5" />
@@ -25,7 +24,7 @@
   <Class Name="Biblioteca_Carniceria.Producto">
     <Position X="5.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAEAAAABAAABAAAAQgCABAAAAAAAAAAAAAiQ=</HashCode>
+      <HashCode>AAAAAAAAAEAAAABAAAAAAAAQgCABAAAAAAAAAAAAAiQ=</HashCode>
       <FileName>Producto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -48,6 +47,13 @@
     <TypeIdentifier>
       <HashCode>AAMAAAAQAAAAQAAAAABAAAEIAAAAAAAAEAAAAAGBAhA=</HashCode>
       <FileName>Carrito.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca_Carniceria.CN_Heladera">
+    <Position X="5.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABDAAAAAAAAAAABAgAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CN_Heladera.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="eTipo">

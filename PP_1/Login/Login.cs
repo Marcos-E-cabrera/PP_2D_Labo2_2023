@@ -38,7 +38,8 @@ namespace Login
                         Vendedor vendedor = new Vendedor();
                         vendedor.Nombre = "Marcos";
                         vendedor.Apellido = "Cabrera";
-
+                        vendedor.Email = "acottis2@toplist.cz";
+                        vendedor.Password = "jwAqIw0Alt5";
                         Frm_User_Vendedor userVendedor = new Frm_User_Vendedor(vendedor);
                         userVendedor.Show(this);
                     }
@@ -50,6 +51,8 @@ namespace Login
                         cliente.Nombre = "Zoro";
                         cliente.Apellido = "Roronoa";
                         cliente.Saldo = 20000;
+                        cliente.Email = "djacquest0@unesco.org";
+                        cliente.Password = "WqXtIk";
 
                         Frm_User_Cliente userCliente = new Frm_User_Cliente(cliente);
                         userCliente.Show(this);
