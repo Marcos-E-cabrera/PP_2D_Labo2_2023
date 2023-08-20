@@ -34,7 +34,7 @@ namespace Frm_Vendedor
             vendedor = new Vendedor();
             cliente = new Cliente();
         }
-        #endregion
+        #endregion  
 
         #region LOAD
         private void FrmVenta_Load(object sender, EventArgs e)

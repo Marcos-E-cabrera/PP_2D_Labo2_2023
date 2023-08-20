@@ -157,8 +157,6 @@ namespace Login
             }
             else
             {
-
-
                 if (string.IsNullOrEmpty(txtNombre_SingUp.Text) || !txtNombre_SingUp.Text.All(char.IsLetter))
                 {
                     errores = 1;
@@ -189,6 +187,8 @@ namespace Login
                 {
                     case 101:
                         MessageBox.Show("Error en el campo Nombre");
+                        grb_SingUp.Visible = false;
+                        _SingUp = false;
                         break;
                     case 102:
                         MessageBox.Show("Error en el campo Apellido");

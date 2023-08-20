@@ -185,7 +185,6 @@ namespace Biblioteca_Carniceria
                         // Si el producto no está en la lista de carrito, agregarlo como un nuevo producto
                         if (!_productoCargado && !_stockMax)
                         {
-
                             aux = producto;
                             ListCarrito.Add(new Producto(aux.Corte, aux.Precio, 1 , (int)aux.Tipo));
                             retorno = 0;
